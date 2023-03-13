@@ -33,7 +33,7 @@ final class AppCoordinator {
 	}
 	
 	private func startStoreCoordinator() -> ESNavigationController {
-		let controller = ESContainer.shared.navigationViewController
+		let controller = ESContainer.shared.storeNavigationViewController
 		
 		catalogCoordinator = StoreCoordinator(
 			navigationController: controller
@@ -43,10 +43,12 @@ final class AppCoordinator {
 	}
 
 	private func startEsimsCoordinator() -> ESNavigationController {
-		return ESNavigationController()
+		let controller = ESContainer.shared.myEsimsNavigationViewController
+		return controller
 	}
 	
 	private func startProfileCoordinator() -> ESNavigationController {
-		return ESNavigationController()
+		let controller = ESContainer.shared.profileNavigationViewController
+		return controller
 	}
 }

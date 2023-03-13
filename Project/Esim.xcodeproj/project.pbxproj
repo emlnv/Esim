@@ -17,6 +17,10 @@
 		B72FB53729BE66CB0035C8FA /* StoreAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72FB53629BE66CB0035C8FA /* StoreAssembly.swift */; };
 		B752C49729BF1FD500CD3DAD /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = B752C49629BF1FD500CD3DAD /* Factory */; };
 		B752C49929BF23A800CD3DAD /* FactoryBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B752C49829BF23A800CD3DAD /* FactoryBridge.swift */; };
+		B752C49B29BF31E200CD3DAD /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = B752C49A29BF31E200CD3DAD /* Icon.swift */; };
+		B752C49E29BF3E4F00CD3DAD /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B752C49D29BF3E4F00CD3DAD /* SearchBarView.swift */; };
+		B752C4A029BF554A00CD3DAD /* ColoredSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B752C49F29BF554A00CD3DAD /* ColoredSegmentedControl.swift */; };
+		B752C4A229BF588F00CD3DAD /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B752C4A129BF588F00CD3DAD /* CountryTableViewCell.swift */; };
 		B760B91C29BE02930067231C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B760B91B29BE02930067231C /* AppDelegate.swift */; };
 		B760B92529BE02970067231C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B760B92429BE02970067231C /* Assets.xcassets */; };
 		B760B92829BE02970067231C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B760B92629BE02970067231C /* LaunchScreen.storyboard */; };
@@ -32,6 +36,10 @@
 		B72FB53429BE29670035C8FA /* RootAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootAssembly.swift; sourceTree = "<group>"; };
 		B72FB53629BE66CB0035C8FA /* StoreAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreAssembly.swift; sourceTree = "<group>"; };
 		B752C49829BF23A800CD3DAD /* FactoryBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactoryBridge.swift; sourceTree = "<group>"; };
+		B752C49A29BF31E200CD3DAD /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
+		B752C49D29BF3E4F00CD3DAD /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
+		B752C49F29BF554A00CD3DAD /* ColoredSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredSegmentedControl.swift; sourceTree = "<group>"; };
+		B752C4A129BF588F00CD3DAD /* CountryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
 		B760B91829BE02930067231C /* Esim.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Esim.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B760B91B29BE02930067231C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B760B92429BE02970067231C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -63,6 +71,7 @@
 		B72FB51F29BE11DE0035C8FA /* 1.0 Store */ = {
 			isa = PBXGroup;
 			children = (
+				B752C49C29BF3E3E00CD3DAD /* View */,
 				B72FB53229BE24450035C8FA /* StoreCoordinator.swift */,
 				B72FB52029BE12040035C8FA /* StoreViewController.swift */,
 				B72FB53629BE66CB0035C8FA /* StoreAssembly.swift */,
@@ -106,6 +115,16 @@
 			path = "ES+UIKit";
 			sourceTree = "<group>";
 		};
+		B752C49C29BF3E3E00CD3DAD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B752C49D29BF3E4F00CD3DAD /* SearchBarView.swift */,
+				B752C49F29BF554A00CD3DAD /* ColoredSegmentedControl.swift */,
+				B752C4A129BF588F00CD3DAD /* CountryTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		B760B90F29BE02930067231C = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +158,7 @@
 				B760B92429BE02970067231C /* Assets.xcassets */,
 				B760B92629BE02970067231C /* LaunchScreen.storyboard */,
 				B760B92929BE02970067231C /* Info.plist */,
+				B752C49A29BF31E200CD3DAD /* Icon.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -222,12 +242,16 @@
 				B72FB53529BE29670035C8FA /* RootAssembly.swift in Sources */,
 				B72FB53129BE20C60035C8FA /* ES+UINavigationController.swift in Sources */,
 				B72FB53729BE66CB0035C8FA /* StoreAssembly.swift in Sources */,
+				B752C4A029BF554A00CD3DAD /* ColoredSegmentedControl.swift in Sources */,
+				B752C49E29BF3E4F00CD3DAD /* SearchBarView.swift in Sources */,
 				B72FB52E29BE1C550035C8FA /* SwinjectBridge.swift in Sources */,
 				B752C49929BF23A800CD3DAD /* FactoryBridge.swift in Sources */,
 				B72FB52729BE145E0035C8FA /* TabBarController.swift in Sources */,
 				B72FB52129BE12040035C8FA /* StoreViewController.swift in Sources */,
 				B760B91C29BE02930067231C /* AppDelegate.swift in Sources */,
 				B72FB53329BE24450035C8FA /* StoreCoordinator.swift in Sources */,
+				B752C4A229BF588F00CD3DAD /* CountryTableViewCell.swift in Sources */,
+				B752C49B29BF31E200CD3DAD /* Icon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
