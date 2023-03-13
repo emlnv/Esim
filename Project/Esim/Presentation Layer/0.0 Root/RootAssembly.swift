@@ -2,26 +2,23 @@
 //  RootAssembly.swift
 //  Esim
 //
-//  Created by V on 12.03.2023.
+//  Created by Viacheslav on 12.03.2023.
 //
 
-import Swinject
-
-struct RootAssembly: Assembly {
+extension ESContainer {
+	var navigationViewController: ESNavigationController { nVC.callAsFunction() }
 	
-	func assemble(container: Container) {
-		container.register(ESNavigationController.self, name: ESNavigationController.Constants.catalog) { _ in
-			let navigationController = ESNavigationController()
+	private var nVC: ESFactory<ESNavigationController> {
+		ESFactory(self) {
+			let nVC = ESNavigationController()
 			/*
-			 navigationController.tabBarItem = UITabBarItem(
-				title: nil,
-				image: Icon.iconDisabledScan,
-				tag: TabBarController.TabBarItem.scaner.rawValue
-			)
-			*/
-			return navigationController
+			 nVC.tabBarItem = UITabBarItem(
+			 title: nil,
+			 image: Icon.iconDisabledScan,
+			 tag: TabBarController.TabBarItem.scaner.rawValue
+			 )
+			 */
+			return nVC
 		}
-		
 	}
 }
-

@@ -10,12 +10,13 @@
 		B72FB52129BE12040035C8FA /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72FB52029BE12040035C8FA /* StoreViewController.swift */; };
 		B72FB52529BE13250035C8FA /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72FB52429BE13250035C8FA /* AppCoordinator.swift */; };
 		B72FB52729BE145E0035C8FA /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72FB52629BE145E0035C8FA /* TabBarController.swift */; };
-		B72FB52A29BE1BBB0035C8FA /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = B72FB52929BE1BBB0035C8FA /* Swinject */; };
 		B72FB52E29BE1C550035C8FA /* SwinjectBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72FB52D29BE1C550035C8FA /* SwinjectBridge.swift */; };
 		B72FB53129BE20C60035C8FA /* ES+UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72FB53029BE20C60035C8FA /* ES+UINavigationController.swift */; };
 		B72FB53329BE24450035C8FA /* StoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72FB53229BE24450035C8FA /* StoreCoordinator.swift */; };
 		B72FB53529BE29670035C8FA /* RootAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72FB53429BE29670035C8FA /* RootAssembly.swift */; };
 		B72FB53729BE66CB0035C8FA /* StoreAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72FB53629BE66CB0035C8FA /* StoreAssembly.swift */; };
+		B752C49729BF1FD500CD3DAD /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = B752C49629BF1FD500CD3DAD /* Factory */; };
+		B752C49929BF23A800CD3DAD /* FactoryBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B752C49829BF23A800CD3DAD /* FactoryBridge.swift */; };
 		B760B91C29BE02930067231C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B760B91B29BE02930067231C /* AppDelegate.swift */; };
 		B760B92529BE02970067231C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B760B92429BE02970067231C /* Assets.xcassets */; };
 		B760B92829BE02970067231C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B760B92629BE02970067231C /* LaunchScreen.storyboard */; };
@@ -30,6 +31,7 @@
 		B72FB53229BE24450035C8FA /* StoreCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreCoordinator.swift; sourceTree = "<group>"; };
 		B72FB53429BE29670035C8FA /* RootAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootAssembly.swift; sourceTree = "<group>"; };
 		B72FB53629BE66CB0035C8FA /* StoreAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreAssembly.swift; sourceTree = "<group>"; };
+		B752C49829BF23A800CD3DAD /* FactoryBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactoryBridge.swift; sourceTree = "<group>"; };
 		B760B91829BE02930067231C /* Esim.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Esim.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B760B91B29BE02930067231C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B760B92429BE02970067231C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -42,7 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B72FB52A29BE1BBB0035C8FA /* Swinject in Frameworks */,
+				B752C49729BF1FD500CD3DAD /* Factory in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				B72FB52D29BE1C550035C8FA /* SwinjectBridge.swift */,
+				B752C49829BF23A800CD3DAD /* FactoryBridge.swift */,
 			);
 			path = ThirdPartyBridges;
 			sourceTree = "<group>";
@@ -157,7 +160,7 @@
 			);
 			name = Esim;
 			packageProductDependencies = (
-				B72FB52929BE1BBB0035C8FA /* Swinject */,
+				B752C49629BF1FD500CD3DAD /* Factory */,
 			);
 			productName = Esim;
 			productReference = B760B91829BE02930067231C /* Esim.app */;
@@ -187,7 +190,7 @@
 			);
 			mainGroup = B760B90F29BE02930067231C;
 			packageReferences = (
-				B72FB52829BE1BBB0035C8FA /* XCRemoteSwiftPackageReference "Swinject" */,
+				B752C49529BF1FD500CD3DAD /* XCRemoteSwiftPackageReference "Factory" */,
 			);
 			productRefGroup = B760B91929BE02930067231C /* Products */;
 			projectDirPath = "";
@@ -220,6 +223,7 @@
 				B72FB53129BE20C60035C8FA /* ES+UINavigationController.swift in Sources */,
 				B72FB53729BE66CB0035C8FA /* StoreAssembly.swift in Sources */,
 				B72FB52E29BE1C550035C8FA /* SwinjectBridge.swift in Sources */,
+				B752C49929BF23A800CD3DAD /* FactoryBridge.swift in Sources */,
 				B72FB52729BE145E0035C8FA /* TabBarController.swift in Sources */,
 				B72FB52129BE12040035C8FA /* StoreViewController.swift in Sources */,
 				B760B91C29BE02930067231C /* AppDelegate.swift in Sources */,
@@ -433,9 +437,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		B72FB52829BE1BBB0035C8FA /* XCRemoteSwiftPackageReference "Swinject" */ = {
+		B752C49529BF1FD500CD3DAD /* XCRemoteSwiftPackageReference "Factory" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Swinject/Swinject";
+			repositoryURL = "https://github.com/hmlongco/Factory";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 2.0.0;
@@ -444,10 +448,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		B72FB52929BE1BBB0035C8FA /* Swinject */ = {
+		B752C49629BF1FD500CD3DAD /* Factory */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = B72FB52829BE1BBB0035C8FA /* XCRemoteSwiftPackageReference "Swinject" */;
-			productName = Swinject;
+			package = B752C49529BF1FD500CD3DAD /* XCRemoteSwiftPackageReference "Factory" */;
+			productName = Factory;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

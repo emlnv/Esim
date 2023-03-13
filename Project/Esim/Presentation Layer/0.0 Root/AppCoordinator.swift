@@ -5,13 +5,7 @@
 //  Created by Viacheslav on 12.03.2023.
 //
 
-import Swinject
-
 final class AppCoordinator {
-	
-	private let assembler = Assembler([
-		RootAssembly()
-	])
 	
 	private let rootViewController: TabBarController
 	private var catalogCoordinator: StoreCoordinator?
@@ -39,11 +33,9 @@ final class AppCoordinator {
 	}
 	
 	private func startStoreCoordinator() -> ESNavigationController {
-		assembler.apply(assemblies: [StoreAssembly()])
-		let controller = assembler.forceResolve(ESNavigationController.self, name: ESNavigationController.Constants.catalog)
+		let controller = ESContainer.shared.navigationViewController
 		
 		catalogCoordinator = StoreCoordinator(
-			assembler: assembler,
 			navigationController: controller
 		)
 		catalogCoordinator?.start()
