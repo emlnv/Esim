@@ -16,6 +16,7 @@ typealias ESTargetType = TargetType
 typealias ESMethod = Moya.Method
 typealias ESTask = Moya.Task
 typealias ESURLEncoding = Moya.URLEncoding
+typealias ESImage = Moya.Image
 
 extension PrimitiveSequence where Trait == SingleTrait, Element == Response {
 	func esMap<D: Decodable>(_ type: D.Type, atKeyPath keyPath: String? = nil, using decoder: JSONDecoder = JSONDecoder(), failsOnEmptyData: Bool = true) -> Single<D> {

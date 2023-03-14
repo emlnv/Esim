@@ -8,8 +8,9 @@
 import Foundation
 
 final class StoreViewModel: ESReactor {
-	enum Error: LocalizedError {
+	enum SVMError: LocalizedError {
 		case failedGetServerRespond
+		case failedCreatingURL
 	}
 	
 	enum Action {
@@ -20,11 +21,15 @@ final class StoreViewModel: ESReactor {
 	enum Mutation {
 		case toggleError(Error?)
 		case setCountries([Country])
+		case setImagesForCountries([ESImage])
+		case setCountryWithImages([CountryWithImage])
 	}
 	
 	struct State {
 		var error: Error?
 		var countriesPopular: [Country]?
+		var imagesForCountries: [ESImage]?
+		var countriesWithImage: [CountryWithImage]?
 	}
 	
 	// MARK: - Dependencies
@@ -52,7 +57,7 @@ final class StoreViewModel: ESReactor {
 	func mutate(action: Action) -> ESObservable<Mutation> {
 		switch action {
 			case .getCountriesPopular:
-				return getCountriesPopular()
+				return getCountriesPopular
 			case .selectCountry:
 				return ESObservable<Mutation>.empty()
 		}
@@ -66,17 +71,38 @@ final class StoreViewModel: ESReactor {
 				newState.error = error
 			case .setCountries(let countries):
 				newState.countriesPopular = countries
+			case .setImagesForCountries(let images):
+				newState.imagesForCountries = images
+			case .setCountryWithImages(let countries):
+				newState.countriesWithImage = countries
 		}
 		return newState
 	}
 	
-	private func getCountriesPopular() -> ESObservable<Mutation> {
+	private var getCountriesPopular: ESObservable<Mutation> {
 		fetchingAreasService.getCountriesPopular()
 			.flatMap { model -> ESObservable<Mutation> in
-					.just(.setCountries(model.sorted { $0.title < $1.title } ))
+				.concat(
+					.just(.setCountries(model.sorted { $0.title < $1.title } )),
+					self.getImagesForCountries(urls: model.compactMap { $0.image.url })
+					)
 			}
 			.catch { error in
-					.just(.toggleError(error as? StoreViewModel.Error))
+					.just(.toggleError(error))
+			}
+	}
+
+	private func getImagesForCountries(urls: [String]) -> ESObservable<Mutation> {
+		return fetchingAreasService.getImagesForCountries(urls)
+			.flatMap { model -> ESObservable<Mutation> in
+				let countries = self.currentState.countriesPopular?.enumerated().map { CountryWithImage(country: $1, image: model[$0]) } ?? []
+				return .concat(
+					.just(.setImagesForCountries(model)),
+					.just(.setCountryWithImages(countries))
+				)
+			}
+			.catch { error in
+					.just(.toggleError(error))
 			}
 	}
 }

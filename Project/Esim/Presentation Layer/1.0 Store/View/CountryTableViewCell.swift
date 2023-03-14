@@ -17,6 +17,11 @@ final class CountryTableViewCell: UITableViewCell {
 		return label
 	}()
 	
+	private var image: UIImageView = {
+		let image = UIImageView()
+		return image
+	}()
+	
 	// MARK: - Init
 	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -34,17 +39,16 @@ final class CountryTableViewCell: UITableViewCell {
 	
 	// MARK: - Public methods
 	
-	func configure(country: Country) {
+	func configure(country: CountryWithImage) {
 		label.text = country.title
+		image.image = country.image
 	}
-	
+
 	// MARK: - Private methods
 	
-	private func configureUI() {
-		contentView.addSubview(label)
-	}
-	
 	private func configureLayout() {
+		[label, image].forEach(contentView.addSubview)
+		
 		label.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
 			label.leadingAnchor	.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor),
@@ -52,6 +56,14 @@ final class CountryTableViewCell: UITableViewCell {
 			label.topAnchor		.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor),
 			label.bottomAnchor	.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor),
 			label.heightAnchor	.constraint(greaterThanOrEqualToConstant: 65)
+		])
+		
+		image.translatesAutoresizingMaskIntoConstraints = false
+		NSLayoutConstraint.activate([
+			image.leadingAnchor	.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor),
+			image.widthAnchor	.constraint(equalToConstant: 37),
+			image.topAnchor		.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor),
+			image.heightAnchor	.constraint(greaterThanOrEqualToConstant: 28)
 		])
 	}
 }

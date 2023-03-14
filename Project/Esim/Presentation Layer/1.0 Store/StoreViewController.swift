@@ -102,7 +102,7 @@ final class StoreViewController: BaseViewController<StoreViewModel> {
 			.disposed(by: disposeBag)
 		
 		reactor.state.asDriver(onErrorJustReturn: reactor.initialState)
-			.compactMap (\.countriesPopular)
+			.compactMap (\.countriesWithImage)
 			.distinctUntilChanged()
 			.drive(tableView.rx.items(
 				cellIdentifier: CountryTableViewCell.reuseIdentifier,

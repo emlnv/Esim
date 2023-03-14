@@ -9,3 +9,4 @@ import RxSwift
 
 typealias ESObservable = Observable
 typealias ESDisposeBag = DisposeBag
+typealias ESSingle = Single
