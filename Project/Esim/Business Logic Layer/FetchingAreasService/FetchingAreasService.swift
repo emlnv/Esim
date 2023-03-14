@@ -19,10 +19,18 @@ struct FetchingAreasService: IFetchingAreasServicable {
 	private let provider: ESMoyaProvider<EsimTarget>
 	private let decoder: JSONDecoder
 	
+	private static let networkActivityPlugin = ESNetworkActivityPlugin(networkActivityClosure: {change, target in
+		switch change {
+			case .began: ()
+			case .ended: ()
+		}
+	})
+	private static let defaultProvider = ESMoyaProvider<EsimTarget>(plugins: [networkActivityPlugin])
+	
 	// MARK: - Initialize
 	
 	init(
-		provider: ESMoyaProvider<EsimTarget> = ESMoyaProvider<EsimTarget>(/*plugins: [ESNetworkLoggerPlugin()]*/),
+		provider: ESMoyaProvider<EsimTarget> = defaultProvider,
 		decoder: JSONDecoder = JSONDecoder()) {
 			self.provider = provider
 			self.decoder = decoder
@@ -44,7 +52,7 @@ struct FetchingAreasService: IFetchingAreasServicable {
 			.asObservable()
 	}
 	
-	func getFlag(by url: String) -> ESSingle<ESImage> {
+	private func getFlag(by url: String) -> ESSingle<ESImage> {
 		guard let url = URL(string: url) else {
 			return .error(StoreViewModel.SVMError.failedGetServerRespond)
 		}

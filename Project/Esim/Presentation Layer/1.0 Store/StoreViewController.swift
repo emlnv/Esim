@@ -42,7 +42,8 @@ final class StoreViewController: BaseViewController<StoreViewModel> {
 	// MARK: - Configure
 	
 	private func configureUI() {
-		view.addSubview(tableView)
+		[segmentedControl, tableView].forEach(view.addSubview)
+		configureSegmentedControl(into: view)
 		configureNavbar()
 		configureTableView()
 	}
@@ -60,9 +61,6 @@ final class StoreViewController: BaseViewController<StoreViewModel> {
 	}
 	
 	private func configureTableView() {
-		[segmentedControl].forEach(view.addSubview)
-		configureSegmentedControl(into: view)
-		
 		tableView.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
 			tableView.leadingAnchor	.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
@@ -110,6 +108,11 @@ final class StoreViewController: BaseViewController<StoreViewModel> {
 			)) { _, data, cell in
 				cell.configure(country: data)
 			}
+			.disposed(by: disposeBag)
+		
+		tableView.rx.modelSelected(CountryWithImage.self)
+			.map(Reactor.Action.setSelectCountry)
+			.bind(to: reactor.action)
 			.disposed(by: disposeBag)
 	}
 }

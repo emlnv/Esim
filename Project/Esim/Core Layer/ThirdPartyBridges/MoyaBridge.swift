@@ -12,6 +12,7 @@ import RxSwift
 
 typealias ESMoyaProvider = MoyaProvider
 typealias ESNetworkLoggerPlugin = NetworkLoggerPlugin
+typealias ESNetworkActivityPlugin = NetworkActivityPlugin
 typealias ESTargetType = TargetType
 typealias ESMethod = Moya.Method
 typealias ESTask = Moya.Task

@@ -15,14 +15,15 @@ final class StoreViewModel: ESReactor {
 	
 	enum Action {
 		case getCountriesPopular
-		case selectCountry
+		case setSelectCountry(CountryWithImage)
 	}
 	
 	enum Mutation {
 		case toggleError(Error?)
-		case setCountries([Country])
-		case setImagesForCountries([ESImage])
-		case setCountryWithImages([CountryWithImage])
+		case mutateCountries([Country])
+		case mutateImagesForCountries([ESImage])
+		case mutateCountryWithImages([CountryWithImage])
+		case mutateSelectedCountry(CountryWithImage)
 	}
 	
 	struct State {
@@ -30,6 +31,7 @@ final class StoreViewModel: ESReactor {
 		var countriesPopular: [Country]?
 		var imagesForCountries: [ESImage]?
 		var countriesWithImage: [CountryWithImage]?
+		var selectedCountry: CountryWithImage?
 	}
 	
 	// MARK: - Dependencies
@@ -58,8 +60,8 @@ final class StoreViewModel: ESReactor {
 		switch action {
 			case .getCountriesPopular:
 				return getCountriesPopular
-			case .selectCountry:
-				return ESObservable<Mutation>.empty()
+			case .setSelectCountry(let country):
+				return .just(.mutateSelectedCountry(country))
 		}
 	}
 	
@@ -69,12 +71,14 @@ final class StoreViewModel: ESReactor {
 		switch mutation {
 			case .toggleError(let error):
 				newState.error = error
-			case .setCountries(let countries):
+			case .mutateCountries(let countries):
 				newState.countriesPopular = countries
-			case .setImagesForCountries(let images):
+			case .mutateImagesForCountries(let images):
 				newState.imagesForCountries = images
-			case .setCountryWithImages(let countries):
+			case .mutateCountryWithImages(let countries):
 				newState.countriesWithImage = countries
+			case .mutateSelectedCountry(let country):
+				newState.selectedCountry = country
 		}
 		return newState
 	}
@@ -83,7 +87,7 @@ final class StoreViewModel: ESReactor {
 		fetchingAreasService.getCountriesPopular()
 			.flatMap { model -> ESObservable<Mutation> in
 				.concat(
-					.just(.setCountries(model.sorted { $0.title < $1.title } )),
+					.just(.mutateCountries(model.sorted { $0.title < $1.title } )),
 					self.getImagesForCountries(urls: model.compactMap { $0.image.url })
 					)
 			}
@@ -97,8 +101,8 @@ final class StoreViewModel: ESReactor {
 			.flatMap { model -> ESObservable<Mutation> in
 				let countries = self.currentState.countriesPopular?.enumerated().map { CountryWithImage(country: $1, image: model[$0]) } ?? []
 				return .concat(
-					.just(.setImagesForCountries(model)),
-					.just(.setCountryWithImages(countries))
+					.just(.mutateImagesForCountries(model)),
+					.just(.mutateCountryWithImages(countries))
 				)
 			}
 			.catch { error in

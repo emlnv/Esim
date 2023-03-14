@@ -26,7 +26,7 @@ final class CountryTableViewCell: UITableViewCell {
 	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
-		contentView.addSubview(label)
+		selectionStyle = .none
 		separatorInset = UIEdgeInsets(top: 0, left: UIScreen.main.bounds.width, bottom: 0, right: 0)
 		configureLayout()
 	}
@@ -60,9 +60,9 @@ final class CountryTableViewCell: UITableViewCell {
 		
 		image.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
-			image.leadingAnchor	.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor),
+			image.leadingAnchor	.constraint(equalTo: contentView.leadingAnchor),
 			image.widthAnchor	.constraint(equalToConstant: 37),
-			image.topAnchor		.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor),
+			image.topAnchor		.constraint(equalTo: contentView.topAnchor),
 			image.heightAnchor	.constraint(greaterThanOrEqualToConstant: 28)
 		])
 	}
