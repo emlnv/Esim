@@ -15,12 +15,26 @@
 		B72FB53329BE24450035C8FA /* StoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72FB53229BE24450035C8FA /* StoreCoordinator.swift */; };
 		B72FB53529BE29670035C8FA /* RootAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72FB53429BE29670035C8FA /* RootAssembly.swift */; };
 		B72FB53729BE66CB0035C8FA /* StoreAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72FB53629BE66CB0035C8FA /* StoreAssembly.swift */; };
+		B751CEED29C06F060048B5A0 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B751CEEC29C06F060048B5A0 /* BaseViewController.swift */; };
+		B751CEF029C079020048B5A0 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = B751CEEF29C079020048B5A0 /* RxCocoa */; };
+		B751CEF229C079020048B5A0 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = B751CEF129C079020048B5A0 /* RxRelay */; };
+		B751CEF429C081F70048B5A0 /* RxCocoaBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B751CEF329C081F70048B5A0 /* RxCocoaBridge.swift */; };
 		B752C49729BF1FD500CD3DAD /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = B752C49629BF1FD500CD3DAD /* Factory */; };
 		B752C49929BF23A800CD3DAD /* FactoryBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B752C49829BF23A800CD3DAD /* FactoryBridge.swift */; };
 		B752C49B29BF31E200CD3DAD /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = B752C49A29BF31E200CD3DAD /* Icon.swift */; };
 		B752C49E29BF3E4F00CD3DAD /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B752C49D29BF3E4F00CD3DAD /* SearchBarView.swift */; };
 		B752C4A029BF554A00CD3DAD /* ColoredSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B752C49F29BF554A00CD3DAD /* ColoredSegmentedControl.swift */; };
 		B752C4A229BF588F00CD3DAD /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B752C4A129BF588F00CD3DAD /* CountryTableViewCell.swift */; };
+		B75B51D929BFB07E00B6D42A /* StoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75B51D829BFB07E00B6D42A /* StoreViewModel.swift */; };
+		B75B51DC29BFB35600B6D42A /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = B75B51DB29BFB35600B6D42A /* ReactorKit */; };
+		B75B51DE29BFB3A400B6D42A /* ReactorkitBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75B51DD29BFB3A400B6D42A /* ReactorkitBridge.swift */; };
+		B75B51E229BFB4DC00B6D42A /* FetchingAreasService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75B51E129BFB4DC00B6D42A /* FetchingAreasService.swift */; };
+		B75B51E629BFB74300B6D42A /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = B75B51E529BFB74300B6D42A /* Moya */; };
+		B75B51E829BFB74300B6D42A /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = B75B51E729BFB74300B6D42A /* RxMoya */; };
+		B75B51EC29BFB7E200B6D42A /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75B51EB29BFB7E200B6D42A /* Country.swift */; };
+		B75B51EF29BFB99900B6D42A /* EsimTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75B51EE29BFB99900B6D42A /* EsimTarget.swift */; };
+		B75B51F129BFBC1B00B6D42A /* RxSwiftBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75B51F029BFBC1B00B6D42A /* RxSwiftBridge.swift */; };
+		B75B51F329BFBE8300B6D42A /* MoyaBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75B51F229BFBE8300B6D42A /* MoyaBridge.swift */; };
 		B760B91C29BE02930067231C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B760B91B29BE02930067231C /* AppDelegate.swift */; };
 		B760B92529BE02970067231C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B760B92429BE02970067231C /* Assets.xcassets */; };
 		B760B92829BE02970067231C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B760B92629BE02970067231C /* LaunchScreen.storyboard */; };
@@ -35,11 +49,20 @@
 		B72FB53229BE24450035C8FA /* StoreCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreCoordinator.swift; sourceTree = "<group>"; };
 		B72FB53429BE29670035C8FA /* RootAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootAssembly.swift; sourceTree = "<group>"; };
 		B72FB53629BE66CB0035C8FA /* StoreAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreAssembly.swift; sourceTree = "<group>"; };
+		B751CEEC29C06F060048B5A0 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		B751CEF329C081F70048B5A0 /* RxCocoaBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxCocoaBridge.swift; sourceTree = "<group>"; };
 		B752C49829BF23A800CD3DAD /* FactoryBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactoryBridge.swift; sourceTree = "<group>"; };
 		B752C49A29BF31E200CD3DAD /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
 		B752C49D29BF3E4F00CD3DAD /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		B752C49F29BF554A00CD3DAD /* ColoredSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredSegmentedControl.swift; sourceTree = "<group>"; };
 		B752C4A129BF588F00CD3DAD /* CountryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
+		B75B51D829BFB07E00B6D42A /* StoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewModel.swift; sourceTree = "<group>"; };
+		B75B51DD29BFB3A400B6D42A /* ReactorkitBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactorkitBridge.swift; sourceTree = "<group>"; };
+		B75B51E129BFB4DC00B6D42A /* FetchingAreasService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchingAreasService.swift; sourceTree = "<group>"; };
+		B75B51EB29BFB7E200B6D42A /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		B75B51EE29BFB99900B6D42A /* EsimTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EsimTarget.swift; sourceTree = "<group>"; };
+		B75B51F029BFBC1B00B6D42A /* RxSwiftBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSwiftBridge.swift; sourceTree = "<group>"; };
+		B75B51F229BFBE8300B6D42A /* MoyaBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaBridge.swift; sourceTree = "<group>"; };
 		B760B91829BE02930067231C /* Esim.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Esim.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B760B91B29BE02930067231C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B760B92429BE02970067231C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -52,7 +75,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B751CEF229C079020048B5A0 /* RxRelay in Frameworks */,
+				B75B51DC29BFB35600B6D42A /* ReactorKit in Frameworks */,
 				B752C49729BF1FD500CD3DAD /* Factory in Frameworks */,
+				B751CEF029C079020048B5A0 /* RxCocoa in Frameworks */,
+				B75B51E829BFB74300B6D42A /* RxMoya in Frameworks */,
+				B75B51E629BFB74300B6D42A /* Moya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +90,7 @@
 		B72FB51E29BE11940035C8FA /* Presentation Layer */ = {
 			isa = PBXGroup;
 			children = (
+				B751CEEB29C06ED70048B5A0 /* Components */,
 				B72FB52229BE12A20035C8FA /* 0.0 Root */,
 				B72FB51F29BE11DE0035C8FA /* 1.0 Store */,
 			);
@@ -75,6 +104,7 @@
 				B72FB53229BE24450035C8FA /* StoreCoordinator.swift */,
 				B72FB52029BE12040035C8FA /* StoreViewController.swift */,
 				B72FB53629BE66CB0035C8FA /* StoreAssembly.swift */,
+				B75B51D829BFB07E00B6D42A /* StoreViewModel.swift */,
 			);
 			path = "1.0 Store";
 			sourceTree = "<group>";
@@ -92,6 +122,7 @@
 		B72FB52B29BE1C040035C8FA /* Core Layer */ = {
 			isa = PBXGroup;
 			children = (
+				B75B51ED29BFB95900B6D42A /* API */,
 				B72FB52F29BE20AE0035C8FA /* ES+UIKit */,
 				B72FB52C29BE1C160035C8FA /* ThirdPartyBridges */,
 			);
@@ -103,6 +134,10 @@
 			children = (
 				B72FB52D29BE1C550035C8FA /* SwinjectBridge.swift */,
 				B752C49829BF23A800CD3DAD /* FactoryBridge.swift */,
+				B75B51DD29BFB3A400B6D42A /* ReactorkitBridge.swift */,
+				B75B51F029BFBC1B00B6D42A /* RxSwiftBridge.swift */,
+				B75B51F229BFBE8300B6D42A /* MoyaBridge.swift */,
+				B751CEF329C081F70048B5A0 /* RxCocoaBridge.swift */,
 			);
 			path = ThirdPartyBridges;
 			sourceTree = "<group>";
@@ -115,6 +150,14 @@
 			path = "ES+UIKit";
 			sourceTree = "<group>";
 		};
+		B751CEEB29C06ED70048B5A0 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				B751CEEC29C06F060048B5A0 /* BaseViewController.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		B752C49C29BF3E3E00CD3DAD /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +166,39 @@
 				B752C4A129BF588F00CD3DAD /* CountryTableViewCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		B75B51DF29BFB48C00B6D42A /* Business Logic Layer */ = {
+			isa = PBXGroup;
+			children = (
+				B75B51E029BFB49E00B6D42A /* FetchingAreasService */,
+			);
+			path = "Business Logic Layer";
+			sourceTree = "<group>";
+		};
+		B75B51E029BFB49E00B6D42A /* FetchingAreasService */ = {
+			isa = PBXGroup;
+			children = (
+				B75B51E929BFB7B900B6D42A /* Model */,
+				B75B51E129BFB4DC00B6D42A /* FetchingAreasService.swift */,
+			);
+			path = FetchingAreasService;
+			sourceTree = "<group>";
+		};
+		B75B51E929BFB7B900B6D42A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B75B51EB29BFB7E200B6D42A /* Country.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B75B51ED29BFB95900B6D42A /* API */ = {
+			isa = PBXGroup;
+			children = (
+				B75B51EE29BFB99900B6D42A /* EsimTarget.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		B760B90F29BE02930067231C = {
@@ -144,6 +220,7 @@
 		B760B91A29BE02930067231C /* Esim */ = {
 			isa = PBXGroup;
 			children = (
+				B75B51DF29BFB48C00B6D42A /* Business Logic Layer */,
 				B760B92F29BE02BE0067231C /* Resources */,
 				B72FB52B29BE1C040035C8FA /* Core Layer */,
 				B72FB51E29BE11940035C8FA /* Presentation Layer */,
@@ -181,6 +258,11 @@
 			name = Esim;
 			packageProductDependencies = (
 				B752C49629BF1FD500CD3DAD /* Factory */,
+				B75B51DB29BFB35600B6D42A /* ReactorKit */,
+				B75B51E529BFB74300B6D42A /* Moya */,
+				B75B51E729BFB74300B6D42A /* RxMoya */,
+				B751CEEF29C079020048B5A0 /* RxCocoa */,
+				B751CEF129C079020048B5A0 /* RxRelay */,
 			);
 			productName = Esim;
 			productReference = B760B91829BE02930067231C /* Esim.app */;
@@ -211,6 +293,9 @@
 			mainGroup = B760B90F29BE02930067231C;
 			packageReferences = (
 				B752C49529BF1FD500CD3DAD /* XCRemoteSwiftPackageReference "Factory" */,
+				B75B51DA29BFB35600B6D42A /* XCRemoteSwiftPackageReference "ReactorKit" */,
+				B75B51E429BFB74200B6D42A /* XCRemoteSwiftPackageReference "Moya" */,
+				B751CEEE29C079020048B5A0 /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = B760B91929BE02930067231C /* Products */;
 			projectDirPath = "";
@@ -241,16 +326,25 @@
 				B72FB52529BE13250035C8FA /* AppCoordinator.swift in Sources */,
 				B72FB53529BE29670035C8FA /* RootAssembly.swift in Sources */,
 				B72FB53129BE20C60035C8FA /* ES+UINavigationController.swift in Sources */,
+				B75B51EF29BFB99900B6D42A /* EsimTarget.swift in Sources */,
 				B72FB53729BE66CB0035C8FA /* StoreAssembly.swift in Sources */,
 				B752C4A029BF554A00CD3DAD /* ColoredSegmentedControl.swift in Sources */,
+				B75B51F129BFBC1B00B6D42A /* RxSwiftBridge.swift in Sources */,
 				B752C49E29BF3E4F00CD3DAD /* SearchBarView.swift in Sources */,
+				B75B51DE29BFB3A400B6D42A /* ReactorkitBridge.swift in Sources */,
+				B751CEF429C081F70048B5A0 /* RxCocoaBridge.swift in Sources */,
 				B72FB52E29BE1C550035C8FA /* SwinjectBridge.swift in Sources */,
 				B752C49929BF23A800CD3DAD /* FactoryBridge.swift in Sources */,
 				B72FB52729BE145E0035C8FA /* TabBarController.swift in Sources */,
+				B75B51EC29BFB7E200B6D42A /* Country.swift in Sources */,
+				B751CEED29C06F060048B5A0 /* BaseViewController.swift in Sources */,
+				B75B51E229BFB4DC00B6D42A /* FetchingAreasService.swift in Sources */,
 				B72FB52129BE12040035C8FA /* StoreViewController.swift in Sources */,
 				B760B91C29BE02930067231C /* AppDelegate.swift in Sources */,
 				B72FB53329BE24450035C8FA /* StoreCoordinator.swift in Sources */,
+				B75B51F329BFBE8300B6D42A /* MoyaBridge.swift in Sources */,
 				B752C4A229BF588F00CD3DAD /* CountryTableViewCell.swift in Sources */,
+				B75B51D929BFB07E00B6D42A /* StoreViewModel.swift in Sources */,
 				B752C49B29BF31E200CD3DAD /* Icon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -461,6 +555,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		B751CEEE29C079020048B5A0 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
 		B752C49529BF1FD500CD3DAD /* XCRemoteSwiftPackageReference "Factory" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hmlongco/Factory";
@@ -469,13 +571,54 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		B75B51DA29BFB35600B6D42A /* XCRemoteSwiftPackageReference "ReactorKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactorKit/ReactorKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+		B75B51E429BFB74200B6D42A /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B751CEEF29C079020048B5A0 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B751CEEE29C079020048B5A0 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		B751CEF129C079020048B5A0 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B751CEEE29C079020048B5A0 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
 		B752C49629BF1FD500CD3DAD /* Factory */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B752C49529BF1FD500CD3DAD /* XCRemoteSwiftPackageReference "Factory" */;
 			productName = Factory;
+		};
+		B75B51DB29BFB35600B6D42A /* ReactorKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B75B51DA29BFB35600B6D42A /* XCRemoteSwiftPackageReference "ReactorKit" */;
+			productName = ReactorKit;
+		};
+		B75B51E529BFB74300B6D42A /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B75B51E429BFB74200B6D42A /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+		B75B51E729BFB74300B6D42A /* RxMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B75B51E429BFB74200B6D42A /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = RxMoya;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

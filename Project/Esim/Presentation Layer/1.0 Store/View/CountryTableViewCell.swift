@@ -30,12 +30,12 @@ final class CountryTableViewCell: UITableViewCell {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
-	override var reuseIdentifier: String? { Self.description() }
+	static var reuseIdentifier: String { String(describing: self) }
 	
 	// MARK: - Public methods
 	
-	func configure(title: String?) {
-		label.text = title
+	func configure(country: Country) {
+		label.text = country.title
 	}
 	
 	// MARK: - Private methods
@@ -47,10 +47,11 @@ final class CountryTableViewCell: UITableViewCell {
 	private func configureLayout() {
 		label.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
-			label.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-			label.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-			label.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-			label.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
+			label.leadingAnchor	.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor),
+			label.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor),
+			label.topAnchor		.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor),
+			label.bottomAnchor	.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor),
+			label.heightAnchor	.constraint(greaterThanOrEqualToConstant: 65)
 		])
 	}
 }

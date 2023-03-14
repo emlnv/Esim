@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class StoreViewController: UIViewController {
+final class StoreViewController: BaseViewController<StoreViewModel> {
 	
 	private typealias C = Constants
 	private enum Constants {
@@ -26,10 +26,9 @@ final class StoreViewController: UIViewController {
 	
 	private var tableView: UITableView = {
 		let tableView = UITableView()
-		tableView.register(CountryTableViewCell.self, forCellReuseIdentifier: CountryTableViewCell().reuseIdentifier!) // TODO
+		tableView.register(CountryTableViewCell.self, forCellReuseIdentifier: CountryTableViewCell.reuseIdentifier)
 		tableView.tableFooterView = .init()
 		tableView.separatorInset = .zero
-		tableView.translatesAutoresizingMaskIntoConstraints = false
 		tableView.keyboardDismissMode = .onDrag
 		return tableView
 	}()
@@ -61,11 +60,10 @@ final class StoreViewController: UIViewController {
 	}
 	
 	private func configureTableView() {
-		tableView.delegate = self
-		tableView.dataSource = self
 		[segmentedControl].forEach(view.addSubview)
 		configureSegmentedControl(into: view)
 		
+		tableView.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
 			tableView.leadingAnchor	.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
 			tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
@@ -75,9 +73,9 @@ final class StoreViewController: UIViewController {
 	}
 	
 	private func configureSearchBar(into view: UIView) {
-		searchBarView.translatesAutoresizingMaskIntoConstraints = false
 		searchBarView.configure(placeholder: C.searchPlaceholder)
 		
+		searchBarView.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
 			searchBarView.leadingAnchor	.constraint(equalTo: view.leadingAnchor, constant: C.offset),
 			searchBarView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -C.offset),
@@ -87,8 +85,8 @@ final class StoreViewController: UIViewController {
 	}
 
 	private func configureSegmentedControl(into view: UIView) {
-		segmentedControl.translatesAutoresizingMaskIntoConstraints = false
 		
+		segmentedControl.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
 			segmentedControl.leadingAnchor	.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor,  constant:  C.offset * 2),
 			segmentedControl.trailingAnchor	.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -C.offset * 2),
@@ -96,24 +94,24 @@ final class StoreViewController: UIViewController {
 			segmentedControl.heightAnchor	.constraint(equalToConstant: 28),
 		])
 	}
-
+	
+	override func bind(reactor: StoreViewModel) {
+		rx.methodInvoked(#selector(viewDidLoad))
+			.map { _ in Reactor.Action.getCountriesPopular }
+			.bind(to: reactor.action)
+			.disposed(by: disposeBag)
+		
+		reactor.state.asDriver(onErrorJustReturn: reactor.initialState)
+			.compactMap (\.countriesPopular)
+			.distinctUntilChanged()
+			.drive(tableView.rx.items(
+				cellIdentifier: CountryTableViewCell.reuseIdentifier,
+				cellType: CountryTableViewCell.self
+			)) { _, data, cell in
+				cell.configure(country: data)
+			}
+			.disposed(by: disposeBag)
+	}
 }
 
 extension StoreViewController: UISearchControllerDelegate {}
-
-extension StoreViewController: UITableViewDelegate {}
-
-extension StoreViewController: UITableViewDataSource {
-	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		10
-	}
-	
-	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		guard let cell = tableView.dequeueReusableCell(withIdentifier: CountryTableViewCell().reuseIdentifier ?? String()) as? CountryTableViewCell else {
-			return CountryTableViewCell()
-		}
-		cell.configure(title: "String?")
-		return cell
-	}
-}
-
