@@ -2,13 +2,13 @@
 //  StoreAssembly.swift
 //  Esim
 //
-//  Created by Viacheslav on 12.03.2023.
+//  Created by Viacheslav on 14.03.2023.
 //
 
 import Foundation.NSUserDefaults
 
 extension ESContainer {
-	var storeViewController: StoreViewController { storeVC.callAsFunction() }
+	var localEsimsViewController: LocalEsimsViewController { localVC.callAsFunction() }
 	
 	private var fetchingAreasService: ESFactory<IFetchingAreasServicable> {
 		ESFactory(self) {
@@ -20,20 +20,18 @@ extension ESContainer {
 			UserDefaults.standard
 	}}
 	
-	private var storeVM: ESFactory<StoreViewModel> {
+	private var localVM: ESFactory<LocalEsimsViewModel> {
 		ESFactory(self) {
-			StoreViewModel(
+			LocalEsimsViewModel(
 				fetchingAreasService:	self.fetchingAreasService.callAsFunction(),
 				userDefaults:			self.userDefaults.callAsFunction()
 			)
 	}}
 		
-	private var storeVC: ESFactory<StoreViewController> {
+	private var localVC: ESFactory<LocalEsimsViewController> {
 		ESFactory(self) {
-			let vc = StoreViewController(
-				viewModel: self.storeVM.callAsFunction()
+			LocalEsimsViewController(
+				viewModel: self.localVM.callAsFunction()
 			)
-			vc.localEsimsViewController = ESContainer.shared.localEsimsViewController
-			return vc
 	}}
 }

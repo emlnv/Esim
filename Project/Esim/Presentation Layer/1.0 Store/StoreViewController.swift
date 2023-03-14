@@ -21,19 +21,17 @@ final class StoreViewController: BaseViewController<StoreViewModel> {
 	}
 	
 	private let searchBarView = SearchBarView()
-	
 	private let segmentedControl = ColoredSegmentedControl(items: [C.titleTab1, C.titleTab2, C.titleTab3])
 	
-	private var tableView: UITableView = {
-		let tableView = UITableView()
-		tableView.register(CountryTableViewCell.self, forCellReuseIdentifier: CountryTableViewCell.reuseIdentifier)
-		tableView.tableFooterView = .init()
-		tableView.separatorInset = .zero
-		tableView.keyboardDismissMode = .onDrag
-		return tableView
-	}()
-
+	var localEsimsViewController: LocalEsimsViewController?
+	
 	// MARK: - Lifecycle
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		setChildViewController(localEsimsViewController!)
+	}
+	
 	override func viewDidLayoutSubviews() {
 		super.viewDidLayoutSubviews()
 		configureUI()
@@ -42,10 +40,9 @@ final class StoreViewController: BaseViewController<StoreViewModel> {
 	// MARK: - Configure
 	
 	private func configureUI() {
-		[segmentedControl, tableView].forEach(view.addSubview)
+		[segmentedControl].forEach(view.addSubview)
 		configureSegmentedControl(into: view)
 		configureNavbar()
-		configureTableView()
 	}
 
 	private func configureNavbar() {
@@ -60,22 +57,12 @@ final class StoreViewController: BaseViewController<StoreViewModel> {
 		definesPresentationContext = true
 	}
 	
-	private func configureTableView() {
-		tableView.translatesAutoresizingMaskIntoConstraints = false
-		NSLayoutConstraint.activate([
-			tableView.leadingAnchor	.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-			tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-			tableView.topAnchor		.constraint(equalTo: segmentedControl.bottomAnchor),
-			tableView.bottomAnchor	.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-		])
-	}
-	
 	private func configureSearchBar(into view: UIView) {
 		searchBarView.configure(placeholder: C.searchPlaceholder)
 		
 		searchBarView.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
-			searchBarView.leadingAnchor	.constraint(equalTo: view.leadingAnchor, constant: C.offset),
+			searchBarView.leadingAnchor	.constraint(equalTo: view.leadingAnchor,  constant:  C.offset),
 			searchBarView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -C.offset),
 			searchBarView.topAnchor		.constraint(equalTo: view.topAnchor),
 			searchBarView.heightAnchor	.constraint(equalToConstant: 56)
@@ -94,27 +81,100 @@ final class StoreViewController: BaseViewController<StoreViewModel> {
 	}
 	
 	override func bind(reactor: StoreViewModel) {
-		rx.methodInvoked(#selector(viewDidLoad))
-			.map { _ in Reactor.Action.getCountriesPopular }
-			.bind(to: reactor.action)
-			.disposed(by: disposeBag)
-		
-		reactor.state.asDriver(onErrorJustReturn: reactor.initialState)
-			.compactMap (\.countriesWithImage)
-			.distinctUntilChanged()
-			.drive(tableView.rx.items(
-				cellIdentifier: CountryTableViewCell.reuseIdentifier,
-				cellType: CountryTableViewCell.self
-			)) { _, data, cell in
-				cell.configure(country: data)
-			}
-			.disposed(by: disposeBag)
-		
-		tableView.rx.modelSelected(CountryWithImage.self)
-			.map(Reactor.Action.setSelectCountry)
-			.bind(to: reactor.action)
-			.disposed(by: disposeBag)
+//		segmentedControl.rx.selectedSegmentIndex
+//			.map { _ in Reactor.Action.switchTab }
+//			.bind(to: reactor.action)
+//			.disposed(by: disposeBag)
 	}
+}
+
+extension StoreViewController {
+	
+	// MARK: Setting childs methods
+	
+	var viewController: UIViewController? {
+		get { children.first }
+		set { guard let newViewController = newValue else {
+				return removeChildViewControllers()
+			}
+			setChildViewController(newViewController)
+		}
+	}
+
+	override var preferredStatusBarStyle: UIStatusBarStyle {
+		return viewController?.preferredStatusBarStyle ?? .default
+	}
+	
+	private func setChildViewController(_ viewController: UIViewController) {
+		removeChildViewControllers()
+		addChild(viewController)
+		addAndConstrain(viewControllerView: viewController.view)
+		if isCurrentlyVisible {
+			viewController.beginAppearanceTransition(true, animated: false)
+			viewController.endAppearanceTransition()
+		}
+		viewController.didMove(toParent: self)
+	}
+	
+	private func removeChildViewControllers() {
+		children.forEach { viewController in
+			viewController.willMove(toParent: nil)
+			if isCurrentlyVisible {
+				viewController.beginAppearanceTransition(false, animated: false)
+				viewController.endAppearanceTransition()
+			}
+			viewController.view.removeFromSuperview()
+			viewController.removeFromParent()
+		}
+	}
+
+	private var isCurrentlyVisible: Bool {
+		viewIfLoaded?.window != nil
+	}
+
+	private func addAndConstrain(viewControllerView: UIView) {
+		view.addSubview(viewControllerView)
+		viewControllerView.translatesAutoresizingMaskIntoConstraints = false
+		let trailingConstraint = viewControllerView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+		let bottomConstraint = viewControllerView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+		trailingConstraint.priority = .required - 1	 // To avoid conflicts during initial layout calculations
+		bottomConstraint.priority = .required - 1
+		NSLayoutConstraint.activate([
+			viewControllerView.topAnchor.constraint(equalTo: view.topAnchor),
+			viewControllerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+			trailingConstraint,
+			bottomConstraint
+		])
+		viewControllerView.layoutIfNeeded()
+	}
+
+	private func dissolveTransition(to viewController: UIViewController) {
+		guard let previousViewController = children.first else {
+			return setChildViewController(viewController)
+		}
+		addChild(viewController)
+		previousViewController.willMove(toParent: nil)
+		addAndConstrain(viewControllerView: viewController.view)
+		previousViewController.beginAppearanceTransition(false, animated: true)
+		viewController.beginAppearanceTransition(true, animated: true)
+
+		UIView.transition(
+			from: previousViewController.view,
+			to: viewController.view,
+			duration: 0.25,
+			options: [
+				.transitionCrossDissolve,
+				.beginFromCurrentState,
+				.allowAnimatedContent
+			]
+		) { completed in
+			previousViewController.endAppearanceTransition()
+			previousViewController.removeFromParent()
+			viewController.endAppearanceTransition()
+			viewController.didMove(toParent: self)
+		}
+	}
+
 }
 
 extension StoreViewController: UISearchControllerDelegate {}

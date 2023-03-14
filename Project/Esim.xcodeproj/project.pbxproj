@@ -43,6 +43,9 @@
 		B7E0ECA929C0FF9B00CDF6FD /* PackagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E0ECA829C0FF9B00CDF6FD /* PackagesViewModel.swift */; };
 		B7E0ECAB29C100AF00CDF6FD /* Packages.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E0ECAA29C100AF00CDF6FD /* Packages.swift */; };
 		B7E0ECAE29C1043400CDF6FD /* FetchingPackagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E0ECAD29C1035800CDF6FD /* FetchingPackagesService.swift */; };
+		B7E0ECB229C10A4D00CDF6FD /* LocalEsimsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E0ECB129C10A4500CDF6FD /* LocalEsimsViewController.swift */; };
+		B7E0ECB429C10BDA00CDF6FD /* LocalEsimsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E0ECB329C10BDA00CDF6FD /* LocalEsimsViewModel.swift */; };
+		B7E0ECB629C10CAF00CDF6FD /* LocalEsimsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E0ECB529C10CAF00CDF6FD /* LocalEsimsAssembly.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +81,9 @@
 		B7E0ECA829C0FF9B00CDF6FD /* PackagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackagesViewModel.swift; sourceTree = "<group>"; };
 		B7E0ECAA29C100AF00CDF6FD /* Packages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Packages.swift; sourceTree = "<group>"; };
 		B7E0ECAD29C1035800CDF6FD /* FetchingPackagesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchingPackagesService.swift; sourceTree = "<group>"; };
+		B7E0ECB129C10A4500CDF6FD /* LocalEsimsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalEsimsViewController.swift; sourceTree = "<group>"; };
+		B7E0ECB329C10BDA00CDF6FD /* LocalEsimsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalEsimsViewModel.swift; sourceTree = "<group>"; };
+		B7E0ECB529C10CAF00CDF6FD /* LocalEsimsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalEsimsAssembly.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +109,8 @@
 				B751CEEB29C06ED70048B5A0 /* Components */,
 				B72FB52229BE12A20035C8FA /* 0.0 Root */,
 				B72FB51F29BE11DE0035C8FA /* 1.0 Store */,
-				B751CEF529C0D64D0048B5A0 /* 1.1 Packages */,
+				B7E0ECB029C109EF00CDF6FD /* 1.1 Local esims */,
+				B751CEF529C0D64D0048B5A0 /* 1.0.1 Packages */,
 			);
 			path = "Presentation Layer";
 			sourceTree = "<group>";
@@ -113,8 +120,8 @@
 			children = (
 				B752C49C29BF3E3E00CD3DAD /* View */,
 				B72FB53229BE24450035C8FA /* StoreCoordinator.swift */,
-				B72FB52029BE12040035C8FA /* StoreViewController.swift */,
 				B72FB53629BE66CB0035C8FA /* StoreAssembly.swift */,
+				B72FB52029BE12040035C8FA /* StoreViewController.swift */,
 				B75B51D829BFB07E00B6D42A /* StoreViewModel.swift */,
 			);
 			path = "1.0 Store";
@@ -169,14 +176,14 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		B751CEF529C0D64D0048B5A0 /* 1.1 Packages */ = {
+		B751CEF529C0D64D0048B5A0 /* 1.0.1 Packages */ = {
 			isa = PBXGroup;
 			children = (
-				B751CEF629C0D67B0048B5A0 /* PackagesViewController.swift */,
 				B751CEF829C0D7FB0048B5A0 /* PackagesAssembly.swift */,
+				B751CEF629C0D67B0048B5A0 /* PackagesViewController.swift */,
 				B7E0ECA829C0FF9B00CDF6FD /* PackagesViewModel.swift */,
 			);
-			path = "1.1 Packages";
+			path = "1.0.1 Packages";
 			sourceTree = "<group>";
 		};
 		B752C49C29BF3E3E00CD3DAD /* View */ = {
@@ -210,7 +217,6 @@
 		B75B51E929BFB7B900B6D42A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B7E0ECAA29C100AF00CDF6FD /* Packages.swift */,
 				B75B51EB29BFB7E200B6D42A /* Country.swift */,
 			);
 			path = Model;
@@ -266,9 +272,28 @@
 		B7E0ECAC29C1033500CDF6FD /* FetchingPackagesService */ = {
 			isa = PBXGroup;
 			children = (
+				B7E0ECAF29C107C100CDF6FD /* Model */,
 				B7E0ECAD29C1035800CDF6FD /* FetchingPackagesService.swift */,
 			);
 			path = FetchingPackagesService;
+			sourceTree = "<group>";
+		};
+		B7E0ECAF29C107C100CDF6FD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B7E0ECAA29C100AF00CDF6FD /* Packages.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B7E0ECB029C109EF00CDF6FD /* 1.1 Local esims */ = {
+			isa = PBXGroup;
+			children = (
+				B7E0ECB529C10CAF00CDF6FD /* LocalEsimsAssembly.swift */,
+				B7E0ECB129C10A4500CDF6FD /* LocalEsimsViewController.swift */,
+				B7E0ECB329C10BDA00CDF6FD /* LocalEsimsViewModel.swift */,
+			);
+			path = "1.1 Local esims";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -372,15 +397,18 @@
 				B751CEF729C0D67C0048B5A0 /* PackagesViewController.swift in Sources */,
 				B75B51EC29BFB7E200B6D42A /* Country.swift in Sources */,
 				B751CEED29C06F060048B5A0 /* BaseViewController.swift in Sources */,
+				B7E0ECB629C10CAF00CDF6FD /* LocalEsimsAssembly.swift in Sources */,
 				B75B51E229BFB4DC00B6D42A /* FetchingAreasService.swift in Sources */,
 				B72FB52129BE12040035C8FA /* StoreViewController.swift in Sources */,
 				B7E0ECA929C0FF9B00CDF6FD /* PackagesViewModel.swift in Sources */,
 				B760B91C29BE02930067231C /* AppDelegate.swift in Sources */,
 				B72FB53329BE24450035C8FA /* StoreCoordinator.swift in Sources */,
 				B75B51F329BFBE8300B6D42A /* MoyaBridge.swift in Sources */,
+				B7E0ECB229C10A4D00CDF6FD /* LocalEsimsViewController.swift in Sources */,
 				B7E0ECAE29C1043400CDF6FD /* FetchingPackagesService.swift in Sources */,
 				B752C4A229BF588F00CD3DAD /* CountryTableViewCell.swift in Sources */,
 				B75B51D929BFB07E00B6D42A /* StoreViewModel.swift in Sources */,
+				B7E0ECB429C10BDA00CDF6FD /* LocalEsimsViewModel.swift in Sources */,
 				B752C49B29BF31E200CD3DAD /* Icon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

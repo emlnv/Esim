@@ -24,7 +24,7 @@ final class StoreCoordinator {
 	}
 	
 	private func setupBindings(for viewController: StoreViewController) {
-		guard let reactor = viewController.reactor else { return }
+		guard let reactor = viewController.localEsimsViewController?.reactor else { return }
 		let state = reactor.state.asDriver(onErrorJustReturn: reactor.initialState)
 				
 		state
