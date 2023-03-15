@@ -51,10 +51,8 @@ final class CountryTableViewCell: UITableViewCell {
 		
 		label.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
-			label.leadingAnchor	.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor),
-			label.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor),
-			label.topAnchor		.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor),
-			label.bottomAnchor	.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor),
+			label.centerYAnchor	.constraint(equalTo: contentView.centerYAnchor),
+			label.centerXAnchor	.constraint(equalTo: contentView.centerXAnchor),
 			label.heightAnchor	.constraint(greaterThanOrEqualToConstant: 65)
 		])
 		

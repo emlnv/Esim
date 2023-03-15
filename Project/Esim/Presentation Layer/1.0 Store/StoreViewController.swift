@@ -17,6 +17,7 @@ final class StoreViewController: ESBaseViewController<StoreViewModel> {
 		static let titleTab3 = "Global eSIMs"
 		static let searchPlaceholder = "Search data packs for +190 countries and reg…"
 		static let offset: CGFloat = 8
+		static var offsetTop: CGFloat = 50
 	}
 	
 	private let searchBarView = SearchBarView()
@@ -154,18 +155,19 @@ extension StoreViewController {
 
 	private func addAndConstrain(viewControllerView: UIView) {
 		view.addSubview(viewControllerView)
+		view.sendSubviewToBack(viewControllerView)
 		viewControllerView.translatesAutoresizingMaskIntoConstraints = false
 		let trailingConstraint = viewControllerView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
 		let bottomConstraint = viewControllerView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
 		trailingConstraint.priority = .required - 1	 // To avoid conflicts during initial layout calculations
 		bottomConstraint.priority = .required - 1
 		NSLayoutConstraint.activate([
-			viewControllerView.topAnchor.constraint(equalTo: view.topAnchor),
+			viewControllerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: C.offsetTop),
 			viewControllerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 			trailingConstraint,
 			bottomConstraint
 		])
-		viewControllerView.layoutIfNeeded()
+		viewControllerView.setNeedsLayout()
 	}
 
 	private func dissolveTransition(to viewController: UIViewController) {
