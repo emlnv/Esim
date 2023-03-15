@@ -31,9 +31,10 @@ extension ESContainer {
 	private var storeVC: ESFactory<StoreViewController> {
 		ESFactory(self) {
 			let vc = StoreViewController(
+				localEsimsViewController: ESContainer.shared.localEsimsViewController,
+				regionalEsimsViewController: ESContainer.shared.localEsimsViewController,
 				viewModel: self.storeVM.callAsFunction()
 			)
-			vc.localEsimsViewController = ESContainer.shared.localEsimsViewController
 			return vc
 	}}
 }

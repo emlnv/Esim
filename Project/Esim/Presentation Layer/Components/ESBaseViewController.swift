@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BaseViewController<Reactor: ESReactor>: UIViewController, ESView {
+class ESBaseViewController<Reactor: ESReactor>: UIViewController, ESView {
 
 	// MARK: - Internal properties
 	
@@ -15,9 +15,13 @@ class BaseViewController<Reactor: ESReactor>: UIViewController, ESView {
 
 	// MARK: - Lifecycle
 	
-	convenience init(viewModel: Reactor) {
-		self.init(nibName: nil, bundle: nil)
+	init(viewModel: Reactor) {
+		super.init(nibName: nil, bundle: nil)
 		reactor = viewModel
+	}
+	
+	required init?(coder: NSCoder) {
+		super.init(coder: coder)
 	}
 	
 	override func viewDidLoad() {

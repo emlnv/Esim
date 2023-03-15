@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class StoreViewController: BaseViewController<StoreViewModel> {
+final class StoreViewController: ESBaseViewController<StoreViewModel> {
 	
 	private typealias C = Constants
 	private enum Constants {
@@ -17,19 +17,37 @@ final class StoreViewController: BaseViewController<StoreViewModel> {
 		static let titleTab3 = "Global eSIMs"
 		static let searchPlaceholder = "Search data packs for +190 countries and reg…"
 		static let offset: CGFloat = 8
-		static let headerHeight: CGFloat = 100
 	}
 	
 	private let searchBarView = SearchBarView()
 	private let segmentedControl = ColoredSegmentedControl(items: [C.titleTab1, C.titleTab2, C.titleTab3])
 	
-	var localEsimsViewController: LocalEsimsViewController?
+	var localEsimsViewController: LocalEsimsViewController
+	var regionalEsimsViewController: UIViewController
 	
 	// MARK: - Lifecycle
+
+	init(
+		localEsimsViewController: LocalEsimsViewController,
+		regionalEsimsViewController: UIViewController,
+		viewModel: Reactor) {
+			self.localEsimsViewController = localEsimsViewController
+			self.regionalEsimsViewController = regionalEsimsViewController
+			super.init(viewModel: viewModel)
+			self.reactor = viewModel
+	}
+	
+	override init(viewModel: Reactor) {
+		fatalError("Init with propeties must be using")
+	}
+	
+	required init?(coder: NSCoder) {
+		fatalError("Init with propeties must be using")
+	}
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		setChildViewController(localEsimsViewController!)
+		setChildViewController(localEsimsViewController)
 	}
 	
 	override func viewDidLayoutSubviews() {
@@ -81,16 +99,18 @@ final class StoreViewController: BaseViewController<StoreViewModel> {
 	}
 	
 	override func bind(reactor: StoreViewModel) {
-//		segmentedControl.rx.selectedSegmentIndex
-//			.map { _ in Reactor.Action.switchTab }
-//			.bind(to: reactor.action)
-//			.disposed(by: disposeBag)
+		/*
+		 segmentedControl.rx.selectedSegmentIndex
+			.map { _ in Reactor.Action.switchTab }
+			.bind(to: reactor.action)
+			.disposed(by: disposeBag)
+		*/
 	}
 }
 
 extension StoreViewController {
 	
-	// MARK: Setting childs methods
+	// MARK: Setting childs
 	
 	var viewController: UIViewController? {
 		get { children.first }

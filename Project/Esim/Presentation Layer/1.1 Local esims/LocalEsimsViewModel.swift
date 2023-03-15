@@ -8,7 +8,7 @@
 import Foundation
 
 final class LocalEsimsViewModel: ESReactor {
-	enum SVMError: LocalizedError {
+	enum LocalEsimsVMError: LocalizedError {
 		case failedGetServerRespond
 		case failedCreatingURL
 	}
