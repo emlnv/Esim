@@ -65,6 +65,9 @@ final class StoreViewController: ESBaseViewController<StoreViewModel> {
 	}
 
 	private func configureNavbar() {
+		let appearance = UINavigationBarAppearance()
+		appearance.shadowColor = nil
+		navigationController?.navigationBar.standardAppearance = appearance
 		navigationController?.navigationBar.prefersLargeTitles = true
 		
 		navigationItem.title = C.title
@@ -164,6 +167,7 @@ extension StoreViewController {
 		NSLayoutConstraint.activate([
 			viewControllerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: C.offsetTop),
 			viewControllerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+			viewControllerView.heightAnchor.constraint(greaterThanOrEqualToConstant: 1),
 			trailingConstraint,
 			bottomConstraint
 		])

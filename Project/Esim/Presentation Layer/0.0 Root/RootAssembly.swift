@@ -8,7 +8,7 @@
 import UIKit
 
 extension ESContainer {
-	var storeNavigationViewController: ESNavigationController { nVC.callAsFunction() }
+	var storeNavigationViewController: ESNavigationController   { nVC.callAsFunction() }
 	var myEsimsNavigationViewController: ESNavigationController { nVC2.callAsFunction() }
 	var profileNavigationViewController: ESNavigationController { nVC3.callAsFunction() }
 	
@@ -20,6 +20,7 @@ extension ESContainer {
 				image: Icon.iconStore,
 				tag: TabBarController.TabBarItem.store.rawValue
 			)
+			nVC.tabBarItem.imageInsets = UIEdgeInsets(top: 7, left: 0, bottom: -7, right: 0)
 			return nVC
 		}
 	}
@@ -32,6 +33,7 @@ extension ESContainer {
 				image: Icon.iconMyEsims,
 				tag: TabBarController.TabBarItem.myEsims.rawValue
 			)
+			nVC.tabBarItem.imageInsets = UIEdgeInsets(top: 7, left: 0, bottom: -7, right: 0)
 			return nVC
 		}
 	}
@@ -44,6 +46,7 @@ extension ESContainer {
 				image: Icon.iconProfile,
 				tag: TabBarController.TabBarItem.profile.rawValue
 			)
+			nVC.tabBarItem.imageInsets = UIEdgeInsets(top: 7, left: 0, bottom: -7, right: 0)
 			return nVC
 		}
 	}

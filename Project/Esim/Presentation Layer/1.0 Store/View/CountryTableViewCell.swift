@@ -9,6 +9,14 @@ import UIKit
 
 final class CountryTableViewCell: UITableViewCell {
 	
+	private typealias C = Constants
+	private enum Constants {
+		static let title = "Hello"
+		static let marginLeading: CGFloat = 28
+		static let height: CGFloat = 28
+		static let width: CGFloat = 37
+	}
+
 	// MARK: - Properties
 	
 	private let label: UILabel = {
@@ -52,16 +60,15 @@ final class CountryTableViewCell: UITableViewCell {
 		label.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
 			label.centerYAnchor	.constraint(equalTo: contentView.centerYAnchor),
-			label.centerXAnchor	.constraint(equalTo: contentView.centerXAnchor),
-			label.heightAnchor	.constraint(greaterThanOrEqualToConstant: 65)
+			label.leadingAnchor	.constraint(equalTo: image.trailingAnchor, constant: C.marginLeading)
 		])
 		
 		image.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
-			image.leadingAnchor	.constraint(equalTo: contentView.leadingAnchor),
-			image.widthAnchor	.constraint(equalToConstant: 37),
-			image.topAnchor		.constraint(equalTo: contentView.topAnchor),
-			image.heightAnchor	.constraint(greaterThanOrEqualToConstant: 28)
+			image.centerYAnchor	.constraint(equalTo: contentView.centerYAnchor),
+			image.leadingAnchor	.constraint(equalTo: contentView.leadingAnchor, constant: C.marginLeading),
+			image.heightAnchor	.constraint(equalToConstant: C.height),
+			image.widthAnchor	.constraint(equalToConstant: C.width)
 		])
 	}
 }

@@ -17,7 +17,9 @@ final class TabBarController: UITabBarController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
-		tabBar.tintColor = .systemGray3
+		let appearance = tabBar.standardAppearance
+		appearance.shadowColor = nil
+		tabBar.standardAppearance = appearance
+		tabBar.tintColor = .darkGray
 	}
 }
