@@ -12,4 +12,5 @@ enum Icon {
 	static let iconMyEsims = UIImage(named: "iconMyEsims")
 	static let iconProfile = UIImage(named: "iconProfile")
 	static let iconSearch = UIImage(named: "iconSearch")
+	static let loggedOut = UIImage(named: "buttonLoggedOut")
 }

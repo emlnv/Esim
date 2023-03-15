@@ -66,7 +66,7 @@ extension SearchBarView:  UISearchBarDelegate {
 	}
 }
 
-private extension UISearchBar {
+extension UISearchBar {
 
 	enum Constants {
 		static let searchField = "searchField"

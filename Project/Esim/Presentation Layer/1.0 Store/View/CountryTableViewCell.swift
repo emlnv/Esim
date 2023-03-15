@@ -22,6 +22,7 @@ final class CountryTableViewCell: UITableViewCell {
 	private let label: UILabel = {
 		let label = UILabel()
 		label.textAlignment = .center
+		label.font = .systemFont(ofSize: 15)
 		return label
 	}()
 	
@@ -60,7 +61,7 @@ final class CountryTableViewCell: UITableViewCell {
 		label.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
 			label.centerYAnchor	.constraint(equalTo: contentView.centerYAnchor),
-			label.leadingAnchor	.constraint(equalTo: image.trailingAnchor, constant: C.marginLeading)
+			label.leadingAnchor	.constraint(equalTo: image.trailingAnchor, constant: C.marginLeading/2)
 		])
 		
 		image.translatesAutoresizingMaskIntoConstraints = false

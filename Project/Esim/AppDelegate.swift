@@ -14,12 +14,19 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 	private let appCoordinator = AppCoordinator(rootViewController: TabBarController())
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+		configureWindow()
+		configureFonts()
+		return true
+	}
+	
+	private func configureWindow() {
 		window = UIWindow()
 		window?.backgroundColor = .systemBackground
 		window?.rootViewController = appCoordinator.start()
 		window?.makeKeyAndVisible()
-
-		return true
 	}
-
+	
+	private func configureFonts() {
+		UIFont.overrideInitialize()
+	}
 }

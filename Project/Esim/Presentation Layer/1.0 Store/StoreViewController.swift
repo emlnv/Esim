@@ -15,7 +15,7 @@ final class StoreViewController: ESBaseViewController<StoreViewModel> {
 		static let titleTab1 = "Local eSIMs"
 		static let titleTab2 = "Regional eSIMs"
 		static let titleTab3 = "Global eSIMs"
-		static let searchPlaceholder = "Search data packs for +190 countries and reg…"
+		static let searchPlaceholder = "Search data packs for +190 countries and regions"
 		static let offset: CGFloat = 8
 		static var offsetTop: CGFloat = 50
 	}
@@ -23,6 +23,9 @@ final class StoreViewController: ESBaseViewController<StoreViewModel> {
 	private let searchBarView = SearchBarView()
 	private let segmentedControl = ColoredSegmentedControl(items: [C.titleTab1, C.titleTab2, C.titleTab3])
 	
+	private let rightNavButton = UIBarButtonItem(image: Icon.loggedOut, style: .plain, target: StoreViewController.self, action: nil)
+	private var observerLargeTitle: NSKeyValueObservation?
+
 	var localEsimsViewController: LocalEsimsViewController
 	var regionalEsimsViewController: UIViewController
 	
@@ -62,37 +65,50 @@ final class StoreViewController: ESBaseViewController<StoreViewModel> {
 		[segmentedControl].forEach(view.addSubview)
 		configureSegmentedControl(into: view)
 		configureNavbar()
+		configureSearchBar()
 	}
 
 	private func configureNavbar() {
-		let appearance = UINavigationBarAppearance()
-		appearance.shadowColor = nil
-		navigationController?.navigationBar.standardAppearance = appearance
-		navigationController?.navigationBar.prefersLargeTitles = true
+		observerLargeTitle = navigationController?.navigationBar.observe(\.bounds, options: [.new]) {
+			guard let height = $1.newValue?.height else { return }
+			self.navigationItem.setRightBarButton(height > 44 ? self.rightNavButton : nil, animated: true)
+		}
 		
+		let appearance = UINavigationBarAppearance()
+		let attributes = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 27)]
+		let attributesC = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 19)]
+		appearance.largeTitleTextAttributes = attributes
+		appearance.titleTextAttributes = attributesC
+		appearance.shadowColor = nil
+		navigationItem.standardAppearance = appearance
 		navigationItem.title = C.title
+		
+		navigationController?.navigationBar.prefersLargeTitles = true
+	}
+	
+	private func configureSearchBar() {
 		navigationItem.searchController = UISearchController()
-		navigationItem.searchController?.delegate = self // todo
+		navigationItem.searchController?.delegate = self
 		navigationItem.searchController?.searchBar.sizeToFit()
+		navigationItem.searchController?.searchBar.placeholder = C.searchPlaceholder
+		navigationItem.searchController?.searchBar.setFont(.systemFont(ofSize: 13))
+		navigationItem.searchController?.searchBar.setImage(Icon.iconSearch, for: .search, state: .normal)
 		navigationItem.searchController?.hidesNavigationBarDuringPresentation = true
 		navigationItem.hidesSearchBarWhenScrolling = true
 		definesPresentationContext = true
 	}
-	
-	private func configureSearchBar(into view: UIView) {
-		searchBarView.configure(placeholder: C.searchPlaceholder)
-		
-		searchBarView.translatesAutoresizingMaskIntoConstraints = false
-		NSLayoutConstraint.activate([
-			searchBarView.leadingAnchor	.constraint(equalTo: view.leadingAnchor,  constant:  C.offset),
-			searchBarView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -C.offset),
-			searchBarView.topAnchor		.constraint(equalTo: view.topAnchor),
-			searchBarView.heightAnchor	.constraint(equalToConstant: 56)
-		])
-	}
 
 	private func configureSegmentedControl(into view: UIView) {
-		
+		func hideBackground() {
+			DispatchQueue.main.async {
+				(0...(self.segmentedControl.numberOfSegments-1)).forEach {
+					self.segmentedControl.subviews[$0].isHidden = true
+				}
+		}}
+		hideBackground()
+		let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13)]
+		segmentedControl.setTitleTextAttributes(attributes, for: .normal)
+
 		segmentedControl.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
 			segmentedControl.leadingAnchor	.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor,  constant:  C.offset * 2),
@@ -103,12 +119,6 @@ final class StoreViewController: ESBaseViewController<StoreViewModel> {
 	}
 	
 	override func bind(reactor: StoreViewModel) {
-		/*
-		 segmentedControl.rx.selectedSegmentIndex
-			.map { _ in Reactor.Action.switchTab }
-			.bind(to: reactor.action)
-			.disposed(by: disposeBag)
-		*/
 	}
 }
 

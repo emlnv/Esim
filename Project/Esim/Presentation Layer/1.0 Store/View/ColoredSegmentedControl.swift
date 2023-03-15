@@ -48,11 +48,7 @@ final class ColoredSegmentedControl: UISegmentedControl {
 		layer.borderWidth = 1
 		selectedSegmentIndex = 0
 		layer.borderColor = UIColor.clear.cgColor
-
-		tintColor = .clear
-		backgroundColor = .clear
-		selectedSegmentTintColor = .systemGray4
-		setBackgroundImage(UIImage(color: UIColor.clear), for: .disabled, barMetrics: .default)
+		selectedSegmentTintColor = .systemGray5
 	}
 }
 

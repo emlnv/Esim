@@ -40,6 +40,7 @@
 		B760B91C29BE02930067231C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B760B91B29BE02930067231C /* AppDelegate.swift */; };
 		B760B92529BE02970067231C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B760B92429BE02970067231C /* Assets.xcassets */; };
 		B760B92829BE02970067231C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B760B92629BE02970067231C /* LaunchScreen.storyboard */; };
+		B767B8E429C1FA6500A01B1A /* ES+UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = B767B8E329C1FA6500A01B1A /* ES+UIFont.swift */; };
 		B7D1343929C1BE3A00D0F019 /* ESTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D1343829C1BE3A00D0F019 /* ESTableViewController.swift */; };
 		B7D1344B29C1DDC900D0F019 /* IBMPlexSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B7D1343C29C1DDC900D0F019 /* IBMPlexSans-SemiBoldItalic.ttf */; };
 		B7D1344C29C1DDC900D0F019 /* IBMPlexSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B7D1343D29C1DDC900D0F019 /* IBMPlexSans-Medium.ttf */; };
@@ -93,6 +94,7 @@
 		B760B92429BE02970067231C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B760B92929BE02970067231C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B760B93029BE03450067231C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B767B8E329C1FA6500A01B1A /* ES+UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ES+UIFont.swift"; sourceTree = "<group>"; };
 		B7D1343829C1BE3A00D0F019 /* ESTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESTableViewController.swift; sourceTree = "<group>"; };
 		B7D1343C29C1DDC900D0F019 /* IBMPlexSans-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		B7D1343D29C1DDC900D0F019 /* IBMPlexSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Medium.ttf"; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				B72FB53029BE20C60035C8FA /* ES+UINavigationController.swift */,
+				B767B8E329C1FA6500A01B1A /* ES+UIFont.swift */,
 			);
 			path = "ES+UIKit";
 			sourceTree = "<group>";
@@ -464,6 +467,7 @@
 				B752C4A029BF554A00CD3DAD /* ColoredSegmentedControl.swift in Sources */,
 				B75B51F129BFBC1B00B6D42A /* RxSwiftBridge.swift in Sources */,
 				B752C49E29BF3E4F00CD3DAD /* SearchBarView.swift in Sources */,
+				B767B8E429C1FA6500A01B1A /* ES+UIFont.swift in Sources */,
 				B75B51DE29BFB3A400B6D42A /* ReactorkitBridge.swift in Sources */,
 				B751CEF429C081F70048B5A0 /* RxCocoaBridge.swift in Sources */,
 				B751CEF929C0D7FB0048B5A0 /* PackagesAssembly.swift in Sources */,
