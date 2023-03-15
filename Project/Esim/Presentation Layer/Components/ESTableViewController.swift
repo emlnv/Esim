@@ -21,6 +21,7 @@ class ESTableViewController<Reactor: ESReactor>: ESBaseViewController<Reactor> {
 		tableView.tableFooterView = .init()
 		tableView.separatorInset = .zero
 		tableView.keyboardDismissMode = .onDrag
+		if #available(iOS 15.0, *) { tableView.sectionHeaderTopPadding = 0 }
 		return tableView
 	}()
 

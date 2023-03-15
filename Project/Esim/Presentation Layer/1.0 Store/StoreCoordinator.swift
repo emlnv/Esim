@@ -45,7 +45,7 @@ final class StoreCoordinator {
 	
 	private func setupBindings(for viewController: PackagesViewController) {
 		guard let reactor = viewController.reactor else { return }
-		let state = reactor.state.asDriver(onErrorJustReturn: reactor.initialState)
+		let _ = reactor.state.asDriver(onErrorJustReturn: reactor.initialState)
 	}
 	
 }

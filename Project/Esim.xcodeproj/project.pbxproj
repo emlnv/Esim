@@ -15,6 +15,7 @@
 		B72FB53329BE24450035C8FA /* StoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72FB53229BE24450035C8FA /* StoreCoordinator.swift */; };
 		B72FB53529BE29670035C8FA /* RootAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72FB53429BE29670035C8FA /* RootAssembly.swift */; };
 		B72FB53729BE66CB0035C8FA /* StoreAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72FB53629BE66CB0035C8FA /* StoreAssembly.swift */; };
+		B740F4FA29C267E600E57337 /* LocalHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B740F4F929C267E600E57337 /* LocalHeaderView.swift */; };
 		B751CEED29C06F060048B5A0 /* ESBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B751CEEC29C06F060048B5A0 /* ESBaseViewController.swift */; };
 		B751CEF029C079020048B5A0 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = B751CEEF29C079020048B5A0 /* RxCocoa */; };
 		B751CEF229C079020048B5A0 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = B751CEF129C079020048B5A0 /* RxRelay */; };
@@ -98,6 +99,7 @@
 		B72FB53229BE24450035C8FA /* StoreCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreCoordinator.swift; sourceTree = "<group>"; };
 		B72FB53429BE29670035C8FA /* RootAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootAssembly.swift; sourceTree = "<group>"; };
 		B72FB53629BE66CB0035C8FA /* StoreAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreAssembly.swift; sourceTree = "<group>"; };
+		B740F4F929C267E600E57337 /* LocalHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalHeaderView.swift; sourceTree = "<group>"; };
 		B751CEEC29C06F060048B5A0 /* ESBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESBaseViewController.swift; sourceTree = "<group>"; };
 		B751CEF329C081F70048B5A0 /* RxCocoaBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxCocoaBridge.swift; sourceTree = "<group>"; };
 		B751CEF629C0D67B0048B5A0 /* PackagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackagesViewController.swift; sourceTree = "<group>"; };
@@ -234,6 +236,14 @@
 				B767B8E329C1FA6500A01B1A /* ES+UIFont.swift */,
 			);
 			path = "ES+UIKit";
+			sourceTree = "<group>";
+		};
+		B740F4F829C267D400E57337 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B740F4F929C267E600E57337 /* LocalHeaderView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		B751CEEB29C06ED70048B5A0 /* Components */ = {
@@ -415,6 +425,7 @@
 		B7E0ECB029C109EF00CDF6FD /* 1.1 Local esims */ = {
 			isa = PBXGroup;
 			children = (
+				B740F4F829C267D400E57337 /* View */,
 				B7E0ECB529C10CAF00CDF6FD /* LocalEsimsAssembly.swift */,
 				B7E0ECB129C10A4500CDF6FD /* LocalEsimsViewController.swift */,
 				B7E0ECB329C10BDA00CDF6FD /* LocalEsimsViewModel.swift */,
@@ -581,6 +592,7 @@
 				B75B51F329BFBE8300B6D42A /* MoyaBridge.swift in Sources */,
 				B7E0ECB229C10A4D00CDF6FD /* LocalEsimsViewController.swift in Sources */,
 				B7E0ECAE29C1043400CDF6FD /* FetchingPackagesService.swift in Sources */,
+				B740F4FA29C267E600E57337 /* LocalHeaderView.swift in Sources */,
 				B752C4A229BF588F00CD3DAD /* CountryTableViewCell.swift in Sources */,
 				B75B51D929BFB07E00B6D42A /* StoreViewModel.swift in Sources */,
 				B7E0ECB429C10BDA00CDF6FD /* LocalEsimsViewModel.swift in Sources */,
