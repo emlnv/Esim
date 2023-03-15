@@ -47,8 +47,6 @@ final class StoreViewModel: ESReactor {
 	}
 	
 	func mutate(action: Action) -> ESObservable<Mutation> {
-		switch action {
-		}
 	}
 	
 	func reduce(state: State, mutation: Mutation) -> State {

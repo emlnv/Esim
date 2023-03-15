@@ -20,6 +20,17 @@ struct CountryWithImage: Equatable {
 }
 
 struct Country: Decodable, Equatable {
+	init() {
+		self.init(id: Int(), slug: String(), title: String(), image: Flag(width: Int(), height: Int(), url: String()))
+	}
+	
+	init(id: Int, slug: String, title: String, image: Flag) {
+		self.id = id
+		self.slug = slug
+		self.title = title
+		self.image = image
+	}
+	
 	var id: Int
 	var slug: String
 	var title: String

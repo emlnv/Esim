@@ -41,6 +41,8 @@
 		B760B92529BE02970067231C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B760B92429BE02970067231C /* Assets.xcassets */; };
 		B760B92829BE02970067231C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B760B92629BE02970067231C /* LaunchScreen.storyboard */; };
 		B767B8E429C1FA6500A01B1A /* ES+UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = B767B8E329C1FA6500A01B1A /* ES+UIFont.swift */; };
+		B767B8EC29C2132700A01B1A /* EsimTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B767B8EB29C2132700A01B1A /* EsimTests.swift */; };
+		B767B90729C214EB00A01B1A /* FetchingAreasServiceMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = B767B90629C214EB00A01B1A /* FetchingAreasServiceMocks.swift */; };
 		B7D1343929C1BE3A00D0F019 /* ESTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D1343829C1BE3A00D0F019 /* ESTableViewController.swift */; };
 		B7D1344B29C1DDC900D0F019 /* IBMPlexSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B7D1343C29C1DDC900D0F019 /* IBMPlexSans-SemiBoldItalic.ttf */; };
 		B7D1344C29C1DDC900D0F019 /* IBMPlexSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B7D1343D29C1DDC900D0F019 /* IBMPlexSans-Medium.ttf */; };
@@ -63,6 +65,29 @@
 		B7E0ECB429C10BDA00CDF6FD /* LocalEsimsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E0ECB329C10BDA00CDF6FD /* LocalEsimsViewModel.swift */; };
 		B7E0ECB629C10CAF00CDF6FD /* LocalEsimsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E0ECB529C10CAF00CDF6FD /* LocalEsimsAssembly.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B767B8ED29C2132700A01B1A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B760B91029BE02930067231C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B760B91729BE02930067231C;
+			remoteInfo = Esim;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B767B8F529C2145200A01B1A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		B72FB52029BE12040035C8FA /* StoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
@@ -95,6 +120,9 @@
 		B760B92929BE02970067231C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B760B93029BE03450067231C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B767B8E329C1FA6500A01B1A /* ES+UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ES+UIFont.swift"; sourceTree = "<group>"; };
+		B767B8E929C2132700A01B1A /* EsimTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EsimTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B767B8EB29C2132700A01B1A /* EsimTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EsimTests.swift; sourceTree = "<group>"; };
+		B767B90629C214EB00A01B1A /* FetchingAreasServiceMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchingAreasServiceMocks.swift; sourceTree = "<group>"; };
 		B7D1343829C1BE3A00D0F019 /* ESTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESTableViewController.swift; sourceTree = "<group>"; };
 		B7D1343C29C1DDC900D0F019 /* IBMPlexSans-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		B7D1343D29C1DDC900D0F019 /* IBMPlexSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Medium.ttf"; sourceTree = "<group>"; };
@@ -129,6 +157,13 @@
 				B751CEF029C079020048B5A0 /* RxCocoa in Frameworks */,
 				B75B51E829BFB74300B6D42A /* RxMoya in Frameworks */,
 				B75B51E629BFB74300B6D42A /* Moya in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B767B8E629C2132700A01B1A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,7 +303,9 @@
 			isa = PBXGroup;
 			children = (
 				B760B91A29BE02930067231C /* Esim */,
+				B767B8EA29C2132700A01B1A /* EsimTests */,
 				B760B91929BE02930067231C /* Products */,
+				B767B8F229C2145200A01B1A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -276,6 +313,7 @@
 			isa = PBXGroup;
 			children = (
 				B760B91829BE02930067231C /* Esim.app */,
+				B767B8E929C2132700A01B1A /* EsimTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -302,6 +340,30 @@
 				B752C49A29BF31E200CD3DAD /* Icon.swift */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		B767B8EA29C2132700A01B1A /* EsimTests */ = {
+			isa = PBXGroup;
+			children = (
+				B767B90529C214CF00A01B1A /* Mocks */,
+				B767B8EB29C2132700A01B1A /* EsimTests.swift */,
+			);
+			path = EsimTests;
+			sourceTree = "<group>";
+		};
+		B767B8F229C2145200A01B1A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B767B90529C214CF00A01B1A /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				B767B90629C214EB00A01B1A /* FetchingAreasServiceMocks.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		B7D1343A29C1DDC000D0F019 /* Font */ = {
@@ -388,6 +450,27 @@
 			productReference = B760B91829BE02930067231C /* Esim.app */;
 			productType = "com.apple.product-type.application";
 		};
+		B767B8E829C2132700A01B1A /* EsimTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B767B8EF29C2132700A01B1A /* Build configuration list for PBXNativeTarget "EsimTests" */;
+			buildPhases = (
+				B767B8E529C2132700A01B1A /* Sources */,
+				B767B8E629C2132700A01B1A /* Frameworks */,
+				B767B8E729C2132700A01B1A /* Resources */,
+				B767B8F529C2145200A01B1A /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B767B8EE29C2132700A01B1A /* PBXTargetDependency */,
+			);
+			name = EsimTests;
+			packageProductDependencies = (
+			);
+			productName = EsimTests;
+			productReference = B767B8E929C2132700A01B1A /* EsimTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -400,6 +483,10 @@
 				TargetAttributes = {
 					B760B91729BE02930067231C = {
 						CreatedOnToolsVersion = 14.2;
+					};
+					B767B8E829C2132700A01B1A = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = B760B91729BE02930067231C;
 					};
 				};
 			};
@@ -422,6 +509,7 @@
 			projectRoot = "";
 			targets = (
 				B760B91729BE02930067231C /* Esim */,
+				B767B8E829C2132700A01B1A /* EsimTests */,
 			);
 		};
 /* End PBXProject section */
@@ -447,6 +535,13 @@
 				B7D1345529C1DDC900D0F019 /* IBMPlexSans-Light.ttf in Resources */,
 				B7D1344B29C1DDC900D0F019 /* IBMPlexSans-SemiBoldItalic.ttf in Resources */,
 				B7D1345629C1DDC900D0F019 /* IBMPlexSans-Italic.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B767B8E729C2132700A01B1A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,7 +588,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B767B8E529C2132700A01B1A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B767B90729C214EB00A01B1A /* FetchingAreasServiceMocks.swift in Sources */,
+				B767B8EC29C2132700A01B1A /* EsimTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B767B8EE29C2132700A01B1A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B760B91729BE02930067231C /* Esim */;
+			targetProxy = B767B8ED29C2132700A01B1A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		B760B92629BE02970067231C /* LaunchScreen.storyboard */ = {
@@ -542,7 +654,6 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -629,12 +740,15 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = XZ546H35NP;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Esim/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -656,12 +770,15 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = XZ546H35NP;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Esim/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -672,6 +789,44 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B767B8F029C2132700A01B1A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = XZ546H35NP;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.emelyanov.EsimTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Esim.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)Esim";
+			};
+			name = Debug;
+		};
+		B767B8F129C2132700A01B1A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = XZ546H35NP;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.emelyanov.EsimTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Esim.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)Esim";
 			};
 			name = Release;
 		};
@@ -692,6 +847,15 @@
 			buildConfigurations = (
 				B760B92D29BE02970067231C /* Debug */,
 				B760B92E29BE02970067231C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B767B8EF29C2132700A01B1A /* Build configuration list for PBXNativeTarget "EsimTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B767B8F029C2132700A01B1A /* Debug */,
+				B767B8F129C2132700A01B1A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
