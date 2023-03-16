@@ -20,7 +20,7 @@ final class StoreViewController: ESBaseViewController<StoreViewModel> {
 		static var offsetTop: CGFloat = 50
 	}
 	
-	private let searchBarView = SearchBarView()
+	private var searchBarView: SearchBarView!
 	private let segmentedControl = ColoredSegmentedControl(items: [C.titleTab1, C.titleTab2, C.titleTab3])
 	
 	private let rightNavButton = UIBarButtonItem(image: Icon.loggedOut, style: .plain, target: StoreViewController.self, action: nil)
