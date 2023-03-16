@@ -12,6 +12,7 @@ class ESTableViewController<Reactor: ESReactor>: ESBaseViewController<Reactor> {
 	private typealias C = Constants
 	private enum Constants {
 		static var offset: CGFloat		 { 8 }
+		static var margin: CGFloat		 { 20 }
 		static var headerHeight: CGFloat { 100 }
 	}
 	

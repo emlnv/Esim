@@ -8,6 +8,7 @@
 import UIKit
 
 final class LocalEsimsViewController: ESTableViewController<LocalEsimsViewModel> {
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		tableView.delegate = self

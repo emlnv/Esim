@@ -52,10 +52,12 @@ final class StoreViewController: ESBaseViewController<StoreViewModel> {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setChildViewController(localEsimsViewController)
+		configureNavbar()
+		configureSearchBar()
 	}
 	
-	override func viewDidLayoutSubviews() {
-		super.viewDidLayoutSubviews()
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
 		configureUI()
 	}
 	
@@ -64,13 +66,13 @@ final class StoreViewController: ESBaseViewController<StoreViewModel> {
 	private func configureUI() {
 		[segmentedControl].forEach(view.addSubview)
 		configureSegmentedControl(into: view)
-		configureNavbar()
-		configureSearchBar()
 	}
 
 	private func configureNavbar() {
 		observerLargeTitle = navigationController?.navigationBar.observe(\.bounds, options: [.new]) {
-			guard let height = $1.newValue?.height else { return }
+			let isSetted = self.navigationItem.rightBarButtonItem != nil
+			guard let height = $1.newValue?.height,
+			(height > 44 && !isSetted) || (height <= 44 && isSetted) else { return }
 			self.navigationItem.setRightBarButton(height > 44 ? self.rightNavButton : nil, animated: true)
 		}
 		

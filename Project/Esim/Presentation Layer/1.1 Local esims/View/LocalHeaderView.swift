@@ -39,6 +39,8 @@ final class LocalHeaderView: UITableViewHeaderFooterView {
 		layer.shadowOffset = CGSizeMake(0, 1)
 		layer.shadowOpacity = 0.2
 		layer.shadowRadius = 20
+		layer.shouldRasterize = true
+		layer.rasterizationScale = 0.1
 		self.layer.addSublayer(layer)
 	}
 	
