@@ -11,7 +11,8 @@ final class LocalEsimsViewController: ESTableViewController<LocalEsimsViewModel>
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		tableView.delegate = self
+		tableView.register(CountryTableViewCell.self, forCellReuseIdentifier: CountryTableViewCell.reuseIdentifier)
+		tableView.rx.setDelegate(self).disposed(by: disposeBag)
 	}
 	
 	override func bind(reactor: LocalEsimsViewModel) {

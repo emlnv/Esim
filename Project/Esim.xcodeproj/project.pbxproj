@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B72B6EBF29C367490012A86A /* PackagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72B6EBE29C367060012A86A /* PackagesTableViewCell.swift */; };
+		B72B6EC129C36BEB0012A86A /* ES+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72B6EC029C36BEB0012A86A /* ES+UIViewController.swift */; };
 		B72FB52129BE12040035C8FA /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72FB52029BE12040035C8FA /* StoreViewController.swift */; };
 		B72FB52529BE13250035C8FA /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72FB52429BE13250035C8FA /* AppCoordinator.swift */; };
 		B72FB52729BE145E0035C8FA /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72FB52629BE145E0035C8FA /* TabBarController.swift */; };
@@ -92,6 +94,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B72B6EBE29C367060012A86A /* PackagesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackagesTableViewCell.swift; sourceTree = "<group>"; };
+		B72B6EC029C36BEB0012A86A /* ES+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ES+UIViewController.swift"; sourceTree = "<group>"; };
 		B72FB52029BE12040035C8FA /* StoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
 		B72FB52429BE13250035C8FA /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		B72FB52629BE145E0035C8FA /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -174,6 +178,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B72B6EBD29C366FD0012A86A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B72B6EBE29C367060012A86A /* PackagesTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		B72FB51E29BE11940035C8FA /* Presentation Layer */ = {
 			isa = PBXGroup;
 			children = (
@@ -236,6 +248,7 @@
 			children = (
 				B72FB53029BE20C60035C8FA /* ES+UINavigationController.swift */,
 				B767B8E329C1FA6500A01B1A /* ES+UIFont.swift */,
+				B72B6EC029C36BEB0012A86A /* ES+UIViewController.swift */,
 			);
 			path = "ES+UIKit";
 			sourceTree = "<group>";
@@ -260,6 +273,7 @@
 		B751CEF529C0D64D0048B5A0 /* 1.0.1 Packages */ = {
 			isa = PBXGroup;
 			children = (
+				B72B6EBD29C366FD0012A86A /* View */,
 				B751CEF829C0D7FB0048B5A0 /* PackagesAssembly.swift */,
 				B751CEF629C0D67B0048B5A0 /* PackagesViewController.swift */,
 				B7E0ECA829C0FF9B00CDF6FD /* PackagesViewModel.swift */,
@@ -567,6 +581,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B72FB52529BE13250035C8FA /* AppCoordinator.swift in Sources */,
+				B72B6EC129C36BEB0012A86A /* ES+UIViewController.swift in Sources */,
 				B72FB53529BE29670035C8FA /* RootAssembly.swift in Sources */,
 				B72FB53129BE20C60035C8FA /* ES+UINavigationController.swift in Sources */,
 				B75B51EF29BFB99900B6D42A /* EsimTarget.swift in Sources */,
@@ -586,6 +601,7 @@
 				B751CEF729C0D67C0048B5A0 /* PackagesViewController.swift in Sources */,
 				B75B51EC29BFB7E200B6D42A /* Country.swift in Sources */,
 				B751CEED29C06F060048B5A0 /* ESBaseViewController.swift in Sources */,
+				B72B6EBF29C367490012A86A /* PackagesTableViewCell.swift in Sources */,
 				B7E0ECB629C10CAF00CDF6FD /* LocalEsimsAssembly.swift in Sources */,
 				B75B51E229BFB4DC00B6D42A /* FetchingAreasService.swift in Sources */,
 				B72FB52129BE12040035C8FA /* StoreViewController.swift in Sources */,

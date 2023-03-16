@@ -8,7 +8,7 @@
 import Foundation
 
 protocol IFetchingPackagesServicable {
-	func getPackageBy(id: Int) -> ESObservable<[Package]>
+	func getPackageBy(id: Int) -> ESObservable<Country>
 }
 
 struct FetchingPackagesService: IFetchingPackagesServicable {
@@ -24,7 +24,7 @@ struct FetchingPackagesService: IFetchingPackagesServicable {
 			case .ended: ()
 		}
 	})
-	private static let defaultProvider = ESMoyaProvider<EsimTarget>(plugins: [networkActivityPlugin])
+	private static let defaultProvider = ESMoyaProvider<EsimTarget>(plugins: [networkActivityPlugin, ESNetworkLoggerPlugin()])
 	
 	// MARK: - Initialize
 	
@@ -37,9 +37,9 @@ struct FetchingPackagesService: IFetchingPackagesServicable {
 	
 	// MARK: - Protocol
 	
-	func getPackageBy(id: Int) -> ESObservable<[Package]> {
-		provider.rx.request(.getPopularCoutries)
-			.map([Package].self, using: decoder)
+	func getPackageBy(id: Int) -> ESObservable<Country> {
+		provider.rx.request(.getPackagesForCountry(id))
+			.map(Country.self, using: decoder)
 			.asObservable()
 	}
 	

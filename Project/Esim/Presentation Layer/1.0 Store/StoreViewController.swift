@@ -51,21 +51,17 @@ final class StoreViewController: ESBaseViewController<StoreViewModel> {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		setChildViewController(localEsimsViewController)
-		configureNavbar()
-		configureSearchBar()
-	}
-	
-	override func viewDidAppear(_ animated: Bool) {
-		super.viewDidAppear(animated)
 		configureUI()
 	}
-	
+		
 	// MARK: - Configure
 	
 	private func configureUI() {
+		configureNavbar()
+		configureSearchBar()
 		[segmentedControl].forEach(view.addSubview)
 		configureSegmentedControl(into: view)
+		setChildViewController(localEsimsViewController)
 	}
 
 	private func configureNavbar() {
@@ -115,7 +111,7 @@ final class StoreViewController: ESBaseViewController<StoreViewModel> {
 		NSLayoutConstraint.activate([
 			segmentedControl.leadingAnchor	.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor,  constant:  C.offset * 2),
 			segmentedControl.trailingAnchor	.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -C.offset * 2),
-			segmentedControl.topAnchor		.constraint(equalTo: navigationController!.navigationBar.bottomAnchor, constant: C.offset),
+			segmentedControl.topAnchor		.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: C.offset),
 			segmentedControl.heightAnchor	.constraint(equalToConstant: 28),
 		])
 	}

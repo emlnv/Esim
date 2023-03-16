@@ -25,29 +25,33 @@ final class PackagesViewModel: ESReactor {
 	struct State {
 		var error: Error?
 		var packages: [Package]?
-		var selectedPackage: Package?
+		var selectedCountry: CountryWithImage
 	}
 	
 	// MARK: - Dependencies
 	
 	private let fetchingPackagesService: IFetchingPackagesServicable
+	private let userDefaults: UserDefaults
+	private let selectedCountry: CountryWithImage
 	
 	// MARK: - Internal properties
 	
-	let initialState = State()
+	let initialState: State
 	
 	// MARK: - Private properties
 	
-	private let userDefaults: UserDefaults
 	
 	// MARK: - Lifecycle
 	
 	init(
 		fetchingPackagesService: IFetchingPackagesServicable,
-		userDefaults: UserDefaults
+		userDefaults: UserDefaults,
+		selectedCountry: CountryWithImage
 	) {
 		self.fetchingPackagesService = fetchingPackagesService
 		self.userDefaults = userDefaults
+		self.selectedCountry = selectedCountry
+		self.initialState =  State(selectedCountry: selectedCountry)
 	}
 	
 	func mutate(action: Action) -> ESObservable<Mutation> {
@@ -72,7 +76,7 @@ final class PackagesViewModel: ESReactor {
 	private func getPackageBy(_ id: Int) -> ESObservable<Mutation> {
 		return fetchingPackagesService.getPackageBy(id: id)
 			.flatMap { model -> ESObservable<Mutation> in
-				return .just(.mutatePackages(model))
+				return .just(.mutatePackages(model.packages ?? []))
 			}
 			.catch { error in
 				.just(.toggleError(error))

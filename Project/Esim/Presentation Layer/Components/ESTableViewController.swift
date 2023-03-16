@@ -18,7 +18,6 @@ class ESTableViewController<Reactor: ESReactor>: ESBaseViewController<Reactor> {
 	
 	private(set) var tableView: UITableView = {
 		let tableView = UITableView()
-		tableView.register(CountryTableViewCell.self, forCellReuseIdentifier: CountryTableViewCell.reuseIdentifier)
 		tableView.tableFooterView = .init()
 		tableView.separatorInset = .zero
 		tableView.keyboardDismissMode = .onDrag
