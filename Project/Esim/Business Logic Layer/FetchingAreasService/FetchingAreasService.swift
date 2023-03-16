@@ -9,7 +9,7 @@ import Foundation
 
 protocol IFetchingAreasServicable {
 	func getCountriesPopular() -> ESObservable<[Country]>
-	func getImagesForCountries(_: [String]) -> ESObservable<[ESImage]>
+	func getImages(for: [Country]) -> ESObservable<[CountryWithImage]>
 }
 
 struct FetchingAreasService: IFetchingAreasServicable {
@@ -44,8 +44,12 @@ struct FetchingAreasService: IFetchingAreasServicable {
 			.asObservable()
 	}
 	
-	func getImagesForCountries(_ urls: [String]) -> ESObservable<[ESImage]> {
-		let array = urls.map { getFlag(by: $0)}
+	func getImages(for countries: [Country]) -> ESObservable<[CountryWithImage]> {
+		let array: Array<ESObservable<CountryWithImage>> = countries.map { country in
+			getFlag(by: country.image.url)
+			.compactMap { CountryWithImage(country: country, image: $0) }
+			.asObservable()
+		}
 		return ESObservable.from(array)
 			.merge()
 			.toArray()

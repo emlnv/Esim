@@ -21,7 +21,6 @@ final class LocalEsimsViewModel: ESReactor {
 	enum Mutation {
 		case toggleError(Error?)
 		case mutateCountries([Country])
-		case mutateImagesForCountries([ESImage])
 		case mutateCountryWithImages([CountryWithImage])
 		case mutateSelectedCountry(CountryWithImage)
 	}
@@ -29,7 +28,6 @@ final class LocalEsimsViewModel: ESReactor {
 	struct State {
 		var error: Error?
 		var countriesPopular: [Country]?
-		var imagesForCountries: [ESImage]?
 		var countriesWithImage: [CountryWithImage]?
 		var selectedCountry: CountryWithImage?
 	}
@@ -73,8 +71,6 @@ final class LocalEsimsViewModel: ESReactor {
 				newState.error = error
 			case .mutateCountries(let countries):
 				newState.countriesPopular = countries
-			case .mutateImagesForCountries(let images):
-				newState.imagesForCountries = images
 			case .mutateCountryWithImages(let countries):
 				newState.countriesWithImage = countries
 			case .mutateSelectedCountry(let country):
@@ -88,7 +84,7 @@ final class LocalEsimsViewModel: ESReactor {
 			.flatMap { model -> ESObservable<Mutation> in
 				.concat(
 					.just(.mutateCountries(model.sorted { $0.title < $1.title } )),
-					self.getImagesForCountries(urls: model.compactMap { $0.image.url })
+					self.getImagesFor(countries: model)
 					)
 			}
 			.catch { error in
@@ -96,14 +92,10 @@ final class LocalEsimsViewModel: ESReactor {
 			}
 	}
 
-	private func getImagesForCountries(urls: [String]) -> ESObservable<Mutation> {
-		return fetchingAreasService.getImagesForCountries(urls)
+	private func getImagesFor(countries: [Country]) -> ESObservable<Mutation> {
+		return fetchingAreasService.getImages(for: countries)
 			.flatMap { model -> ESObservable<Mutation> in
-				let countries = self.currentState.countriesPopular?.enumerated().map { CountryWithImage(country: $1, image: model[$0]) } ?? []
-				return .concat(
-					.just(.mutateImagesForCountries(model)),
-					.just(.mutateCountryWithImages(countries))
-				)
+					.just(.mutateCountryWithImages(model))
 			}
 			.catch { error in
 					.just(.toggleError(error as? Error))
