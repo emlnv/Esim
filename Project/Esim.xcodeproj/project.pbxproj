@@ -16,6 +16,7 @@
 		B72FB53529BE29670035C8FA /* RootAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72FB53429BE29670035C8FA /* RootAssembly.swift */; };
 		B72FB53729BE66CB0035C8FA /* StoreAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72FB53629BE66CB0035C8FA /* StoreAssembly.swift */; };
 		B740F4FA29C267E600E57337 /* LocalHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B740F4F929C267E600E57337 /* LocalHeaderView.swift */; };
+		B74A351529C33645004DCD9B /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74A351429C33645004DCD9B /* ShadowView.swift */; };
 		B751CEED29C06F060048B5A0 /* ESBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B751CEEC29C06F060048B5A0 /* ESBaseViewController.swift */; };
 		B751CEF029C079020048B5A0 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = B751CEEF29C079020048B5A0 /* RxCocoa */; };
 		B751CEF229C079020048B5A0 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = B751CEF129C079020048B5A0 /* RxRelay */; };
@@ -100,6 +101,7 @@
 		B72FB53429BE29670035C8FA /* RootAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootAssembly.swift; sourceTree = "<group>"; };
 		B72FB53629BE66CB0035C8FA /* StoreAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreAssembly.swift; sourceTree = "<group>"; };
 		B740F4F929C267E600E57337 /* LocalHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalHeaderView.swift; sourceTree = "<group>"; };
+		B74A351429C33645004DCD9B /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		B751CEEC29C06F060048B5A0 /* ESBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESBaseViewController.swift; sourceTree = "<group>"; };
 		B751CEF329C081F70048B5A0 /* RxCocoaBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxCocoaBridge.swift; sourceTree = "<group>"; };
 		B751CEF629C0D67B0048B5A0 /* PackagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackagesViewController.swift; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 				B752C49D29BF3E4F00CD3DAD /* SearchBarView.swift */,
 				B752C49F29BF554A00CD3DAD /* ColoredSegmentedControl.swift */,
 				B752C4A129BF588F00CD3DAD /* CountryTableViewCell.swift */,
+				B74A351429C33645004DCD9B /* ShadowView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -597,6 +600,7 @@
 				B75B51D929BFB07E00B6D42A /* StoreViewModel.swift in Sources */,
 				B7E0ECB429C10BDA00CDF6FD /* LocalEsimsViewModel.swift in Sources */,
 				B752C49B29BF31E200CD3DAD /* Icon.swift in Sources */,
+				B74A351529C33645004DCD9B /* ShadowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

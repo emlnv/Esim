@@ -12,7 +12,8 @@ final class CountryTableViewCell: UITableViewCell {
 	private typealias C = Constants
 	private enum Constants {
 		static let title = "Hello"
-		static let marginLeading: CGFloat = 28
+		static let marginLeading: CGFloat = 20
+		static let marginVertical: CGFloat = 10
 		static let height: CGFloat = 28
 		static let width: CGFloat = 37
 	}
@@ -31,6 +32,14 @@ final class CountryTableViewCell: UITableViewCell {
 		return image
 	}()
 	
+	private var bgView: ShadowView = {
+		let view = ShadowView()
+		view.clipsToBounds = false
+		view.layer.cornerRadius = 7
+		view.backgroundColor = .systemBackground
+		return view
+	}()
+	
 	// MARK: - Init
 	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -38,6 +47,7 @@ final class CountryTableViewCell: UITableViewCell {
 		selectionStyle = .none
 		separatorInset = UIEdgeInsets(top: 0, left: UIScreen.main.bounds.width, bottom: 0, right: 0)
 		configureLayout()
+		backgroundColor = .clear
 	}
 	
 	required init?(coder: NSCoder) {
@@ -56,18 +66,27 @@ final class CountryTableViewCell: UITableViewCell {
 	// MARK: - Private methods
 	
 	private func configureLayout() {
-		[label, image].forEach(contentView.addSubview)
+		[bgView, label, image].forEach(contentView.addSubview)
+		
+		bgView.translatesAutoresizingMaskIntoConstraints = false
+		NSLayoutConstraint.activate([
+			bgView.leadingAnchor	.constraint(equalTo: contentView.leadingAnchor, constant: C.marginLeading),
+			bgView.trailingAnchor	.constraint(equalTo: contentView.trailingAnchor, constant: -C.marginLeading),
+			bgView.topAnchor		.constraint(equalTo: contentView.topAnchor, constant: 0),
+			bgView.bottomAnchor		.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -C.marginVertical),
+			bgView.heightAnchor		.constraint(equalToConstant: 55)
+		])
 		
 		label.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
-			label.centerYAnchor	.constraint(equalTo: contentView.centerYAnchor),
+			label.centerYAnchor	.constraint(equalTo: bgView.centerYAnchor),
 			label.leadingAnchor	.constraint(equalTo: image.trailingAnchor, constant: C.marginLeading/2)
 		])
 		
 		image.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
-			image.centerYAnchor	.constraint(equalTo: contentView.centerYAnchor),
-			image.leadingAnchor	.constraint(equalTo: contentView.leadingAnchor, constant: C.marginLeading),
+			image.centerYAnchor	.constraint(equalTo: bgView.centerYAnchor),
+			image.leadingAnchor	.constraint(equalTo: bgView.leadingAnchor, constant: C.marginLeading),
 			image.heightAnchor	.constraint(equalToConstant: C.height),
 			image.widthAnchor	.constraint(equalToConstant: C.width)
 		])
