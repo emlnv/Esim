@@ -6,4 +6,4 @@ UI is not ready, current state of UI
 
 ***
 Work in progress
-[ ===== 50% ----- ]
+[ ====== 60% ---- ]
