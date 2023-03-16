@@ -16,12 +16,14 @@ final class LocalEsimsViewController: ESTableViewController<LocalEsimsViewModel>
 	}
 	
 	override func bind(reactor: LocalEsimsViewModel) {
+		let state = reactor.state.asDriver(onErrorJustReturn: reactor.currentState)
+
 		rx.methodInvoked(#selector(viewDidLoad))
 			.map { _ in Reactor.Action.getCountriesPopular }
 			.bind(to: reactor.action)
 			.disposed(by: disposeBag)
 		
-		reactor.state.asDriver(onErrorJustReturn: reactor.initialState)
+		state
 			.compactMap (\.countriesWithImage)
 			.distinctUntilChanged()
 			.drive(tableView.rx.items(
@@ -35,6 +37,15 @@ final class LocalEsimsViewController: ESTableViewController<LocalEsimsViewModel>
 		tableView.rx.modelSelected(CountryWithImage.self)
 			.map(Reactor.Action.setSelectCountry)
 			.bind(to: reactor.action)
+			.disposed(by: disposeBag)
+		
+		state
+			.map { $0.isLoading }
+			.distinctUntilChanged()
+			.drive(onNext: { [weak self] in
+				guard let self else { return }
+				ActivityIndicatorManager.updateActivityIndicator(forView: self.view, isHidden: !$0)
+			})
 			.disposed(by: disposeBag)
 	}
 }

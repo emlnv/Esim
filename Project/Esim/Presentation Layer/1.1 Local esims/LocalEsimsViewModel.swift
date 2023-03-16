@@ -23,6 +23,7 @@ final class LocalEsimsViewModel: ESReactor {
 		case mutateCountries([Country])
 		case mutateCountryWithImages([CountryWithImage])
 		case mutateSelectedCountry(CountryWithImage)
+		case mutateIsLoading(Bool)
 	}
 	
 	struct State {
@@ -30,6 +31,7 @@ final class LocalEsimsViewModel: ESReactor {
 		var countriesPopular: [Country]?
 		var countriesWithImage: [CountryWithImage]?
 		var selectedCountry: CountryWithImage?
+		var isLoading: Bool = false
 	}
 	
 	// MARK: - Dependencies
@@ -75,30 +77,41 @@ final class LocalEsimsViewModel: ESReactor {
 				newState.countriesWithImage = countries
 			case .mutateSelectedCountry(let country):
 				newState.selectedCountry = country
+			case .mutateIsLoading(let isLoading):
+				newState.isLoading = isLoading
 		}
 		return newState
 	}
 	
 	private var getCountriesPopular: ESObservable<Mutation> {
-		fetchingAreasService.getCountriesPopular()
-			.flatMap { model -> ESObservable<Mutation> in
-				.concat(
-					.just(.mutateCountries(model.sorted { $0.title < $1.title } )),
-					self.getImagesFor(countries: model)
-					)
-			}
-			.catch { error in
-					.just(.toggleError(error as? Error))
-			}
+		.concat(
+			.just(.mutateIsLoading(true)),
+			fetchingAreasService.getCountriesPopular()
+				.flatMap { model -> ESObservable<Mutation> in
+						.concat(
+							.just(.mutateCountries(model.sorted { $0.title < $1.title } )),
+							self.getImagesFor(countries: model)
+						)
+				}
+				.catch { error in
+						.just(.toggleError(error as? Error))
+				},
+			.just(.mutateIsLoading(false))
+		)
+			
 	}
 
 	private func getImagesFor(countries: [Country]) -> ESObservable<Mutation> {
-		return fetchingAreasService.getImages(for: countries)
-			.flatMap { model -> ESObservable<Mutation> in
-					.just(.mutateCountryWithImages(model))
-			}
-			.catch { error in
-					.just(.toggleError(error as? Error))
-			}
+		.concat(
+			.just(.mutateIsLoading(true)),
+			fetchingAreasService.getImages(for: countries)
+				.flatMap { model -> ESObservable<Mutation> in
+						.just(.mutateCountryWithImages(model))
+				}
+				.catch { error in
+						.just(.toggleError(error as? Error))
+				},
+			.just(.mutateIsLoading(true))
+		)
 	}
 }

@@ -20,12 +20,14 @@ final class PackagesViewModel: ESReactor {
 	enum Mutation {
 		case toggleError(Error?)
 		case mutatePackages([Package])
+		case mutateIsLoading(Bool)
 	}
 	
 	struct State {
 		var error: Error?
 		var packages: [Package]?
 		var selectedCountry: CountryWithImage
+		var isLoading: Bool = false
 	}
 	
 	// MARK: - Dependencies
@@ -69,17 +71,23 @@ final class PackagesViewModel: ESReactor {
 				newState.error = error
 			case .mutatePackages(let packages):
 				newState.packages = packages
+			case .mutateIsLoading(let isLoading):
+				newState.isLoading = isLoading
 		}
 		return newState
 	}
 	
 	private func getPackageBy(_ id: Int) -> ESObservable<Mutation> {
-		return fetchingPackagesService.getPackageBy(id: id)
-			.flatMap { model -> ESObservable<Mutation> in
-				return .just(.mutatePackages(model.packages ?? []))
-			}
-			.catch { error in
-				.just(.toggleError(error))
-			}
+		.concat(
+			.just(.mutateIsLoading(true)),
+			fetchingPackagesService.getPackageBy(id: id)
+				.flatMap { model -> ESObservable<Mutation> in
+					return .just(.mutatePackages(model.packages ?? []))
+				}
+				.catch { error in
+						.just(.toggleError(error))
+			},
+			.just(.mutateIsLoading(false))
+		)
 	}
 }

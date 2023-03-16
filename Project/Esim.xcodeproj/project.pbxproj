@@ -47,6 +47,7 @@
 		B767B8E429C1FA6500A01B1A /* ES+UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = B767B8E329C1FA6500A01B1A /* ES+UIFont.swift */; };
 		B767B8EC29C2132700A01B1A /* EsimTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B767B8EB29C2132700A01B1A /* EsimTests.swift */; };
 		B767B90729C214EB00A01B1A /* FetchingAreasServiceMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = B767B90629C214EB00A01B1A /* FetchingAreasServiceMocks.swift */; };
+		B770CE8D29C3972C00772E83 /* ActivityIndicatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B770CE8C29C3972C00772E83 /* ActivityIndicatorManager.swift */; };
 		B7D1343929C1BE3A00D0F019 /* ESTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D1343829C1BE3A00D0F019 /* ESTableViewController.swift */; };
 		B7D1344B29C1DDC900D0F019 /* IBMPlexSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B7D1343C29C1DDC900D0F019 /* IBMPlexSans-SemiBoldItalic.ttf */; };
 		B7D1344C29C1DDC900D0F019 /* IBMPlexSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B7D1343D29C1DDC900D0F019 /* IBMPlexSans-Medium.ttf */; };
@@ -131,6 +132,7 @@
 		B767B8E929C2132700A01B1A /* EsimTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EsimTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B767B8EB29C2132700A01B1A /* EsimTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EsimTests.swift; sourceTree = "<group>"; };
 		B767B90629C214EB00A01B1A /* FetchingAreasServiceMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchingAreasServiceMocks.swift; sourceTree = "<group>"; };
+		B770CE8C29C3972C00772E83 /* ActivityIndicatorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorManager.swift; sourceTree = "<group>"; };
 		B7D1343829C1BE3A00D0F019 /* ESTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESTableViewController.swift; sourceTree = "<group>"; };
 		B7D1343C29C1DDC900D0F019 /* IBMPlexSans-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		B7D1343D29C1DDC900D0F019 /* IBMPlexSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Medium.ttf"; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 			children = (
 				B751CEEC29C06F060048B5A0 /* ESBaseViewController.swift */,
 				B7D1343829C1BE3A00D0F019 /* ESTableViewController.swift */,
+				B770CE8C29C3972C00772E83 /* ActivityIndicatorManager.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -608,6 +611,7 @@
 				B7E0ECA929C0FF9B00CDF6FD /* PackagesViewModel.swift in Sources */,
 				B760B91C29BE02930067231C /* AppDelegate.swift in Sources */,
 				B72FB53329BE24450035C8FA /* StoreCoordinator.swift in Sources */,
+				B770CE8D29C3972C00772E83 /* ActivityIndicatorManager.swift in Sources */,
 				B75B51F329BFBE8300B6D42A /* MoyaBridge.swift in Sources */,
 				B7E0ECB229C10A4D00CDF6FD /* LocalEsimsViewController.swift in Sources */,
 				B7E0ECAE29C1043400CDF6FD /* FetchingPackagesService.swift in Sources */,

@@ -59,7 +59,6 @@ final class StoreViewController: ESBaseViewController<StoreViewModel> {
 	private func configureUI() {
 		configureNavbar()
 		configureSearchBar()
-		[segmentedControl].forEach(view.addSubview)
 		configureSegmentedControl(into: view)
 		setChildViewController(localEsimsViewController)
 	}
@@ -80,7 +79,9 @@ final class StoreViewController: ESBaseViewController<StoreViewModel> {
 		appearance.shadowColor = nil
 		navigationItem.standardAppearance = appearance
 		navigationItem.title = C.title
-		
+		navigationItem.backBarButtonItem = .init(title: String(), style: .plain, target: nil, action: nil)
+		navigationItem.backBarButtonItem?.tintColor = .darkGray
+
 		navigationController?.navigationBar.prefersLargeTitles = true
 	}
 	
@@ -97,6 +98,7 @@ final class StoreViewController: ESBaseViewController<StoreViewModel> {
 	}
 
 	private func configureSegmentedControl(into view: UIView) {
+		[segmentedControl].forEach(view.addSubview)
 		func hideBackground() {
 			DispatchQueue.main.async {
 				(0...(self.segmentedControl.numberOfSegments-1)).forEach {
@@ -106,7 +108,6 @@ final class StoreViewController: ESBaseViewController<StoreViewModel> {
 		hideBackground()
 		let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13)]
 		segmentedControl.setTitleTextAttributes(attributes, for: .normal)
-
 		segmentedControl.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
 			segmentedControl.leadingAnchor	.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor,  constant:  C.offset * 2),
@@ -117,6 +118,10 @@ final class StoreViewController: ESBaseViewController<StoreViewModel> {
 	}
 	
 	override func bind(reactor: StoreViewModel) {
+		segmentedControl.rx.selectedSegmentIndex
+			.map { _ in LocalEsimsViewModel.Action.getCountriesPopular }
+			.bind(to: localEsimsViewController.reactor!.action)
+			.disposed(by: disposeBag)
 	}
 }
 
