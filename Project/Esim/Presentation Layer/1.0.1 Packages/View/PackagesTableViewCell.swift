@@ -29,12 +29,14 @@ final class PackagesTableViewCell: UITableViewCell {
 	
 	private var image: UIImageView = {
 		let image = UIImageView()
+		image.contentMode = .scaleAspectFill
 		return image
 	}()
 	
 	private var card: UIImageView = {
 		let image = UIImageView()
 		image.image = Icon.esim
+		image.contentMode = .scaleAspectFill
 		return image
 	}()
 	
@@ -71,37 +73,28 @@ final class PackagesTableViewCell: UITableViewCell {
 	// MARK: - Private methods
 	
 	private func configureLayout() {
-		[card, bgView, label, image].forEach(contentView.addSubview)
+		[card, label, image].forEach(contentView.addSubview)
 		
 		card.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
-			card.leadingAnchor	.constraint(equalTo: contentView.leadingAnchor, constant: C.marginLeading),
-			card.trailingAnchor	.constraint(equalTo: contentView.trailingAnchor, constant: -C.marginLeading),
+			card.centerXAnchor	.constraint(equalTo: contentView.centerXAnchor),
 			card.topAnchor		.constraint(equalTo: contentView.topAnchor, constant: 0),
-			card.bottomAnchor		.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -C.marginVertical*2),
-			card.heightAnchor		.constraint(equalToConstant: 335)
+			card.bottomAnchor	.constraint(lessThanOrEqualTo: contentView.bottomAnchor),
+			card.widthAnchor	.constraint(equalToConstant: 375)
 		])
 
-		bgView.translatesAutoresizingMaskIntoConstraints = false
-		NSLayoutConstraint.activate([
-			bgView.leadingAnchor	.constraint(equalTo: contentView.leadingAnchor, constant: C.marginLeading),
-			bgView.trailingAnchor	.constraint(equalTo: contentView.trailingAnchor, constant: -C.marginLeading),
-			bgView.bottomAnchor		.constraint(equalTo: card.bottomAnchor),
-			bgView.heightAnchor		.constraint(equalToConstant: 315)
-		])
-		
 		label.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
-			label.centerYAnchor	.constraint(equalTo: bgView.centerYAnchor),
-			label.leadingAnchor	.constraint(equalTo: image.trailingAnchor, constant: C.marginLeading/2)
+			label.centerYAnchor		.constraint(equalTo: card.centerYAnchor, constant: -8),
+			label.trailingAnchor	.constraint(equalTo: card.trailingAnchor, constant: C.marginLeading/2)
 		])
 		
 		image.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
-			image.centerYAnchor	.constraint(equalTo: bgView.centerYAnchor),
-			image.leadingAnchor	.constraint(equalTo: bgView.leadingAnchor, constant: C.marginLeading),
-			image.heightAnchor	.constraint(equalToConstant: C.height),
-			image.widthAnchor	.constraint(equalToConstant: C.width)
+			image.topAnchor	.constraint(equalTo: card.topAnchor, constant: C.marginVertical*2),
+			image.trailingAnchor	.constraint(equalTo: card.trailingAnchor, constant: -C.marginLeading*2),
+			image.heightAnchor	.constraint(equalToConstant: 90),
+			image.widthAnchor	.constraint(equalToConstant: 142)
 		])
 	}
 }

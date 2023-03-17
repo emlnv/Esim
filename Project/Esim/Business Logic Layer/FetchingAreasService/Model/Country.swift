@@ -38,7 +38,7 @@ struct Country: Decodable, Equatable {
 	var packages: [Package]?
 }
 
-struct Flag: Decodable, Equatable {
+struct Flag: Decodable, Equatable, Hashable {
 	let width: Int
 	let height: Int
 	let url: String

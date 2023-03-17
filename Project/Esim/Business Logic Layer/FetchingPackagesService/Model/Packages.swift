@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Package: Decodable, Equatable {
+struct Package: Decodable, Equatable, Hashable {
 	
 	let id: Int?
 	let slug: String?
@@ -25,7 +25,7 @@ struct Package: Decodable, Equatable {
 	var `operator`: Operator?
 }
 
-struct Operator: Decodable, Equatable {
+struct Operator: Decodable, Equatable, Hashable {
 	
 	let id: Int?
 	let title: String?

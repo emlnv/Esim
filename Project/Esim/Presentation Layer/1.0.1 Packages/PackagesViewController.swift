@@ -62,7 +62,7 @@ final class PackagesViewController: ESTableViewController<PackagesViewModel> {
 extension PackagesViewController: UITableViewDelegate {
 	
 	func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-		20
+		28
 	}
 	
 	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
