@@ -10,6 +10,7 @@ import Foundation
 protocol IFetchingAreasServicable {
 	func getCountriesPopular() -> ESObservable<[Country]>
 	func getImages(for: [Country]) -> ESObservable<[CountryWithImage]>
+	func getRegions() -> ESObservable<[Country]>
 }
 
 struct FetchingAreasService: IFetchingAreasServicable {
@@ -62,5 +63,11 @@ struct FetchingAreasService: IFetchingAreasServicable {
 		}
 		return provider.rx.request(.getImage(url))
 			.mapImage()
+	}
+	
+	func getRegions() -> ESObservable<[Country]> {
+		provider.rx.request(.getRegions)
+			.map([Country].self, using: decoder)
+			.asObservable()
 	}
 }

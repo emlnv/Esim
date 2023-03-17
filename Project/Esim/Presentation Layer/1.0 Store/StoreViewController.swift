@@ -27,13 +27,13 @@ final class StoreViewController: ESBaseViewController<StoreViewModel> {
 	private var observerLargeTitle: NSKeyValueObservation?
 
 	var localEsimsViewController: LocalEsimsViewController
-	var regionalEsimsViewController: UIViewController
+	var regionalEsimsViewController: 	RegionalEsimsViewController
 	
 	// MARK: - Lifecycle
 
 	init(
 		localEsimsViewController: LocalEsimsViewController,
-		regionalEsimsViewController: UIViewController,
+		regionalEsimsViewController: RegionalEsimsViewController,
 		viewModel: Reactor) {
 			self.localEsimsViewController = localEsimsViewController
 			self.regionalEsimsViewController = regionalEsimsViewController
@@ -60,7 +60,6 @@ final class StoreViewController: ESBaseViewController<StoreViewModel> {
 		configureNavbar()
 		configureSearchBar()
 		configureSegmentedControl(into: view)
-		setChildViewController(localEsimsViewController)
 	}
 
 	private func configureNavbar() {
@@ -119,8 +118,13 @@ final class StoreViewController: ESBaseViewController<StoreViewModel> {
 	
 	override func bind(reactor: StoreViewModel) {
 		segmentedControl.rx.selectedSegmentIndex
-			.map { _ in LocalEsimsViewModel.Action.getCountriesPopular }
-			.bind(to: localEsimsViewController.reactor!.action)
+			.subscribe(onNext: { segment in
+				switch segment {
+					case 1:  self.viewController = self.regionalEsimsViewController
+					case 2:  self.viewController = self.regionalEsimsViewController
+					default: self.viewController = self.localEsimsViewController
+				}
+			})
 			.disposed(by: disposeBag)
 	}
 }
@@ -134,7 +138,7 @@ extension StoreViewController {
 		set { guard let newViewController = newValue else {
 				return removeChildViewControllers()
 			}
-			setChildViewController(newViewController)
+			dissolveTransition(to: newViewController)
 		}
 	}
 
@@ -188,7 +192,7 @@ extension StoreViewController {
 	}
 
 	private func dissolveTransition(to viewController: UIViewController) {
-		guard let previousViewController = children.first else {
+		guard let previousViewController = children.first, previousViewController != viewController else {
 			return setChildViewController(viewController)
 		}
 		addChild(viewController)

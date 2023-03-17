@@ -36,6 +36,7 @@ struct Country: Decodable, Equatable, Hashable {
 	var title: String
 	var image: Flag
 	var packages: [Package]?
+	var package_count: Int?
 }
 
 struct Flag: Decodable, Equatable, Hashable {
