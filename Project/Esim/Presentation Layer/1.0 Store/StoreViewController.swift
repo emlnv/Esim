@@ -26,17 +26,20 @@ final class StoreViewController: ESBaseViewController<StoreViewModel> {
 	private let rightNavButton = UIBarButtonItem(image: Icon.loggedOut, style: .plain, target: StoreViewController.self, action: nil)
 	private var observerLargeTitle: NSKeyValueObservation?
 
-	var localEsimsViewController: LocalEsimsViewController
+	var localEsimsViewController: 		LocalEsimsViewController
 	var regionalEsimsViewController: 	RegionalEsimsViewController
+	var globalEsimsViewController: 		GlobalEsimsViewController
 	
 	// MARK: - Lifecycle
 
 	init(
 		localEsimsViewController: LocalEsimsViewController,
 		regionalEsimsViewController: RegionalEsimsViewController,
+		globalEsimsViewController: GlobalEsimsViewController,
 		viewModel: Reactor) {
 			self.localEsimsViewController = localEsimsViewController
 			self.regionalEsimsViewController = regionalEsimsViewController
+			self.globalEsimsViewController = globalEsimsViewController
 			super.init(viewModel: viewModel)
 			self.reactor = viewModel
 	}
@@ -121,7 +124,7 @@ final class StoreViewController: ESBaseViewController<StoreViewModel> {
 			.subscribe(onNext: { segment in
 				switch segment {
 					case 1:  self.viewController = self.regionalEsimsViewController
-					case 2:  self.viewController = self.regionalEsimsViewController
+					case 2:  self.viewController = self.globalEsimsViewController
 					default: self.viewController = self.localEsimsViewController
 				}
 			})

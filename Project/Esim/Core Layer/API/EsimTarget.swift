@@ -10,12 +10,13 @@ import Foundation
 enum EsimTarget: ESTargetType {
 	case getPopularCoutries
 	case getPackagesForCountry(Int)
+	case getGlobalPackages
 	case getImage(URL)
 	case getRegions
 	
 	var baseURL: URL {
 		switch self {
-			case .getPopularCoutries, .getPackagesForCountry, .getRegions:
+			case .getPopularCoutries, .getPackagesForCountry, .getRegions, .getGlobalPackages:
 				return URL(string: "https://www.airalo.com")! // swiftlint:disable:this force_unwrapping
 			case .getImage(let url): return url
 		}
@@ -31,12 +32,14 @@ enum EsimTarget: ESTargetType {
 				return "/api/v2/countries/" + String(id)
 			case .getRegions:
 				return "/api/v2/regions"
+			case .getGlobalPackages:
+				return "/api/v2/regions/world"
 		}
 	}
 	
 	var method: ESMethod {
 		switch self {
-			case .getPopularCoutries, .getImage, .getPackagesForCountry, .getRegions:
+			case .getPopularCoutries, .getImage, .getPackagesForCountry, .getRegions, .getGlobalPackages:
 				return .get
 		}
 	}
@@ -59,12 +62,17 @@ enum EsimTarget: ESTargetType {
 					"id": id
 				]
 				return .requestParameters(parameters: parameters, encoding: ESURLEncoding.default)
+			case .getGlobalPackages:
+				let parameters: [String: Any] = [
+					"id": "world"
+				]
+				return .requestParameters(parameters: parameters, encoding: ESURLEncoding.default)
 		}
 	}
 	
 	var headers: [String : String]? {
 		switch self {
-			case .getPopularCoutries, .getPackagesForCountry, .getRegions:
+			case .getPopularCoutries, .getPackagesForCountry, .getRegions, .getGlobalPackages:
 				return [
 					"Content-Type": "application/json",
 					"Accept-Language": "us-US;q=1.0"

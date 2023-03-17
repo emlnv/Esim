@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class PackagesViewController: ESTableViewController<PackagesViewModel> {
+final class GlobalEsimsViewController: ESTableViewController<GlobalEsimsViewModel> {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -16,11 +16,11 @@ final class PackagesViewController: ESTableViewController<PackagesViewModel> {
 		parent?.navigationItem.backBarButtonItem = .init(title: String(), style: .plain, target: nil, action: nil)
 	}
 	
-	override func bind(reactor: PackagesViewModel) {
+	override func bind(reactor: GlobalEsimsViewModel) {
 		let state = reactor.state.asDriver(onErrorJustReturn: reactor.currentState)
-
+		
 		rx.methodInvoked(#selector(viewDidLoad))
-			.map { _ in Reactor.Action.getPackagesBy(id: reactor.currentState.selectedCountry.id) }
+			.map { _ in Reactor.Action.getGlobalPackages }
 			.bind(to: reactor.action)
 			.disposed(by: disposeBag)
 		
@@ -34,18 +34,12 @@ final class PackagesViewController: ESTableViewController<PackagesViewModel> {
 				cell.configure(package: data)
 			}
 			.disposed(by: disposeBag)
-
+		
 		state
 			.compactMap { $0.error }
 			.drive(onNext: { [weak self] error in
-				self?.showOkAlert(title: "Error", message: error.localizedDescription)
+				self?.showOkAlert(title: "Error", message: error?.localizedDescription)
 			})
-			.disposed(by: disposeBag)
-
-		state
-			.map (\.selectedCountry.title)
-			.asObservable()
-			.bind(to: rx.title)
 			.disposed(by: disposeBag)
 		
 		state
@@ -59,7 +53,7 @@ final class PackagesViewController: ESTableViewController<PackagesViewModel> {
 	}
 }
 
-extension PackagesViewController: UITableViewDelegate {
+extension GlobalEsimsViewController: UITableViewDelegate {
 	
 	func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
 		28

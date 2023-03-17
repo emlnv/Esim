@@ -47,6 +47,13 @@ final class RegionalEsimsViewController: ESTableViewController<RegionalEsimsView
 				ActivityIndicatorManager.updateActivityIndicator(forView: self.view, isHidden: !$0)
 			})
 			.disposed(by: disposeBag)
+		
+		state
+			.compactMap { $0.error }
+			.drive(onNext: { [weak self] error in
+				self?.showOkAlert(title: "Error", message: error.localizedDescription)
+			})
+			.disposed(by: disposeBag)
 	}
 }
 

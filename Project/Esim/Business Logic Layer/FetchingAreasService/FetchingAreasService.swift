@@ -59,7 +59,7 @@ struct FetchingAreasService: IFetchingAreasServicable {
 	
 	private func getFlag(by url: String) -> ESSingle<ESImage> {
 		guard let url = URL(string: url) else {
-			return .error(StoreViewModel.SVMError.failedGetServerRespond)
+			return .error(StoreViewModel.Error.failedGetServerRespond)
 		}
 		return provider.rx.request(.getImage(url))
 			.mapImage()

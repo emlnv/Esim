@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class PackagesViewModel: ESReactor {
+final class GlobalEsimsViewModel: ESReactor {
 	
 	enum Error: LocalizedError {
 		case failedGetServerRespond
@@ -15,7 +15,7 @@ final class PackagesViewModel: ESReactor {
 	}
 	
 	enum Action {
-		case getPackagesBy(id: Int)
+		case getGlobalPackages
 	}
 	
 	enum Mutation {
@@ -27,7 +27,6 @@ final class PackagesViewModel: ESReactor {
 	struct State {
 		var error: Swift.Error?
 		var packages: [Package]?
-		var selectedCountry: CountryWithImage
 		var isLoading: Bool = false
 	}
 	
@@ -35,7 +34,6 @@ final class PackagesViewModel: ESReactor {
 	
 	private let fetchingPackagesService: IFetchingPackagesServicable
 	private let userDefaults: UserDefaults
-	private let selectedCountry: CountryWithImage
 	
 	// MARK: - Internal properties
 	
@@ -48,19 +46,17 @@ final class PackagesViewModel: ESReactor {
 	
 	init(
 		fetchingPackagesService: IFetchingPackagesServicable,
-		userDefaults: UserDefaults,
-		selectedCountry: CountryWithImage
+		userDefaults: UserDefaults
 	) {
 		self.fetchingPackagesService = fetchingPackagesService
 		self.userDefaults = userDefaults
-		self.selectedCountry = selectedCountry
-		self.initialState =  State(selectedCountry: selectedCountry)
+		self.initialState =  State()
 	}
 	
 	func mutate(action: Action) -> ESObservable<Mutation> {
 		switch action {
-			case .getPackagesBy(let id):
-				return getPackagesByCountry(id)
+			case .getGlobalPackages:
+				return getPackages()
 		}
 	}
 	
@@ -78,15 +74,16 @@ final class PackagesViewModel: ESReactor {
 		return newState
 	}
 	
-	private func getPackagesByCountry(_ id: Int) -> ESObservable<Mutation> {
+	private func getPackages() -> ESObservable<Mutation> {
 		.concat(
 			.just(.mutateIsLoading(true)),
 			
-			fetchingPackagesService.getPackagesByCountry(id: id)
+			fetchingPackagesService.getGlobalPackages()
 				.flatMap { self.getImagesFor(packages: $0.packages ?? []) }
-				.catch { .just(.toggleError($0)) },
+				.catch {
+					.just(.toggleError($0)) },
 			
-			.just(.mutateIsLoading(false))
+				.just(.mutateIsLoading(false))
 		)
 	}
 	
@@ -96,11 +93,11 @@ final class PackagesViewModel: ESReactor {
 			
 			fetchingPackagesService.getImages(for: packages)
 				.flatMap { model -> ESObservable<Mutation> in
-						.just(.mutatePackages(model)) }
+					.just(.mutatePackages(model)) }
 				.catch { error in
-						.just(.toggleError(error)) },
+					.just(.toggleError(error)) },
 			
-			.just(.mutateIsLoading(true))
+				.just(.mutateIsLoading(true))
 		)
 	}
 }

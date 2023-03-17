@@ -8,7 +8,7 @@
 import Foundation
 
 final class StoreViewModel: ESReactor {
-	enum SVMError: LocalizedError {
+	enum Error: LocalizedError {
 		case failedGetServerRespond
 		case failedCreatingURL
 	}
@@ -17,11 +17,11 @@ final class StoreViewModel: ESReactor {
 	}
 	
 	enum Mutation {
-		case toggleError(Error?)
+		case toggleError(Swift.Error?)
 	}
 	
 	struct State {
-		var error: Error?
+		var error: Swift.Error?
 	}
 	
 	// MARK: - Dependencies

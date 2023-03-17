@@ -19,7 +19,7 @@ final class LocalEsimsViewModel: ESReactor {
 	}
 	
 	enum Mutation {
-		case toggleError(Error?)
+		case toggleError(Swift.Error?)
 		case mutateCountries([Country])
 		case mutateCountryWithImages([CountryWithImage])
 		case mutateSelectedCountry(CountryWithImage)
@@ -27,7 +27,7 @@ final class LocalEsimsViewModel: ESReactor {
 	}
 	
 	struct State {
-		var error: Error?
+		var error: Swift.Error?
 		var countriesPopular: [Country]?
 		var countriesWithImage: [CountryWithImage]?
 		var selectedCountry: CountryWithImage?
@@ -94,7 +94,7 @@ final class LocalEsimsViewModel: ESReactor {
 						)
 				}
 				.catch { error in
-						.just(.toggleError(error as? Error))
+						.just(.toggleError(error))
 				},
 			.just(.mutateIsLoading(false))
 		)
@@ -109,7 +109,7 @@ final class LocalEsimsViewModel: ESReactor {
 						.just(.mutateCountryWithImages(model))
 				}
 				.catch { error in
-						.just(.toggleError(error as? Error))
+						.just(.toggleError(error))
 				},
 			.just(.mutateIsLoading(true))
 		)

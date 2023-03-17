@@ -10,6 +10,7 @@ import Foundation
 protocol IFetchingPackagesServicable {
 	func getPackagesByCountry(id: Int) -> ESObservable<Country>
 	func getImages(for packages: [Package]) -> ESObservable<[Package]>
+	func getGlobalPackages() -> ESObservable<Country>
 }
 
 struct FetchingPackagesService: IFetchingPackagesServicable {
@@ -62,9 +63,15 @@ struct FetchingPackagesService: IFetchingPackagesServicable {
 	
 	private func getImage(by url: String) -> ESSingle<ESImage> {
 		guard let url = URL(string: url) else {
-			return .error(StoreViewModel.SVMError.failedGetServerRespond)
+			return .error(StoreViewModel.Error.failedGetServerRespond)
 		}
 		return provider.rx.request(.getImage(url))
 			.mapImage()
+	}
+	
+	func getGlobalPackages() -> ESObservable<Country> {
+		provider.rx.request(.getGlobalPackages)
+			.map(Country.self, using: decoder)
+			.asObservable()
 	}
 }
