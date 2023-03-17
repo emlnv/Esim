@@ -60,7 +60,7 @@ struct FetchingAreasService: IFetchingAreasServicable {
 		guard let url = URL(string: url) else {
 			return .error(StoreViewModel.SVMError.failedGetServerRespond)
 		}
-		return provider.rx.request(.getFlag(url))
+		return provider.rx.request(.getImage(url))
 			.mapImage()
 	}
 }

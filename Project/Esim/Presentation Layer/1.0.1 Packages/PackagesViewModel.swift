@@ -59,7 +59,7 @@ final class PackagesViewModel: ESReactor {
 	func mutate(action: Action) -> ESObservable<Mutation> {
 		switch action {
 			case .getPackagesBy(let id):
-				return getPackageBy(id)
+				return getPackagesByCountry(id)
 		}
 	}
 	
@@ -77,17 +77,29 @@ final class PackagesViewModel: ESReactor {
 		return newState
 	}
 	
-	private func getPackageBy(_ id: Int) -> ESObservable<Mutation> {
+	private func getPackagesByCountry(_ id: Int) -> ESObservable<Mutation> {
 		.concat(
 			.just(.mutateIsLoading(true)),
-			fetchingPackagesService.getPackageBy(id: id)
-				.flatMap { model -> ESObservable<Mutation> in
-					return .just(.mutatePackages(model.packages ?? []))
-				}
-				.catch { error in
-						.just(.toggleError(error))
-			},
+			
+			fetchingPackagesService.getPackagesByCountry(id: id)
+				.flatMap { self.getImagesFor(packages: $0.packages ?? []) }
+				.catch { .just(.toggleError($0)) },
+			
 			.just(.mutateIsLoading(false))
+		)
+	}
+	
+	private func getImagesFor(packages: [Package]) -> ESObservable<Mutation> {
+		.concat(
+			.just(.mutateIsLoading(true)),
+			
+			fetchingPackagesService.getImages(for: packages)
+				.flatMap { model -> ESObservable<Mutation> in
+						.just(.mutatePackages(model)) }
+				.catch { error in
+						.just(.toggleError(error)) },
+			
+			.just(.mutateIsLoading(true))
 		)
 	}
 }

@@ -14,4 +14,5 @@ enum Icon {
 	static let iconSearch = UIImage(named: "iconSearch")
 	static let iconArrow = UIImage(named: "icon_arrow_general")
 	static let loggedOut = UIImage(named: "buttonLoggedOut")
+	static let esim = UIImage(named: "eSIM")
 }

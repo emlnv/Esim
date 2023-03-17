@@ -10,13 +10,13 @@ import Foundation
 enum EsimTarget: ESTargetType {
 	case getPopularCoutries
 	case getPackagesForCountry(Int)
-	case getFlag(URL)
+	case getImage(URL)
 	
 	var baseURL: URL {
 		switch self {
 			case .getPopularCoutries, .getPackagesForCountry:
 				return URL(string: "https://www.airalo.com")! // swiftlint:disable:this force_unwrapping
-			case .getFlag(let url): return url
+			case .getImage(let url): return url
 		}
 	}
 	
@@ -24,7 +24,7 @@ enum EsimTarget: ESTargetType {
 		switch self {
 			case .getPopularCoutries:
 				return "/api/v2/countries"
-			case .getFlag:
+			case .getImage:
 				return String()
 			case .getPackagesForCountry(let id):
 				return "/api/v2/countries/" + String(id)
@@ -33,7 +33,7 @@ enum EsimTarget: ESTargetType {
 	
 	var method: ESMethod {
 		switch self {
-			case .getPopularCoutries, .getFlag, .getPackagesForCountry:
+			case .getPopularCoutries, .getImage, .getPackagesForCountry:
 				return .get
 		}
 	}
@@ -49,7 +49,7 @@ enum EsimTarget: ESTargetType {
 					"type": "popular"
 				]
 				return .requestParameters(parameters: parameters, encoding: ESURLEncoding.default)
-			case .getFlag:
+			case .getImage:
 				return .requestPlain
 			case .getPackagesForCountry(let id):
 				let parameters: [String: Any] = [
@@ -66,7 +66,7 @@ enum EsimTarget: ESTargetType {
 					"Content-Type": "application/json",
 					"Accept-Language": "us-US;q=1.0"
 				]
-			case .getFlag: return nil
+			case .getImage: return nil
 		}
 	}
 	

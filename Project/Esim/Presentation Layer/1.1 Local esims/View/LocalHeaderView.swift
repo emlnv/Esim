@@ -13,13 +13,21 @@ final class LocalHeaderView: UITableViewHeaderFooterView {
 		let label = UILabel()
 		label.font = .boldSystemFont(ofSize: 19)
 		label.textColor = .label
-		label.text = "Popular countries"
 		return label
 	}()
 	
+	private var needLabel: Bool
+	
 	// MARK: - Init
 	
+	init(reuseIdentifier: String?, needLabel: Bool) {
+		self.needLabel = needLabel
+		super.init(reuseIdentifier: reuseIdentifier)
+		configureUI()
+	}
+	
 	override init(reuseIdentifier: String?) {
+		needLabel = true
 		super.init(reuseIdentifier: reuseIdentifier)
 		configureUI()
 	}
@@ -52,6 +60,8 @@ final class LocalHeaderView: UITableViewHeaderFooterView {
 	}
 	
 	private func configureLayout() {
+		label.text = needLabel ? "Popular countries" : ""
+		
 		label.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
 			label.centerYAnchor	.constraint(equalTo: contentView.centerYAnchor),

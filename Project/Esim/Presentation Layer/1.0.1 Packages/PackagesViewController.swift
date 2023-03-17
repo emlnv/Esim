@@ -12,6 +12,7 @@ final class PackagesViewController: ESTableViewController<PackagesViewModel> {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		tableView.register(PackagesTableViewCell.self, forCellReuseIdentifier: PackagesTableViewCell.reuseIdentifier)
+		tableView.rx.setDelegate(self).disposed(by: disposeBag)
 		parent?.navigationItem.backBarButtonItem = .init(title: String(), style: .plain, target: nil, action: nil)
 	}
 	
@@ -55,5 +56,16 @@ final class PackagesViewController: ESTableViewController<PackagesViewModel> {
 				ActivityIndicatorManager.updateActivityIndicator(forView: self.view, isHidden: !$0)
 			})
 			.disposed(by: disposeBag)
+	}
+}
+
+extension PackagesViewController: UITableViewDelegate {
+	
+	func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+		20
+	}
+	
+	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+		LocalHeaderView(reuseIdentifier: String(describing: LocalHeaderView.self), needLabel: false)
 	}
 }

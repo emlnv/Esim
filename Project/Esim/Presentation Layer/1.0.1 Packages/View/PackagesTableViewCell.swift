@@ -32,11 +32,16 @@ final class PackagesTableViewCell: UITableViewCell {
 		return image
 	}()
 	
+	private var card: UIImageView = {
+		let image = UIImageView()
+		image.image = Icon.esim
+		return image
+	}()
+	
 	private var bgView: ShadowView = {
 		let view = ShadowView()
 		view.clipsToBounds = false
 		view.layer.cornerRadius = 7
-		view.backgroundColor = .systemBackground
 		return view
 	}()
 	
@@ -60,20 +65,29 @@ final class PackagesTableViewCell: UITableViewCell {
 	
 	func configure(package: Package) {
 		label.text = package.title
+		image.image = UIImage(data: package.operator?.imageData ?? Data())
 	}
 
 	// MARK: - Private methods
 	
 	private func configureLayout() {
-		[bgView, label, image].forEach(contentView.addSubview)
+		[card, bgView, label, image].forEach(contentView.addSubview)
 		
+		card.translatesAutoresizingMaskIntoConstraints = false
+		NSLayoutConstraint.activate([
+			card.leadingAnchor	.constraint(equalTo: contentView.leadingAnchor, constant: C.marginLeading),
+			card.trailingAnchor	.constraint(equalTo: contentView.trailingAnchor, constant: -C.marginLeading),
+			card.topAnchor		.constraint(equalTo: contentView.topAnchor, constant: 0),
+			card.bottomAnchor		.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -C.marginVertical*2),
+			card.heightAnchor		.constraint(equalToConstant: 335)
+		])
+
 		bgView.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
 			bgView.leadingAnchor	.constraint(equalTo: contentView.leadingAnchor, constant: C.marginLeading),
 			bgView.trailingAnchor	.constraint(equalTo: contentView.trailingAnchor, constant: -C.marginLeading),
-			bgView.topAnchor		.constraint(equalTo: contentView.topAnchor, constant: 0),
-			bgView.bottomAnchor		.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -C.marginVertical),
-			bgView.heightAnchor		.constraint(equalToConstant: 55)
+			bgView.bottomAnchor		.constraint(equalTo: card.bottomAnchor),
+			bgView.heightAnchor		.constraint(equalToConstant: 315)
 		])
 		
 		label.translatesAutoresizingMaskIntoConstraints = false

@@ -8,7 +8,8 @@
 import Foundation
 
 protocol IFetchingPackagesServicable {
-	func getPackageBy(id: Int) -> ESObservable<Country>
+	func getPackagesByCountry(id: Int) -> ESObservable<Country>
+	func getImages(for packages: [Package]) -> ESObservable<[Package]>
 }
 
 struct FetchingPackagesService: IFetchingPackagesServicable {
@@ -37,10 +38,33 @@ struct FetchingPackagesService: IFetchingPackagesServicable {
 	
 	// MARK: - Protocol
 	
-	func getPackageBy(id: Int) -> ESObservable<Country> {
+	func getPackagesByCountry(id: Int) -> ESObservable<Country> {
 		provider.rx.request(.getPackagesForCountry(id))
 			.map(Country.self, using: decoder)
 			.asObservable()
 	}
 	
+	func getImages(for packages: [Package]) -> ESObservable<[Package]> {
+		let array: Array<ESObservable<Package>> = packages.map { package in
+			getImage(by: package.operator?.image.url ?? String())
+				.compactMap { image in
+					var package = package
+					package.operator?.imageData = image.pngData()
+					return package
+				}
+				.asObservable()
+		}
+		return ESObservable.from(array)
+			.merge()
+			.toArray()
+			.asObservable()
+	}
+	
+	private func getImage(by url: String) -> ESSingle<ESImage> {
+		guard let url = URL(string: url) else {
+			return .error(StoreViewModel.SVMError.failedGetServerRespond)
+		}
+		return provider.rx.request(.getImage(url))
+			.mapImage()
+	}
 }
