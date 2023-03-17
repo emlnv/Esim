@@ -19,7 +19,7 @@ struct CountryWithImage: Equatable {
 	var image: ESImage
 }
 
-struct Country: Decodable, Equatable {
+struct Country: Decodable, Equatable, Hashable {
 	init() {
 		self.init(id: Int(), slug: String(), title: String(), image: Flag(width: Int(), height: Int(), url: String()))
 	}

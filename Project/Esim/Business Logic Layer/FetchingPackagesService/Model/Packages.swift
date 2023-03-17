@@ -46,4 +46,5 @@ struct Operator: Decodable, Equatable, Hashable {
 	let airplane_toggle: Bool?
 	let image: Flag
 	var imageData: Data?
+	let countries: [Country]
 }

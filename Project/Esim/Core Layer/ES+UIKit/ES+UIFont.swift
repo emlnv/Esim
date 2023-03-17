@@ -10,7 +10,7 @@ import UIKit
 struct AppFontName {
 	static let regular = 	"IBMPlexSans-Regular"
 	static let bold = 		"IBMPlexSans-SemiBold"
-	static let light =		"IBMPlexSans-Light"
+	static let light =		"IBMPlexSans-Medium"
 }
 
 extension UIFontDescriptor.AttributeName {

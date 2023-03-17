@@ -25,7 +25,7 @@ struct FetchingPackagesService: IFetchingPackagesServicable {
 			case .ended: ()
 		}
 	})
-	private static let defaultProvider = ESMoyaProvider<EsimTarget>(plugins: [networkActivityPlugin, ESNetworkLoggerPlugin()])
+	private static let defaultProvider = ESMoyaProvider<EsimTarget>(plugins: [networkActivityPlugin])
 	
 	// MARK: - Initialize
 	

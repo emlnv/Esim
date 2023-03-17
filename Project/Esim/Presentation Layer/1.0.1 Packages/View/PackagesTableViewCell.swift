@@ -20,11 +20,43 @@ final class PackagesTableViewCell: UITableViewCell {
 
 	// MARK: - Properties
 	
-	private let label: UILabel = {
+	private let labelData: UILabel = {
 		let label = UILabel()
-		label.textAlignment = .center
-		label.font = .systemFont(ofSize: 15)
+		label.textAlignment = .right
+		label.textColor = .init(named: "esGrey")
+		label.font = .italicSystemFont(ofSize: 17)
 		return label
+	}()
+	
+	private let labelValidity: UILabel = {
+		let label = UILabel()
+		label.textAlignment = .right
+		label.textColor = .init(named: "esGrey")
+		label.font = .italicSystemFont(ofSize: 17)
+		return label
+	}()
+	
+	private let labelTitle: UILabel = {
+		let label = UILabel()
+		label.textAlignment = .left
+		label.textColor = .init(named: "esGrey")
+		label.font = .boldSystemFont(ofSize: 19)
+		return label
+	}()
+	
+	private let labelSubtitle: UILabel = {
+		let label = UILabel()
+		label.textAlignment = .left
+		label.textColor = .init(named: "esGrey")
+		label.font = .italicSystemFont(ofSize: 13)
+		return label
+	}()
+	
+	private let button: UIButton = {
+		let button = UIButton()
+		button.setTitleColor(.init(named: "esGrey"), for: .normal)
+		button.titleLabel?.font = .boldSystemFont(ofSize: 11)
+		return button
 	}()
 	
 	private var image: UIImageView = {
@@ -66,14 +98,18 @@ final class PackagesTableViewCell: UITableViewCell {
 	// MARK: - Public methods
 	
 	func configure(package: Package) {
-		label.text = package.title
+		labelData.text = package.data
+		labelValidity.text = package.validity
+		labelTitle.text = package.operator?.title
+		labelSubtitle.text = package.operator?.countries.first?.title
+		button.setTitle("US$" + String(package.price ?? 0) + " - BUY NOW", for: .normal)
 		image.image = UIImage(data: package.operator?.imageData ?? Data())
 	}
 
 	// MARK: - Private methods
 	
 	private func configureLayout() {
-		[card, label, image].forEach(contentView.addSubview)
+		[card, labelData, labelValidity, labelTitle, labelSubtitle, image, button].forEach(contentView.addSubview)
 		
 		card.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
@@ -83,10 +119,34 @@ final class PackagesTableViewCell: UITableViewCell {
 			card.widthAnchor	.constraint(equalToConstant: 375)
 		])
 
-		label.translatesAutoresizingMaskIntoConstraints = false
+		labelData.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
-			label.centerYAnchor		.constraint(equalTo: card.centerYAnchor, constant: -8),
-			label.trailingAnchor	.constraint(equalTo: card.trailingAnchor, constant: C.marginLeading/2)
+			labelData.centerYAnchor		.constraint(equalTo: card.centerYAnchor, constant: -C.marginLeading - 5),
+			labelData.trailingAnchor	.constraint(equalTo: card.trailingAnchor, constant: -C.marginLeading*2)
+		])
+		
+		labelValidity.translatesAutoresizingMaskIntoConstraints = false
+		NSLayoutConstraint.activate([
+			labelValidity.topAnchor			.constraint(equalTo: labelData.bottomAnchor, constant: C.marginLeading*1.5 + 5),
+			labelValidity.trailingAnchor	.constraint(equalTo: labelData.trailingAnchor)
+		])
+		
+		labelTitle.translatesAutoresizingMaskIntoConstraints = false
+		NSLayoutConstraint.activate([
+			labelTitle.topAnchor			.constraint(equalTo: card.topAnchor, constant: C.marginLeading*3),
+			labelTitle.leadingAnchor		.constraint(equalTo: card.leadingAnchor, constant: C.marginLeading*2)
+		])
+		
+		labelSubtitle.translatesAutoresizingMaskIntoConstraints = false
+		NSLayoutConstraint.activate([
+			labelSubtitle.topAnchor			.constraint(equalTo: labelTitle.bottomAnchor, constant: C.marginVertical/2),
+			labelSubtitle.leadingAnchor		.constraint(equalTo: labelTitle.leadingAnchor)
+		])
+		
+		button.translatesAutoresizingMaskIntoConstraints = false
+		NSLayoutConstraint.activate([
+			button.centerXAnchor		.constraint(equalTo: card.centerXAnchor),
+			button.bottomAnchor			.constraint(equalTo: card.bottomAnchor, constant: -C.marginLeading*3 - 8)
 		])
 		
 		image.translatesAutoresizingMaskIntoConstraints = false
