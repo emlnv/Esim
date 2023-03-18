@@ -30,14 +30,14 @@
 		B752C49B29BF31E200CD3DAD /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = B752C49A29BF31E200CD3DAD /* Icon.swift */; };
 		B752C49E29BF3E4F00CD3DAD /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B752C49D29BF3E4F00CD3DAD /* SearchBarView.swift */; };
 		B752C4A029BF554A00CD3DAD /* ColoredSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B752C49F29BF554A00CD3DAD /* ColoredSegmentedControl.swift */; };
-		B752C4A229BF588F00CD3DAD /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B752C4A129BF588F00CD3DAD /* CountryTableViewCell.swift */; };
+		B752C4A229BF588F00CD3DAD /* AreaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B752C4A129BF588F00CD3DAD /* AreaTableViewCell.swift */; };
 		B75B51D929BFB07E00B6D42A /* StoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75B51D829BFB07E00B6D42A /* StoreViewModel.swift */; };
 		B75B51DC29BFB35600B6D42A /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = B75B51DB29BFB35600B6D42A /* ReactorKit */; };
 		B75B51DE29BFB3A400B6D42A /* ReactorkitBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75B51DD29BFB3A400B6D42A /* ReactorkitBridge.swift */; };
 		B75B51E229BFB4DC00B6D42A /* FetchingAreasService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75B51E129BFB4DC00B6D42A /* FetchingAreasService.swift */; };
 		B75B51E629BFB74300B6D42A /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = B75B51E529BFB74300B6D42A /* Moya */; };
 		B75B51E829BFB74300B6D42A /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = B75B51E729BFB74300B6D42A /* RxMoya */; };
-		B75B51EC29BFB7E200B6D42A /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75B51EB29BFB7E200B6D42A /* Country.swift */; };
+		B75B51EC29BFB7E200B6D42A /* Area.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75B51EB29BFB7E200B6D42A /* Area.swift */; };
 		B75B51EF29BFB99900B6D42A /* EsimTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75B51EE29BFB99900B6D42A /* EsimTarget.swift */; };
 		B75B51F129BFBC1B00B6D42A /* RxSwiftBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75B51F029BFBC1B00B6D42A /* RxSwiftBridge.swift */; };
 		B75B51F329BFBE8300B6D42A /* MoyaBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75B51F229BFBE8300B6D42A /* MoyaBridge.swift */; };
@@ -125,11 +125,11 @@
 		B752C49A29BF31E200CD3DAD /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
 		B752C49D29BF3E4F00CD3DAD /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		B752C49F29BF554A00CD3DAD /* ColoredSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredSegmentedControl.swift; sourceTree = "<group>"; };
-		B752C4A129BF588F00CD3DAD /* CountryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
+		B752C4A129BF588F00CD3DAD /* AreaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaTableViewCell.swift; sourceTree = "<group>"; };
 		B75B51D829BFB07E00B6D42A /* StoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewModel.swift; sourceTree = "<group>"; };
 		B75B51DD29BFB3A400B6D42A /* ReactorkitBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactorkitBridge.swift; sourceTree = "<group>"; };
 		B75B51E129BFB4DC00B6D42A /* FetchingAreasService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchingAreasService.swift; sourceTree = "<group>"; };
-		B75B51EB29BFB7E200B6D42A /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		B75B51EB29BFB7E200B6D42A /* Area.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Area.swift; sourceTree = "<group>"; };
 		B75B51EE29BFB99900B6D42A /* EsimTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EsimTarget.swift; sourceTree = "<group>"; };
 		B75B51F029BFBC1B00B6D42A /* RxSwiftBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSwiftBridge.swift; sourceTree = "<group>"; };
 		B75B51F229BFBE8300B6D42A /* MoyaBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaBridge.swift; sourceTree = "<group>"; };
@@ -312,7 +312,7 @@
 			children = (
 				B752C49D29BF3E4F00CD3DAD /* SearchBarView.swift */,
 				B752C49F29BF554A00CD3DAD /* ColoredSegmentedControl.swift */,
-				B752C4A129BF588F00CD3DAD /* CountryTableViewCell.swift */,
+				B752C4A129BF588F00CD3DAD /* AreaTableViewCell.swift */,
 				B74A351429C33645004DCD9B /* ShadowView.swift */,
 			);
 			path = View;
@@ -339,7 +339,7 @@
 		B75B51E929BFB7B900B6D42A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B75B51EB29BFB7E200B6D42A /* Country.swift */,
+				B75B51EB29BFB7E200B6D42A /* Area.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -669,7 +669,7 @@
 				B72FB52729BE145E0035C8FA /* TabBarController.swift in Sources */,
 				B751CEF729C0D67C0048B5A0 /* PackagesViewController.swift in Sources */,
 				B792350B29C4B57200CA4CA5 /* GlobalEsimsViewController.swift in Sources */,
-				B75B51EC29BFB7E200B6D42A /* Country.swift in Sources */,
+				B75B51EC29BFB7E200B6D42A /* Area.swift in Sources */,
 				B751CEED29C06F060048B5A0 /* ESBaseViewController.swift in Sources */,
 				B72B6EBF29C367490012A86A /* PackagesTableViewCell.swift in Sources */,
 				B792350329C4A21300CA4CA5 /* RegionalEsimsViewController.swift in Sources */,
@@ -685,7 +685,7 @@
 				B7E0ECB229C10A4D00CDF6FD /* LocalEsimsViewController.swift in Sources */,
 				B7E0ECAE29C1043400CDF6FD /* FetchingPackagesService.swift in Sources */,
 				B740F4FA29C267E600E57337 /* LocalHeaderView.swift in Sources */,
-				B752C4A229BF588F00CD3DAD /* CountryTableViewCell.swift in Sources */,
+				B752C4A229BF588F00CD3DAD /* AreaTableViewCell.swift in Sources */,
 				B75B51D929BFB07E00B6D42A /* StoreViewModel.swift in Sources */,
 				B7E0FDE029C61AAD00F4956C /* PackagesBlueTableViewCell.swift in Sources */,
 				B7E0ECB429C10BDA00CDF6FD /* LocalEsimsViewModel.swift in Sources */,

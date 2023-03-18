@@ -37,12 +37,12 @@ final class LocalEsimsViewModelTestCase: XCTestCase {
 		)
 		
 		let successStub = [
-			Country(),
-			Country()
+			Area(),
+			Area()
 		]
 		
 		let scheduler = TestScheduler(initialClock: 0)
-		scheduler.createHotObservable([.next(100, .getCountriesPopular)])
+		scheduler.createHotObservable([.next(100, .getAreasPopular)])
 			.bind(to: sut.action)
 			.disposed(by: disposeBag)
 		
@@ -79,7 +79,7 @@ final class LocalEsimsViewModelTestCase: XCTestCase {
 		)
 		
 		let scheduler = TestScheduler(initialClock: 0)
-		scheduler.createHotObservable([.next(100, .getCountriesPopular)])
+		scheduler.createHotObservable([.next(100, .getAreasPopular)])
 			.bind(to: sut.action)
 			.disposed(by: disposeBag)
 		let response = scheduler.start(

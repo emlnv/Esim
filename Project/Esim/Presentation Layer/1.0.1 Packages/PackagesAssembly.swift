@@ -8,7 +8,7 @@
 import Foundation.NSUserDefaults
 
 extension ESContainer {
-	func packagesViewController(for country: Country) -> PackagesViewController { packagesVC(for: country).callAsFunction() }
+	func packagesViewController(for area: Area) -> PackagesViewController { packagesVC(for: area).callAsFunction() }
 	
 	private var fetchingPackService: ESFactory<IFetchingPackagesServicable> {
 		ESFactory(self) {
@@ -20,19 +20,19 @@ extension ESContainer {
 			UserDefaults.standard
 	}}
 	
-	private func packVM(for country: Country) -> ESFactory<PackagesViewModel> {
+	private func packVM(for area: Area) -> ESFactory<PackagesViewModel> {
 		ESFactory(self) {
 			PackagesViewModel(
 				fetchingPackagesService: self.fetchingPackService.callAsFunction(),
 				userDefaults:			 self.userDefaults.callAsFunction(),
-				selectedCountry: 		 country
+				selectedArea: 		 area
 			)
 	}}
 	
-	private func packagesVC(for country: Country) -> ESFactory<PackagesViewController> {
+	private func packagesVC(for area: Area) -> ESFactory<PackagesViewController> {
 		ESFactory(self) {
 			PackagesViewController(
-				viewModel: self.packVM(for: country).callAsFunction()
+				viewModel: self.packVM(for: area).callAsFunction()
 			)
 	}}
 }

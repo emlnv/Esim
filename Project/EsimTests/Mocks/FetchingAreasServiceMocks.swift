@@ -8,25 +8,25 @@
 @testable import Esim
 
 final class FetchingAreasServiceMock: IFetchingAreasServicable {
-	func getCountriesPopular() -> ESObservable<[Country]> {
+	func getAreasPopular() -> ESObservable<[Area]> {
 		.just(
-			[Country(), Country()]
+			[Area(), Area()]
 		)
 	}
 	
-	func getImagesForCountries(_: [String]) -> ESObservable<[ESImage]> {
+	func getImagesForAreas(_: [String]) -> ESObservable<[ESImage]> {
 		.just([ESImage(), ESImage()])
 	}
 }
 
 final class FetchingAreasServiceErrorMock: IFetchingAreasServicable {
-	func getCountriesPopular() -> ESObservable<[Country]> {
+	func getAreasPopular() -> ESObservable<[Area]> {
 		.error(
 			LocalEsimsViewModel.Error.failedGetServerRespond
 		)
 	}
 
-	func getImagesForCountries(_: [String]) -> ESObservable<[ESImage]> {
+	func getImagesForAreas(_: [String]) -> ESObservable<[ESImage]> {
 		.error(
 			LocalEsimsViewModel.Error.failedGetServerRespond
 		)

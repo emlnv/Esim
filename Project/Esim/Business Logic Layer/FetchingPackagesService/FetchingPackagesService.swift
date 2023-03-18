@@ -8,10 +8,10 @@
 import Foundation
 
 protocol IFetchingPackagesServicable {
-	func getPackagesByCountry(id: Int) -> ESObservable<Country>
+	func getPackagesByArea(id: Int) -> ESObservable<Area>
 	func getImages(for packages: [Package]) -> ESObservable<[Package]>
-	func getGlobalPackages() -> ESObservable<Country>
-	func getPackagesByRegion(id: Int) -> ESObservable<Country>
+	func getGlobalPackages() -> ESObservable<Area>
+	func getPackagesByRegion(id: Int) -> ESObservable<Area>
 }
 
 struct FetchingPackagesService: IFetchingPackagesServicable {
@@ -40,15 +40,15 @@ struct FetchingPackagesService: IFetchingPackagesServicable {
 	
 	// MARK: - Protocol
 	
-	func getPackagesByCountry(id: Int) -> ESObservable<Country> {
-		provider.rx.request(.getPackagesForCountry(id))
-			.map(Country.self, using: decoder)
+	func getPackagesByArea(id: Int) -> ESObservable<Area> {
+		provider.rx.request(.getPackagesForArea(id))
+			.map(Area.self, using: decoder)
 			.asObservable()
 	}
 	
-	func getPackagesByRegion(id: Int) -> ESObservable<Country> {
+	func getPackagesByRegion(id: Int) -> ESObservable<Area> {
 		provider.rx.request(.getPackagesForRegion(id))
-			.map(Country.self, using: decoder)
+			.map(Area.self, using: decoder)
 			.asObservable()
 	}
 	
@@ -76,9 +76,9 @@ struct FetchingPackagesService: IFetchingPackagesServicable {
 			.mapImage()
 	}
 	
-	func getGlobalPackages() -> ESObservable<Country> {
+	func getGlobalPackages() -> ESObservable<Area> {
 		provider.rx.request(.getGlobalPackages)
-			.map(Country.self, using: decoder)
+			.map(Area.self, using: decoder)
 			.asObservable()
 	}
 }

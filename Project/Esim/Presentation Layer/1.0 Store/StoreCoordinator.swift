@@ -28,9 +28,9 @@ final class StoreCoordinator {
 		let stateL = reactor.state.asDriver(onErrorJustReturn: reactor.initialState)
 				
 		stateL
-			.compactMap(\.selectedCountry)
+			.compactMap(\.selectedArea)
 			.drive(onNext: { [weak self] in
-				self?.push(selectedCountry: $0)
+				self?.push(selectedArea: $0)
 			})
 			.disposed(by: viewController.disposeBag)
 
@@ -38,7 +38,7 @@ final class StoreCoordinator {
 		let stateR = reactor.state.asDriver(onErrorJustReturn: reactor.initialState)
 				
 		stateR
-			.compactMap(\.selectedCountry)
+			.compactMap(\.selectedArea)
 			.drive(onNext: { [weak self] in
 				self?.push(selectedRegion: $0)
 			})
@@ -46,14 +46,14 @@ final class StoreCoordinator {
 
 	}
 	
-	private func push(selectedCountry: Country) {
-		let viewController = ESContainer.shared.packagesViewController(for: selectedCountry)
+	private func push(selectedArea: Area) {
+		let viewController = ESContainer.shared.packagesViewController(for: selectedArea)
 		navigationController.pushViewController(viewController, animated: true)
 		viewController.loadViewIfNeeded()
 		setupBindings(for: viewController)
 	}
 	
-	private func push(selectedRegion: Country) {
+	private func push(selectedRegion: Area) {
 		let viewController = ESContainer.shared.regionPackagesViewController(for: selectedRegion)
 		navigationController.pushViewController(viewController, animated: true)
 		viewController.loadViewIfNeeded()

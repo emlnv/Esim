@@ -5,13 +5,13 @@
 //  Created by Viacheslav on 12.03.2023.
 //
 
-import UIKit
+import UIKit.UITableView
 
 final class RegionalEsimsViewController: ESTableViewController<RegionalEsimsViewModel> {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		tableView.register(CountryTableViewCell.self, forCellReuseIdentifier: CountryTableViewCell.reuseIdentifier)
+		tableView.register(AreaTableViewCell.self, forCellReuseIdentifier: AreaTableViewCell.reuseIdentifier)
 		tableView.rx.setDelegate(self).disposed(by: disposeBag)
 	}
 	
@@ -27,15 +27,15 @@ final class RegionalEsimsViewController: ESTableViewController<RegionalEsimsView
 			.compactMap (\.countriesWithImage)
 			.distinctUntilChanged()
 			.drive(tableView.rx.items(
-				cellIdentifier: CountryTableViewCell.reuseIdentifier,
-				cellType: CountryTableViewCell.self
+				cellIdentifier: AreaTableViewCell.reuseIdentifier,
+				cellType: AreaTableViewCell.self
 			)) { _, data, cell in
-				cell.configure(country: data)
+				cell.configure(area: data)
 			}
 			.disposed(by: disposeBag)
 		
-		tableView.rx.modelSelected(Country.self)
-			.map(Reactor.Action.setSelectCountry)
+		tableView.rx.modelSelected(Area.self)
+			.map(Reactor.Action.setSelectArea)
 			.bind(to: reactor.action)
 			.disposed(by: disposeBag)
 		

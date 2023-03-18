@@ -1,5 +1,5 @@
 //
-//  CountryTableViewCell.swift
+//  AreaTableViewCell.swift
 //  Esim
 //
 //  Created by Viacheslav on 13.03.2023.

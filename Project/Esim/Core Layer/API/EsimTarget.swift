@@ -9,7 +9,7 @@ import Foundation
 
 enum EsimTarget: ESTargetType {
 	case getPopularCoutries
-	case getPackagesForCountry(Int)
+	case getPackagesForArea(Int)
 	case getPackagesForRegion(Int)
 	case getGlobalPackages
 	case getImage(URL)
@@ -17,7 +17,7 @@ enum EsimTarget: ESTargetType {
 	
 	var baseURL: URL {
 		switch self {
-			case .getPopularCoutries, .getPackagesForCountry, .getRegions, .getGlobalPackages, .getPackagesForRegion:
+			case .getPopularCoutries, .getPackagesForArea, .getRegions, .getGlobalPackages, .getPackagesForRegion:
 				return URL(string: "https://www.airalo.com")! // swiftlint:disable:this force_unwrapping
 			case .getImage(let url): return url
 		}
@@ -29,7 +29,7 @@ enum EsimTarget: ESTargetType {
 				return "/api/v2/countries"
 			case .getImage:
 				return String()
-			case .getPackagesForCountry(let id):
+			case .getPackagesForArea(let id):
 				return "/api/v2/countries/" + String(id)
 			case .getPackagesForRegion(let id):
 				return "/api/v2/regions/" + String(id)
@@ -42,7 +42,7 @@ enum EsimTarget: ESTargetType {
 	
 	var method: ESMethod {
 		switch self {
-			case .getPopularCoutries, .getImage, .getPackagesForCountry, .getRegions, .getGlobalPackages, .getPackagesForRegion:
+			case .getPopularCoutries, .getImage, .getPackagesForArea, .getRegions, .getGlobalPackages, .getPackagesForRegion:
 				return .get
 		}
 	}
@@ -60,7 +60,7 @@ enum EsimTarget: ESTargetType {
 				return .requestParameters(parameters: parameters, encoding: ESURLEncoding.default)
 			case .getImage, .getRegions:
 				return .requestPlain
-			case .getPackagesForCountry(let id):
+			case .getPackagesForArea(let id):
 				let parameters: [String: Any] = [
 					"id": id
 				]
@@ -80,7 +80,7 @@ enum EsimTarget: ESTargetType {
 	
 	var headers: [String : String]? {
 		switch self {
-			case .getPopularCoutries, .getPackagesForCountry, .getRegions, .getGlobalPackages, .getPackagesForRegion:
+			case .getPopularCoutries, .getPackagesForArea, .getRegions, .getGlobalPackages, .getPackagesForRegion:
 				return [
 					"Content-Type": "application/json",
 					"Accept-Language": "us-US;q=1.0"

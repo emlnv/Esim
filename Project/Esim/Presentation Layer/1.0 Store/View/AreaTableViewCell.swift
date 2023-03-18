@@ -1,5 +1,5 @@
 //
-//  CountryTableViewCell.swift
+//  AreaTableViewCell.swift
 //  Esim
 //
 //  Created by Viacheslav on 13.03.2023.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CountryTableViewCell: UITableViewCell {
+final class AreaTableViewCell: UITableViewCell {
 	
 	private typealias C = Constants
 	private enum Constants {
@@ -63,9 +63,9 @@ final class CountryTableViewCell: UITableViewCell {
 	
 	// MARK: - Public methods
 	
-	func configure(country: Country) {
-		label.text = country.title
-		image.image = UIImage(data: country.imageData ?? Data())
+	func configure(area: Area) {
+		label.text = area.title
+		image.image = UIImage(data: area.imageData ?? Data())
 	}
 
 	// MARK: - Private methods

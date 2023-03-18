@@ -8,9 +8,9 @@
 import Foundation
 
 protocol IFetchingAreasServicable {
-	func getCountriesPopular() -> ESObservable<[Country]>
-	func getImages(for: [Country]) -> ESObservable<[Country]>
-	func getRegions() -> ESObservable<[Country]>
+	func getAreasPopular() -> ESObservable<[Area]>
+	func getImages(for: [Area]) -> ESObservable<[Area]>
+	func getRegions() -> ESObservable<[Area]>
 }
 
 struct FetchingAreasService: IFetchingAreasServicable {
@@ -39,19 +39,19 @@ struct FetchingAreasService: IFetchingAreasServicable {
 	
 	// MARK: - IAppUpdateServiceProtocol
 	
-	func getCountriesPopular() -> ESObservable<[Country]> {
+	func getAreasPopular() -> ESObservable<[Area]> {
 		provider.rx.request(.getPopularCoutries)
-			.map([Country].self, using: decoder)
+			.map([Area].self, using: decoder)
 			.asObservable()
 	}
 	
-	func getImages(for countries: [Country]) -> ESObservable<[Country]> {
-		let array: Array<ESObservable<Country>> = countries.map { country in
-			getFlag(by: country.image.url)
+	func getImages(for areas: [Area]) -> ESObservable<[Area]> {
+		let array: Array<ESObservable<Area>> = areas.map { area in
+			getFlag(by: area.image.url)
 				.compactMap { image in
-					var country = country
-					country.imageData = image.pngData()
-					return country
+					var area = area
+					area.imageData = image.pngData()
+					return area
 				}
 			.asObservable()
 		}
@@ -69,9 +69,9 @@ struct FetchingAreasService: IFetchingAreasServicable {
 			.mapImage()
 	}
 	
-	func getRegions() -> ESObservable<[Country]> {
+	func getRegions() -> ESObservable<[Area]> {
 		provider.rx.request(.getRegions)
-			.map([Country].self, using: decoder)
+			.map([Area].self, using: decoder)
 			.asObservable()
 	}
 }

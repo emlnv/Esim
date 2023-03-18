@@ -1,5 +1,5 @@
 //
-//  Country.swift
+//  Area.swift
 //  Esim
 //
 //  Created by Viacheslav on 13.03.2023.
@@ -46,5 +46,5 @@ struct Operator: Decodable, Equatable, Hashable {
 	let airplane_toggle: Bool?
 	let image: Flag
 	var imageData: Data?
-	let countries: [Country]
+	let countries: [Area]
 }

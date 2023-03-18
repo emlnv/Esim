@@ -27,7 +27,7 @@ final class PackagesViewModel: ESReactor {
 	struct State {
 		var error: Swift.Error?
 		var packages: [Package]?
-		var selectedCountry: Country
+		var selectedArea: Area
 		var isLoading: Bool = false
 	}
 	
@@ -35,7 +35,7 @@ final class PackagesViewModel: ESReactor {
 	
 	private let fetchingPackagesService: IFetchingPackagesServicable
 	private let userDefaults: UserDefaults
-	private let selectedCountry: Country
+	private let selectedArea: Area
 	
 	// MARK: - Internal properties
 	
@@ -49,18 +49,18 @@ final class PackagesViewModel: ESReactor {
 	init(
 		fetchingPackagesService: IFetchingPackagesServicable,
 		userDefaults: UserDefaults,
-		selectedCountry: Country
+		selectedArea: Area
 	) {
 		self.fetchingPackagesService = fetchingPackagesService
 		self.userDefaults = userDefaults
-		self.selectedCountry = selectedCountry
-		self.initialState =  State(selectedCountry: selectedCountry)
+		self.selectedArea = selectedArea
+		self.initialState =  State(selectedArea: selectedArea)
 	}
 	
 	func mutate(action: Action) -> ESObservable<Mutation> {
 		switch action {
 			case .getPackagesBy(let id):
-				return getPackagesByCountry(id)
+				return getPackagesByArea(id)
 		}
 	}
 	
@@ -78,11 +78,11 @@ final class PackagesViewModel: ESReactor {
 		return newState
 	}
 	
-	private func getPackagesByCountry(_ id: Int) -> ESObservable<Mutation> {
+	private func getPackagesByArea(_ id: Int) -> ESObservable<Mutation> {
 		.concat(
 			.just(.mutateIsLoading(true)),
 			
-			fetchingPackagesService.getPackagesByCountry(id: id)
+			fetchingPackagesService.getPackagesByArea(id: id)
 				.flatMap { self.getImagesFor(packages: $0.packages ?? []) }
 				.catch { .just(.toggleError($0)) },
 			

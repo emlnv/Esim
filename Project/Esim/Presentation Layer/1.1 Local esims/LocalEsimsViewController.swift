@@ -11,7 +11,7 @@ final class LocalEsimsViewController: ESTableViewController<LocalEsimsViewModel>
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		tableView.register(CountryTableViewCell.self, forCellReuseIdentifier: CountryTableViewCell.reuseIdentifier)
+		tableView.register(AreaTableViewCell.self, forCellReuseIdentifier: AreaTableViewCell.reuseIdentifier)
 		tableView.rx.setDelegate(self).disposed(by: disposeBag)
 	}
 	
@@ -19,7 +19,7 @@ final class LocalEsimsViewController: ESTableViewController<LocalEsimsViewModel>
 		let state = reactor.state.asDriver(onErrorJustReturn: reactor.currentState)
 
 		rx.methodInvoked(#selector(viewDidLoad))
-			.map { _ in Reactor.Action.getCountriesPopular }
+			.map { _ in Reactor.Action.getAreasPopular }
 			.bind(to: reactor.action)
 			.disposed(by: disposeBag)
 		
@@ -27,15 +27,15 @@ final class LocalEsimsViewController: ESTableViewController<LocalEsimsViewModel>
 			.compactMap (\.countriesWithImage)
 			.distinctUntilChanged()
 			.drive(tableView.rx.items(
-				cellIdentifier: CountryTableViewCell.reuseIdentifier,
-				cellType: CountryTableViewCell.self
+				cellIdentifier: AreaTableViewCell.reuseIdentifier,
+				cellType: AreaTableViewCell.self
 			)) { _, data, cell in
-				cell.configure(country: data)
+				cell.configure(area: data)
 			}
 			.disposed(by: disposeBag)
 		
-		tableView.rx.modelSelected(Country.self)
-			.map(Reactor.Action.setSelectCountry)
+		tableView.rx.modelSelected(Area.self)
+			.map(Reactor.Action.setSelectArea)
 			.bind(to: reactor.action)
 			.disposed(by: disposeBag)
 		

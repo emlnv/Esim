@@ -1,5 +1,5 @@
 //
-//  Country.swift
+//  Area.swift
 //  Esim
 //
 //  Created by Viacheslav on 13.03.2023.
@@ -7,7 +7,7 @@
 
 import Foundation.NSData
 
-struct Country: Decodable, Equatable, Hashable {
+struct Area: Decodable, Equatable, Hashable {
 	init() {
 		self.init(id: Int(), slug: String(), title: String(), image: Flag(width: Int(), height: Int(), url: String()))
 	}

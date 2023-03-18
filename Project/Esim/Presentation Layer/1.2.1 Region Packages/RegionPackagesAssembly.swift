@@ -8,7 +8,7 @@
 import Foundation.NSUserDefaults
 
 extension ESContainer {
-	func regionPackagesViewController(for region: Country) -> RegionPackagesViewController { regionPackagesVC(for: region).callAsFunction() }
+	func regionPackagesViewController(for region: Area) -> RegionPackagesViewController { regionPackagesVC(for: region).callAsFunction() }
 	
 	private var fetchingPackagesService: ESFactory<IFetchingPackagesServicable> {
 		ESFactory(self) {
@@ -20,7 +20,7 @@ extension ESContainer {
 			UserDefaults.standard
 		}}
 	
-	private func regionPackagesVM(for region: Country) -> ESFactory<RegionPackagesViewModel> {
+	private func regionPackagesVM(for region: Area) -> ESFactory<RegionPackagesViewModel> {
 		ESFactory(self) {
 			RegionPackagesViewModel(
 				fetchingPackagesService: self.fetchingPackagesService.callAsFunction(),
@@ -29,7 +29,7 @@ extension ESContainer {
 			)
 		}}
 	
-	private func regionPackagesVC(for region: Country) -> ESFactory<RegionPackagesViewController> {
+	private func regionPackagesVC(for region: Area) -> ESFactory<RegionPackagesViewController> {
 		ESFactory(self) {
 			RegionPackagesViewController(
 				viewModel: self.regionPackagesVM(for: region).callAsFunction()

@@ -27,7 +27,7 @@ final class RegionPackagesViewModel: ESReactor {
 	struct State {
 		var error: Swift.Error?
 		var packages: [Package]?
-		var selectedCountry: Country
+		var selectedArea: Area
 		var isLoading: Bool = false
 	}
 	
@@ -35,7 +35,7 @@ final class RegionPackagesViewModel: ESReactor {
 	
 	private let fetchingPackagesService: IFetchingPackagesServicable
 	private let userDefaults: UserDefaults
-	private let selectedCountry: Country
+	private let selectedArea: Area
 	
 	// MARK: - Internal properties
 	
@@ -49,18 +49,18 @@ final class RegionPackagesViewModel: ESReactor {
 	init(
 		fetchingPackagesService: IFetchingPackagesServicable,
 		userDefaults: UserDefaults,
-		selectedRegion: Country
+		selectedRegion: Area
 	) {
 		self.fetchingPackagesService = fetchingPackagesService
 		self.userDefaults = userDefaults
-		self.selectedCountry = selectedRegion
-		self.initialState =  State(selectedCountry: selectedCountry)
+		self.selectedArea = selectedRegion
+		self.initialState =  State(selectedArea: selectedArea)
 	}
 	
 	func mutate(action: Action) -> ESObservable<Mutation> {
 		switch action {
 			case .getPackagesBy(let id):
-				return getPackagesByCountry(id)
+				return getPackagesByArea(id)
 		}
 	}
 	
@@ -78,7 +78,7 @@ final class RegionPackagesViewModel: ESReactor {
 		return newState
 	}
 	
-	private func getPackagesByCountry(_ id: Int) -> ESObservable<Mutation> {
+	private func getPackagesByArea(_ id: Int) -> ESObservable<Mutation> {
 		.concat(
 			.just(.mutateIsLoading(true)),
 			
