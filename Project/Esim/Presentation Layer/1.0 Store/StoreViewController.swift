@@ -117,10 +117,12 @@ final class StoreViewController: ESBaseViewController<StoreViewModel> {
 			segmentedControl.topAnchor		.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: C.offset),
 			segmentedControl.heightAnchor	.constraint(equalToConstant: 28),
 		])
+		segmentedControl.sendActions(for: .valueChanged)
 	}
 	
 	override func bind(reactor: StoreViewModel) {
 		segmentedControl.rx.selectedSegmentIndex
+			.skip(1)
 			.subscribe(onNext: { segment in
 				switch segment {
 					case 1:  self.viewController = self.regionalEsimsViewController
@@ -151,23 +153,19 @@ extension StoreViewController {
 	
 	private func setChildViewController(_ viewController: UIViewController) {
 		removeChildViewControllers()
+		viewController.beginAppearanceTransition(true, animated: true)
 		addChild(viewController)
 		addAndConstrain(viewControllerView: viewController.view)
-		if isCurrentlyVisible {
-			viewController.beginAppearanceTransition(true, animated: false)
 			viewController.endAppearanceTransition()
-		}
 		viewController.didMove(toParent: self)
 	}
 	
 	private func removeChildViewControllers() {
 		children.forEach { viewController in
+			viewController.beginAppearanceTransition(false, animated: true)
 			viewController.willMove(toParent: nil)
-			if isCurrentlyVisible {
-				viewController.beginAppearanceTransition(false, animated: false)
-				viewController.endAppearanceTransition()
-			}
 			viewController.view.removeFromSuperview()
+			viewController.endAppearanceTransition()
 			viewController.removeFromParent()
 		}
 	}
@@ -200,9 +198,9 @@ extension StoreViewController {
 		}
 		addChild(viewController)
 		previousViewController.willMove(toParent: nil)
+		viewController.beginAppearanceTransition(true, animated: true)
 		addAndConstrain(viewControllerView: viewController.view)
 		previousViewController.beginAppearanceTransition(false, animated: true)
-		viewController.beginAppearanceTransition(true, animated: true)
 
 		UIView.transition(
 			from: previousViewController.view,

@@ -22,6 +22,7 @@ class ESTableViewController<Reactor: ESReactor>: ESBaseViewController<Reactor> {
 		tableView.separatorInset = .zero
 		tableView.separatorStyle = .none
 		tableView.keyboardDismissMode = .onDrag
+		tableView.backgroundColor = .systemBackground
 		if #available(iOS 15.0, *) { tableView.sectionHeaderTopPadding = 0 }
 		return tableView
 	}()
