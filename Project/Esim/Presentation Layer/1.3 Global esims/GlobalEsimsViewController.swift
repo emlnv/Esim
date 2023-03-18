@@ -11,7 +11,7 @@ final class GlobalEsimsViewController: ESTableViewController<GlobalEsimsViewMode
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		tableView.register(PackagesTableViewCell.self, forCellReuseIdentifier: PackagesTableViewCell.reuseIdentifier)
+		tableView.register(PackagesBlueTableViewCell.self, forCellReuseIdentifier: PackagesBlueTableViewCell.reuseIdentifier)
 		tableView.rx.setDelegate(self).disposed(by: disposeBag)
 		parent?.navigationItem.backBarButtonItem = .init(title: String(), style: .plain, target: nil, action: nil)
 	}
@@ -28,8 +28,8 @@ final class GlobalEsimsViewController: ESTableViewController<GlobalEsimsViewMode
 			.compactMap (\.packages)
 			.distinctUntilChanged()
 			.drive(tableView.rx.items(
-				cellIdentifier: PackagesTableViewCell.reuseIdentifier,
-				cellType: PackagesTableViewCell.self
+				cellIdentifier: PackagesBlueTableViewCell.reuseIdentifier,
+				cellType: PackagesBlueTableViewCell.self
 			)) { _, data, cell in
 				cell.configure(package: data)
 			}

@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class PackagesTableViewCell: UITableViewCell {
+class PackagesTableViewCell: UITableViewCell {
 	
 	private typealias C = Constants
 	private enum Constants {
@@ -20,7 +20,7 @@ final class PackagesTableViewCell: UITableViewCell {
 
 	// MARK: - Properties
 	
-	private let labelData: UILabel = {
+	fileprivate let labelData: UILabel = {
 		let label = UILabel()
 		label.textAlignment = .right
 		label.textColor = .init(named: "esGrey")
@@ -28,7 +28,7 @@ final class PackagesTableViewCell: UITableViewCell {
 		return label
 	}()
 	
-	private let labelValidity: UILabel = {
+	fileprivate let labelValidity: UILabel = {
 		let label = UILabel()
 		label.textAlignment = .right
 		label.textColor = .init(named: "esGrey")
@@ -36,7 +36,7 @@ final class PackagesTableViewCell: UITableViewCell {
 		return label
 	}()
 	
-	private let labelTitle: UILabel = {
+	fileprivate let labelTitle: UILabel = {
 		let label = UILabel()
 		label.textAlignment = .left
 		label.textColor = .init(named: "esGrey")
@@ -44,7 +44,7 @@ final class PackagesTableViewCell: UITableViewCell {
 		return label
 	}()
 	
-	private let labelSubtitle: UILabel = {
+	fileprivate let labelSubtitle: UILabel = {
 		let label = UILabel()
 		label.textAlignment = .left
 		label.textColor = .init(named: "esGrey")
@@ -52,7 +52,7 @@ final class PackagesTableViewCell: UITableViewCell {
 		return label
 	}()
 	
-	private let button: UIButton = {
+	fileprivate let button: UIButton = {
 		let button = UIButton()
 		button.setTitleColor(.init(named: "esGrey"), for: .normal)
 		button.titleLabel?.font = .boldSystemFont(ofSize: 11)
@@ -65,7 +65,7 @@ final class PackagesTableViewCell: UITableViewCell {
 		return image
 	}()
 	
-	private var card: UIImageView = {
+	fileprivate var card: UIImageView = {
 		let image = UIImageView()
 		image.image = Icon.esim
 		image.contentMode = .scaleAspectFill
@@ -156,5 +156,16 @@ final class PackagesTableViewCell: UITableViewCell {
 			image.heightAnchor	.constraint(equalToConstant: 90),
 			image.widthAnchor	.constraint(equalToConstant: 142)
 		])
+	}
+}
+
+final class PackagesBlueTableViewCell: PackagesTableViewCell {
+	
+	override func configure(package: Package) {
+		super.configure(package: package)
+		card.image = Icon.esimBlue
+		[labelTitle, labelSubtitle, labelData, labelValidity].forEach { $0.textColor = .white }
+		button.setTitleColor(.white, for: .normal)
+		labelSubtitle.text = String(package.operator?.countries.count ?? 0) + " Countries"
 	}
 }

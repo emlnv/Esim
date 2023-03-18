@@ -75,6 +75,7 @@
 		B7E0ECB229C10A4D00CDF6FD /* LocalEsimsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E0ECB129C10A4500CDF6FD /* LocalEsimsViewController.swift */; };
 		B7E0ECB429C10BDA00CDF6FD /* LocalEsimsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E0ECB329C10BDA00CDF6FD /* LocalEsimsViewModel.swift */; };
 		B7E0ECB629C10CAF00CDF6FD /* LocalEsimsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E0ECB529C10CAF00CDF6FD /* LocalEsimsAssembly.swift */; };
+		B7E0FDE029C61AAD00F4956C /* PackagesBlueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E0FDDF29C61AAC00F4956C /* PackagesBlueTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -166,6 +167,7 @@
 		B7E0ECB129C10A4500CDF6FD /* LocalEsimsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalEsimsViewController.swift; sourceTree = "<group>"; };
 		B7E0ECB329C10BDA00CDF6FD /* LocalEsimsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalEsimsViewModel.swift; sourceTree = "<group>"; };
 		B7E0ECB529C10CAF00CDF6FD /* LocalEsimsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalEsimsAssembly.swift; sourceTree = "<group>"; };
+		B7E0FDDF29C61AAC00F4956C /* PackagesBlueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackagesBlueTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -423,6 +425,7 @@
 		B792350729C4B52200CA4CA5 /* 1.3 Global esims */ = {
 			isa = PBXGroup;
 			children = (
+				B7E0FDDE29C61A7E00F4956C /* View */,
 				B792350829C4B53000CA4CA5 /* GlobalEsimsAssembly.swift */,
 				B792350A29C4B57200CA4CA5 /* GlobalEsimsViewController.swift */,
 				B792350C29C4B59100CA4CA5 /* GlobalEsimsViewModel.swift */,
@@ -485,6 +488,14 @@
 				B7E0ECB329C10BDA00CDF6FD /* LocalEsimsViewModel.swift */,
 			);
 			path = "1.1 Local esims";
+			sourceTree = "<group>";
+		};
+		B7E0FDDE29C61A7E00F4956C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B7E0FDDF29C61AAC00F4956C /* PackagesBlueTableViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -657,6 +668,7 @@
 				B740F4FA29C267E600E57337 /* LocalHeaderView.swift in Sources */,
 				B752C4A229BF588F00CD3DAD /* CountryTableViewCell.swift in Sources */,
 				B75B51D929BFB07E00B6D42A /* StoreViewModel.swift in Sources */,
+				B7E0FDE029C61AAD00F4956C /* PackagesBlueTableViewCell.swift in Sources */,
 				B7E0ECB429C10BDA00CDF6FD /* LocalEsimsViewModel.swift in Sources */,
 				B752C49B29BF31E200CD3DAD /* Icon.swift in Sources */,
 				B792350429C4A21700CA4CA5 /* RegionalEsimsAssembly.swift in Sources */,
