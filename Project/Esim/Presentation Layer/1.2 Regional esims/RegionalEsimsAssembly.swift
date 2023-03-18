@@ -8,7 +8,7 @@
 import Foundation.NSUserDefaults
 
 extension ESContainer {
-	var regionalEsimsViewController: RegionalEsimsViewController { regionalVC.callAsFunction() }
+	var regionalEsimsViewController: AreasViewController { regionalVC.callAsFunction() }
 	
 	private var fetchingAreasService: ESFactory<IFetchingAreasServicable> {
 		ESFactory(self) {
@@ -29,9 +29,9 @@ extension ESContainer {
 			)
 		}}
 	
-	private var regionalVC: ESFactory<RegionalEsimsViewController> {
+	private var regionalVC: ESFactory<AreasViewController> {
 		ESFactory(self) {
-			RegionalEsimsViewController(
+			AreasViewController(
 				viewModel: self.regionalVM.callAsFunction()
 			)
 		}}

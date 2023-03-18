@@ -5,9 +5,9 @@
 //  Created by Viacheslav on 12.03.2023.
 //
 
-import UIKit
+import UIKit.UITableView
 
-final class LocalEsimsViewController: ESTableViewController<AreasViewModel> {
+final class AreasViewController: ESTableViewController<AreasViewModel> {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -54,11 +54,10 @@ final class LocalEsimsViewController: ESTableViewController<AreasViewModel> {
 				self?.showOkAlert(title: "Error", message: error.localizedDescription)
 			})
 			.disposed(by: disposeBag)
-		
 	}
 }
 
-extension LocalEsimsViewController: UITableViewDelegate {
+extension AreasViewController: UITableViewDelegate {
 	
 	func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
 		70
