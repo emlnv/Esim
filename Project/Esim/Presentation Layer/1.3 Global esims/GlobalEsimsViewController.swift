@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class GlobalEsimsViewController: ESTableViewController<GlobalEsimsViewModel> {
+final class GlobalEsimsViewController: ESTableViewController<PackagesViewModel> {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -16,11 +16,11 @@ final class GlobalEsimsViewController: ESTableViewController<GlobalEsimsViewMode
 		parent?.navigationItem.backBarButtonItem = .init(title: String(), style: .plain, target: nil, action: nil)
 	}
 	
-	override func bind(reactor: GlobalEsimsViewModel) {
+	override func bind(reactor: PackagesViewModel) {
 		let state = reactor.state.asDriver(onErrorJustReturn: reactor.currentState)
 		
 		rx.methodInvoked(#selector(viewDidLoad))
-			.map { _ in Reactor.Action.getGlobalPackages }
+			.map { _ in Reactor.Action.getPackagesBy(id: 0) }
 			.bind(to: reactor.action)
 			.disposed(by: disposeBag)
 		

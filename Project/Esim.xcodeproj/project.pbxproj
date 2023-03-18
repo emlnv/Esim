@@ -53,7 +53,6 @@
 		B792350429C4A21700CA4CA5 /* RegionalEsimsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79234FF29C49FA800CA4CA5 /* RegionalEsimsAssembly.swift */; };
 		B792350929C4B54200CA4CA5 /* GlobalEsimsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B792350829C4B53000CA4CA5 /* GlobalEsimsAssembly.swift */; };
 		B792350B29C4B57200CA4CA5 /* GlobalEsimsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B792350A29C4B57200CA4CA5 /* GlobalEsimsViewController.swift */; };
-		B792350D29C4B59100CA4CA5 /* GlobalEsimsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B792350C29C4B59100CA4CA5 /* GlobalEsimsViewModel.swift */; };
 		B7D1343929C1BE3A00D0F019 /* ESTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D1343829C1BE3A00D0F019 /* ESTableViewController.swift */; };
 		B7D1344B29C1DDC900D0F019 /* IBMPlexSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B7D1343C29C1DDC900D0F019 /* IBMPlexSans-SemiBoldItalic.ttf */; };
 		B7D1344C29C1DDC900D0F019 /* IBMPlexSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B7D1343D29C1DDC900D0F019 /* IBMPlexSans-Medium.ttf */; };
@@ -76,7 +75,6 @@
 		B7E0FDE029C61AAD00F4956C /* PackagesBlueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E0FDDF29C61AAC00F4956C /* PackagesBlueTableViewCell.swift */; };
 		B7E0FDE329C6251400F4956C /* RegionPackagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E0FDE229C624FB00F4956C /* RegionPackagesViewController.swift */; };
 		B7E0FDE529C6254200F4956C /* RegionPackagesAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E0FDE429C6254200F4956C /* RegionPackagesAssembly.swift */; };
-		B7E0FDE729C6258C00F4956C /* RegionPackagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E0FDE629C6258C00F4956C /* RegionPackagesViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -146,7 +144,6 @@
 		B792350129C4A08B00CA4CA5 /* AreasViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreasViewModel.swift; sourceTree = "<group>"; };
 		B792350829C4B53000CA4CA5 /* GlobalEsimsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalEsimsAssembly.swift; sourceTree = "<group>"; };
 		B792350A29C4B57200CA4CA5 /* GlobalEsimsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalEsimsViewController.swift; sourceTree = "<group>"; };
-		B792350C29C4B59100CA4CA5 /* GlobalEsimsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalEsimsViewModel.swift; sourceTree = "<group>"; };
 		B7D1343829C1BE3A00D0F019 /* ESTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESTableViewController.swift; sourceTree = "<group>"; };
 		B7D1343C29C1DDC900D0F019 /* IBMPlexSans-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		B7D1343D29C1DDC900D0F019 /* IBMPlexSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Medium.ttf"; sourceTree = "<group>"; };
@@ -169,7 +166,6 @@
 		B7E0FDDF29C61AAC00F4956C /* PackagesBlueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackagesBlueTableViewCell.swift; sourceTree = "<group>"; };
 		B7E0FDE229C624FB00F4956C /* RegionPackagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionPackagesViewController.swift; sourceTree = "<group>"; };
 		B7E0FDE429C6254200F4956C /* RegionPackagesAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionPackagesAssembly.swift; sourceTree = "<group>"; };
-		B7E0FDE629C6258C00F4956C /* RegionPackagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionPackagesViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -431,7 +427,6 @@
 				B7E0FDDE29C61A7E00F4956C /* View */,
 				B792350829C4B53000CA4CA5 /* GlobalEsimsAssembly.swift */,
 				B792350A29C4B57200CA4CA5 /* GlobalEsimsViewController.swift */,
-				B792350C29C4B59100CA4CA5 /* GlobalEsimsViewModel.swift */,
 			);
 			path = "1.3 Global esims";
 			sourceTree = "<group>";
@@ -504,7 +499,6 @@
 			children = (
 				B7E0FDE429C6254200F4956C /* RegionPackagesAssembly.swift */,
 				B7E0FDE229C624FB00F4956C /* RegionPackagesViewController.swift */,
-				B7E0FDE629C6258C00F4956C /* RegionPackagesViewModel.swift */,
 			);
 			path = "1.2.1 Region Packages";
 			sourceTree = "<group>";
@@ -640,9 +634,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B72FB52529BE13250035C8FA /* AppCoordinator.swift in Sources */,
-				B792350D29C4B59100CA4CA5 /* GlobalEsimsViewModel.swift in Sources */,
 				B72B6EC129C36BEB0012A86A /* ES+UIViewController.swift in Sources */,
-				B7E0FDE729C6258C00F4956C /* RegionPackagesViewModel.swift in Sources */,
 				B72FB53529BE29670035C8FA /* RootAssembly.swift in Sources */,
 				B72FB53129BE20C60035C8FA /* ES+UINavigationController.swift in Sources */,
 				B75B51EF29BFB99900B6D42A /* EsimTarget.swift in Sources */,

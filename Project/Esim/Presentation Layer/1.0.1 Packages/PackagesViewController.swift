@@ -20,7 +20,7 @@ final class PackagesViewController: ESTableViewController<PackagesViewModel> {
 		let state = reactor.state.asDriver(onErrorJustReturn: reactor.currentState)
 
 		rx.methodInvoked(#selector(viewDidLoad))
-			.map { _ in Reactor.Action.getPackagesBy(id: reactor.currentState.selectedArea.id) }
+			.map { _ in Reactor.Action.getPackagesBy(id: reactor.currentState.selectedArea?.id ?? 0) }
 			.bind(to: reactor.action)
 			.disposed(by: disposeBag)
 		
@@ -43,7 +43,7 @@ final class PackagesViewController: ESTableViewController<PackagesViewModel> {
 			.disposed(by: disposeBag)
 
 		state
-			.map (\.selectedArea.title)
+			.map (\.selectedArea?.title)
 			.asObservable()
 			.bind(to: rx.title)
 			.disposed(by: disposeBag)

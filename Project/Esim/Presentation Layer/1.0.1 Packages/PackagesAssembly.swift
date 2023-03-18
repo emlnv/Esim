@@ -25,7 +25,8 @@ extension ESContainer {
 			PackagesViewModel(
 				fetchingPackagesService: self.fetchingPackService.callAsFunction(),
 				userDefaults:			 self.userDefaults.callAsFunction(),
-				selectedArea: 		 area
+				selectedArea: 		 	 area,
+				areaType: 				 .countries
 			)
 	}}
 	

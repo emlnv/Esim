@@ -9,6 +9,10 @@ import Foundation
 
 final class PackagesViewModel: ESReactor {
 	
+	enum AreaType {
+		case countries, regions, globalRegions
+	}
+
 	enum Error: LocalizedError {
 		case failedGetServerRespond
 		case failedCreatingURL
@@ -27,7 +31,7 @@ final class PackagesViewModel: ESReactor {
 	struct State {
 		var error: Swift.Error?
 		var packages: [Package]?
-		var selectedArea: Area
+		var selectedArea: Area?
 		var isLoading: Bool = false
 	}
 	
@@ -35,7 +39,7 @@ final class PackagesViewModel: ESReactor {
 	
 	private let fetchingPackagesService: IFetchingPackagesServicable
 	private let userDefaults: UserDefaults
-	private let selectedArea: Area
+	private let selectedArea: Area?
 	
 	// MARK: - Internal properties
 	
@@ -43,18 +47,21 @@ final class PackagesViewModel: ESReactor {
 	
 	// MARK: - Private properties
 	
-	
+	private let areaType: AreaType
+
 	// MARK: - Lifecycle
 	
 	init(
 		fetchingPackagesService: IFetchingPackagesServicable,
 		userDefaults: UserDefaults,
-		selectedArea: Area
+		selectedArea: Area?,
+		areaType: AreaType
 	) {
 		self.fetchingPackagesService = fetchingPackagesService
 		self.userDefaults = userDefaults
 		self.selectedArea = selectedArea
-		self.initialState =  State(selectedArea: selectedArea)
+		self.initialState = State(selectedArea: selectedArea)
+		self.areaType = areaType
 	}
 	
 	func mutate(action: Action) -> ESObservable<Mutation> {
@@ -79,10 +86,16 @@ final class PackagesViewModel: ESReactor {
 	}
 	
 	private func getPackagesByArea(_ id: Int) -> ESObservable<Mutation> {
-		.concat(
+		let service: ESObservable<Area>
+		switch areaType {
+			case .countries:		service = fetchingPackagesService.getPackagesByArea(id: id)
+			case .regions:			service = fetchingPackagesService.getPackagesByRegion(id: id)
+			case .globalRegions:	service = fetchingPackagesService.getGlobalPackages()
+		}
+		return .concat(
 			.just(.mutateIsLoading(true)),
 			
-			fetchingPackagesService.getPackagesByArea(id: id)
+			service
 				.flatMap { self.getImagesFor(packages: $0.packages ?? []) }
 				.catch { .just(.toggleError($0)) },
 			

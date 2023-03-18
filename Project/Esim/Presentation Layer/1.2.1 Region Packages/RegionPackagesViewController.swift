@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class RegionPackagesViewController: ESTableViewController<RegionPackagesViewModel> {
+final class RegionPackagesViewController: ESTableViewController<PackagesViewModel> {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -16,11 +16,11 @@ final class RegionPackagesViewController: ESTableViewController<RegionPackagesVi
 		parent?.navigationItem.backBarButtonItem = .init(title: String(), style: .plain, target: nil, action: nil)
 	}
 	
-	override func bind(reactor: RegionPackagesViewModel) {
+	override func bind(reactor: PackagesViewModel) {
 		let state = reactor.state.asDriver(onErrorJustReturn: reactor.currentState)
 		
 		rx.methodInvoked(#selector(viewDidLoad))
-			.map { _ in Reactor.Action.getPackagesBy(id: reactor.currentState.selectedArea.id) }
+			.map { _ in Reactor.Action.getPackagesBy(id: reactor.currentState.selectedArea?.id ?? 0) }
 			.bind(to: reactor.action)
 			.disposed(by: disposeBag)
 		
@@ -43,7 +43,7 @@ final class RegionPackagesViewController: ESTableViewController<RegionPackagesVi
 			.disposed(by: disposeBag)
 		
 		state
-			.map (\.selectedArea.title)
+			.map (\.selectedArea?.title)
 			.asObservable()
 			.bind(to: rx.title)
 			.disposed(by: disposeBag)

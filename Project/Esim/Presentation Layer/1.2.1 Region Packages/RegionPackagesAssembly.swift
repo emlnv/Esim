@@ -13,26 +13,27 @@ extension ESContainer {
 	private var fetchingPackagesService: ESFactory<IFetchingPackagesServicable> {
 		ESFactory(self) {
 			FetchingPackagesService()
-		}}
+	}}
 	
 	private var userDefaults: ESFactory<UserDefaults> {
 		ESFactory(self) {
 			UserDefaults.standard
-		}}
+	}}
 	
-	private func regionPackagesVM(for region: Area) -> ESFactory<RegionPackagesViewModel> {
+	private func regionPackagesVM(for region: Area) -> ESFactory<PackagesViewModel> {
 		ESFactory(self) {
-			RegionPackagesViewModel(
+			PackagesViewModel(
 				fetchingPackagesService: self.fetchingPackagesService.callAsFunction(),
 				userDefaults:			 self.userDefaults.callAsFunction(),
-				selectedRegion:	region
+				selectedArea: 			 region,
+				areaType: 				 .regions
 			)
-		}}
+	}}
 	
 	private func regionPackagesVC(for region: Area) -> ESFactory<RegionPackagesViewController> {
 		ESFactory(self) {
 			RegionPackagesViewController(
 				viewModel: self.regionPackagesVM(for: region).callAsFunction()
 			)
-		}}
+	}}
 }

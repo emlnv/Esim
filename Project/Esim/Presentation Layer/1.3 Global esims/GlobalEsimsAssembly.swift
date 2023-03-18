@@ -20,11 +20,13 @@ extension ESContainer {
 			UserDefaults.standard
 		}}
 	
-	private var globalVM: ESFactory<GlobalEsimsViewModel> {
+	private var globalVM: ESFactory<PackagesViewModel> {
 		ESFactory(self) {
-			GlobalEsimsViewModel(
+			PackagesViewModel(
 				fetchingPackagesService: self.fetchingPackagesService.callAsFunction(),
-				userDefaults:			 self.userDefaults.callAsFunction()
+				userDefaults:			 self.userDefaults.callAsFunction(),
+				selectedArea: 			 nil,
+				areaType: 				 .globalRegions
 			)
 		}}
 	
