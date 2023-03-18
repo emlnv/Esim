@@ -55,7 +55,7 @@ final class LocalEsimsViewModelTestCase: XCTestCase {
 		}
 		
 		XCTAssertEqual(
-			sut.currentState.countriesPopular,
+			sut.currentState.areasPopular,
 			successStub
 		)
 		
@@ -63,7 +63,7 @@ final class LocalEsimsViewModelTestCase: XCTestCase {
 		
 		let states = response.events.compactMap(\.value.element)
 		XCTAssertEqual(
-			states.map(\.countriesPopular),
+			states.map(\.areasPopular),
 			[
 				nil,				// initial state event
 				successStub			// recieved data event
@@ -90,7 +90,7 @@ final class LocalEsimsViewModelTestCase: XCTestCase {
 			self.sut.state
 		}
 		
-		XCTAssertNil(sut.currentState.countriesPopular)
+		XCTAssertNil(sut.currentState.areasPopular)
 		XCTAssertEqual(sut.currentState.error, LocalEsimsViewModel.Error.failedGetServerRespond)
 		let states = response.events.compactMap(\.value.element)
 		XCTAssertEqual(

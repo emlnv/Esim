@@ -24,7 +24,7 @@ final class RegionalEsimsViewController: ESTableViewController<RegionalEsimsView
 			.disposed(by: disposeBag)
 		
 		state
-			.compactMap (\.countriesWithImage)
+			.compactMap (\.areasWithImage)
 			.distinctUntilChanged()
 			.drive(tableView.rx.items(
 				cellIdentifier: AreaTableViewCell.reuseIdentifier,

@@ -29,8 +29,8 @@ final class RegionalEsimsViewModel: ESReactor {
 	
 	struct State {
 		var error: Swift.Error?
-		var countriesPopular: [Area]?
-		var countriesWithImage: [Area]?
+		var areasPopular: [Area]?
+		var areasWithImage: [Area]?
 		var selectedArea: Area?
 		var isLoading: Bool = false
 	}
@@ -72,10 +72,10 @@ final class RegionalEsimsViewModel: ESReactor {
 		switch mutation {
 			case .toggleError(let error):
 				newState.error = error
-			case .mutateAreas(let countries):
-				newState.countriesPopular = countries
-			case .mutateAreaWithImages(let countries):
-				newState.countriesWithImage = countries
+			case .mutateAreas(let areas):
+				newState.areasPopular = areas
+			case .mutateAreaWithImages(let areas):
+				newState.areasWithImage = areas
 			case .mutateSelectedArea(let area):
 				newState.selectedArea = area
 			case .mutateIsLoading(let isLoading):
@@ -91,7 +91,7 @@ final class RegionalEsimsViewModel: ESReactor {
 				.flatMap { model -> ESObservable<Mutation> in
 						.concat(
 							.just(.mutateAreas(model.sorted { $0.title < $1.title } )),
-							self.getImagesFor(countries: model)
+							self.getImagesFor(areas: model)
 						)
 				}
 				.catch { error in
@@ -102,10 +102,10 @@ final class RegionalEsimsViewModel: ESReactor {
 			
 	}
 
-	private func getImagesFor(countries: [Area]) -> ESObservable<Mutation> {
+	private func getImagesFor(areas: [Area]) -> ESObservable<Mutation> {
 		.concat(
 			.just(.mutateIsLoading(true)),
-			fetchingAreasService.getImages(for: countries)
+			fetchingAreasService.getImages(for: areas)
 				.flatMap { model -> ESObservable<Mutation> in
 						.just(.mutateAreaWithImages(model))
 				}
