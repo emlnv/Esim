@@ -1,5 +1,5 @@
 //
-//  StoreViewController.swift
+//  PackagesViewController.swift
 //  Esim
 //
 //  Created by Viacheslav on 14.03.2023.
@@ -7,20 +7,28 @@
 
 import UIKit
 
-final class GlobalEsimsViewController: ESTableViewController<PackagesViewModel> {
+final class PackagesViewController: ESTableViewController<PackagesViewModel> {
+	
+	var cellType: PackagesTableViewCell.Type!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		tableView.register(PackagesBlueTableViewCell.self, forCellReuseIdentifier: PackagesBlueTableViewCell.reuseIdentifier)
+		tableView.register(cellType, forCellReuseIdentifier: cellType.reuseIdentifier)
 		tableView.rx.setDelegate(self).disposed(by: disposeBag)
 		parent?.navigationItem.backBarButtonItem = .init(title: String(), style: .plain, target: nil, action: nil)
 	}
 	
 	override func bind(reactor: PackagesViewModel) {
-		let state = reactor.state.asDriver(onErrorJustReturn: reactor.currentState)
+		switch reactor.currentState.areaType {
+			case .countries: 		cellType = PackagesTableViewCell.self
+			case .regions:			cellType = PackagesOrangeTableViewCell.self
+			case .globalRegions:	cellType = PackagesBlueTableViewCell.self
+		}
 		
+		let state = reactor.state.asDriver(onErrorJustReturn: reactor.currentState)
+
 		rx.methodInvoked(#selector(viewDidLoad))
-			.map { _ in Reactor.Action.getPackagesBy(id: 0) }
+			.map { _ in Reactor.Action.getPackagesBy(id: reactor.currentState.selectedArea?.id ?? 0) }
 			.bind(to: reactor.action)
 			.disposed(by: disposeBag)
 		
@@ -28,18 +36,24 @@ final class GlobalEsimsViewController: ESTableViewController<PackagesViewModel> 
 			.compactMap (\.packages)
 			.distinctUntilChanged()
 			.drive(tableView.rx.items(
-				cellIdentifier: PackagesBlueTableViewCell.reuseIdentifier,
-				cellType: PackagesBlueTableViewCell.self
+				cellIdentifier: cellType.self.reuseIdentifier,
+				cellType: cellType
 			)) { _, data, cell in
 				cell.configure(package: data)
 			}
 			.disposed(by: disposeBag)
-		
+
 		state
 			.compactMap { $0.error }
 			.drive(onNext: { [weak self] error in
-				self?.showOkAlert(title: "Error", message: error?.localizedDescription)
+				self?.showOkAlert(title: "Error", message: error.localizedDescription)
 			})
+			.disposed(by: disposeBag)
+
+		state
+			.map (\.selectedArea?.title)
+			.asObservable()
+			.bind(to: rx.title)
 			.disposed(by: disposeBag)
 		
 		state
@@ -53,7 +67,7 @@ final class GlobalEsimsViewController: ESTableViewController<PackagesViewModel> 
 	}
 }
 
-extension GlobalEsimsViewController: UITableViewDelegate {
+extension PackagesViewController: UITableViewDelegate {
 	
 	func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
 		28

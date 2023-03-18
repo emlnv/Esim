@@ -28,14 +28,14 @@ final class StoreViewController: ESBaseViewController<StoreViewModel> {
 
 	var localEsimsViewController: 		AreasViewController
 	var regionalEsimsViewController: 	AreasViewController
-	var globalEsimsViewController: 		GlobalEsimsViewController
+	var globalEsimsViewController: 		PackagesViewController
 	
 	// MARK: - Lifecycle
 
 	init(
 		localEsimsViewController: AreasViewController,
 		regionalEsimsViewController: AreasViewController,
-		globalEsimsViewController: GlobalEsimsViewController,
+		globalEsimsViewController: PackagesViewController,
 		viewModel: Reactor) {
 			self.localEsimsViewController = localEsimsViewController
 			self.regionalEsimsViewController = regionalEsimsViewController

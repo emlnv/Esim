@@ -33,6 +33,7 @@ final class PackagesViewModel: ESReactor {
 		var packages: [Package]?
 		var selectedArea: Area?
 		var isLoading: Bool = false
+		let areaType: AreaType
 	}
 	
 	// MARK: - Dependencies
@@ -47,7 +48,6 @@ final class PackagesViewModel: ESReactor {
 	
 	// MARK: - Private properties
 	
-	private let areaType: AreaType
 
 	// MARK: - Lifecycle
 	
@@ -60,8 +60,7 @@ final class PackagesViewModel: ESReactor {
 		self.fetchingPackagesService = fetchingPackagesService
 		self.userDefaults = userDefaults
 		self.selectedArea = selectedArea
-		self.initialState = State(selectedArea: selectedArea)
-		self.areaType = areaType
+		self.initialState = State(selectedArea: selectedArea, areaType: areaType)
 	}
 	
 	func mutate(action: Action) -> ESObservable<Mutation> {
@@ -87,7 +86,7 @@ final class PackagesViewModel: ESReactor {
 	
 	private func getPackagesByArea(_ id: Int) -> ESObservable<Mutation> {
 		let service: ESObservable<Area>
-		switch areaType {
+		switch currentState.areaType {
 			case .countries:		service = fetchingPackagesService.getPackagesByArea(id: id)
 			case .regions:			service = fetchingPackagesService.getPackagesByRegion(id: id)
 			case .globalRegions:	service = fetchingPackagesService.getGlobalPackages()

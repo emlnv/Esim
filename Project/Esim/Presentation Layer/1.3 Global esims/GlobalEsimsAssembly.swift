@@ -8,7 +8,7 @@
 import Foundation.NSUserDefaults
 
 extension ESContainer {
-	var globalEsimsViewController: GlobalEsimsViewController { globalVC.callAsFunction() }
+	var globalEsimsViewController: PackagesViewController { globalVC.callAsFunction() }
 	
 	private var fetchingPackagesService: ESFactory<IFetchingPackagesServicable> {
 		ESFactory(self) {
@@ -30,9 +30,9 @@ extension ESContainer {
 			)
 		}}
 	
-	private var globalVC: ESFactory<GlobalEsimsViewController> {
+	private var globalVC: ESFactory<PackagesViewController> {
 		ESFactory(self) {
-			GlobalEsimsViewController(
+			PackagesViewController(
 				viewModel: self.globalVM.callAsFunction()
 			)
 		}}

@@ -11,7 +11,7 @@ Current state of UI
 	▫️ check memory leaks
 	▫️ check layout on different screens
 	✅ replaced CountryWithImage struct
-	▫️ remove vcs, vms code duplication
+	✅ remove vcs, vms code duplication
 	▫️ storeVC: shadow header relayout
 
 ***

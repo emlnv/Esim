@@ -52,7 +52,6 @@
 		B792350329C4A21300CA4CA5 /* AreasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B792350029C4A06000CA4CA5 /* AreasViewController.swift */; };
 		B792350429C4A21700CA4CA5 /* RegionalEsimsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79234FF29C49FA800CA4CA5 /* RegionalEsimsAssembly.swift */; };
 		B792350929C4B54200CA4CA5 /* GlobalEsimsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B792350829C4B53000CA4CA5 /* GlobalEsimsAssembly.swift */; };
-		B792350B29C4B57200CA4CA5 /* GlobalEsimsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B792350A29C4B57200CA4CA5 /* GlobalEsimsViewController.swift */; };
 		B7D1343929C1BE3A00D0F019 /* ESTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D1343829C1BE3A00D0F019 /* ESTableViewController.swift */; };
 		B7D1344B29C1DDC900D0F019 /* IBMPlexSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B7D1343C29C1DDC900D0F019 /* IBMPlexSans-SemiBoldItalic.ttf */; };
 		B7D1344C29C1DDC900D0F019 /* IBMPlexSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B7D1343D29C1DDC900D0F019 /* IBMPlexSans-Medium.ttf */; };
@@ -73,7 +72,6 @@
 		B7E0ECAE29C1043400CDF6FD /* FetchingPackagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E0ECAD29C1035800CDF6FD /* FetchingPackagesService.swift */; };
 		B7E0ECB629C10CAF00CDF6FD /* LocalEsimsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E0ECB529C10CAF00CDF6FD /* LocalEsimsAssembly.swift */; };
 		B7E0FDE029C61AAD00F4956C /* PackagesBlueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E0FDDF29C61AAC00F4956C /* PackagesBlueTableViewCell.swift */; };
-		B7E0FDE329C6251400F4956C /* RegionPackagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E0FDE229C624FB00F4956C /* RegionPackagesViewController.swift */; };
 		B7E0FDE529C6254200F4956C /* RegionPackagesAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E0FDE429C6254200F4956C /* RegionPackagesAssembly.swift */; };
 /* End PBXBuildFile section */
 
@@ -143,7 +141,6 @@
 		B792350029C4A06000CA4CA5 /* AreasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreasViewController.swift; sourceTree = "<group>"; };
 		B792350129C4A08B00CA4CA5 /* AreasViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreasViewModel.swift; sourceTree = "<group>"; };
 		B792350829C4B53000CA4CA5 /* GlobalEsimsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalEsimsAssembly.swift; sourceTree = "<group>"; };
-		B792350A29C4B57200CA4CA5 /* GlobalEsimsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalEsimsViewController.swift; sourceTree = "<group>"; };
 		B7D1343829C1BE3A00D0F019 /* ESTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESTableViewController.swift; sourceTree = "<group>"; };
 		B7D1343C29C1DDC900D0F019 /* IBMPlexSans-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		B7D1343D29C1DDC900D0F019 /* IBMPlexSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Medium.ttf"; sourceTree = "<group>"; };
@@ -164,7 +161,6 @@
 		B7E0ECAD29C1035800CDF6FD /* FetchingPackagesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchingPackagesService.swift; sourceTree = "<group>"; };
 		B7E0ECB529C10CAF00CDF6FD /* LocalEsimsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalEsimsAssembly.swift; sourceTree = "<group>"; };
 		B7E0FDDF29C61AAC00F4956C /* PackagesBlueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackagesBlueTableViewCell.swift; sourceTree = "<group>"; };
-		B7E0FDE229C624FB00F4956C /* RegionPackagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionPackagesViewController.swift; sourceTree = "<group>"; };
 		B7E0FDE429C6254200F4956C /* RegionPackagesAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionPackagesAssembly.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -192,6 +188,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B7230C6629C65ECF00AE4D3F /* 0.2 Areas */ = {
+			isa = PBXGroup;
+			children = (
+				B792350029C4A06000CA4CA5 /* AreasViewController.swift */,
+				B792350129C4A08B00CA4CA5 /* AreasViewModel.swift */,
+			);
+			path = "0.2 Areas";
+			sourceTree = "<group>";
+		};
 		B72B6EBD29C366FD0012A86A /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -206,11 +211,12 @@
 				B751CEEB29C06ED70048B5A0 /* Components */,
 				B72FB52229BE12A20035C8FA /* 0.0 Root */,
 				B72FB51F29BE11DE0035C8FA /* 1.0 Store */,
+				B751CEF529C0D64D0048B5A0 /* 0.1 Packages */,
+				B7230C6629C65ECF00AE4D3F /* 0.2 Areas */,
 				B7E0ECB029C109EF00CDF6FD /* 1.1 Local esims */,
 				B79234FE29C49F3E00CA4CA5 /* 1.2 Regional esims */,
-				B792350729C4B52200CA4CA5 /* 1.3 Global esims */,
-				B751CEF529C0D64D0048B5A0 /* 1.0.1 Packages */,
 				B7E0FDE129C623FF00F4956C /* 1.2.1 Region Packages */,
+				B792350729C4B52200CA4CA5 /* 1.3 Global esims */,
 			);
 			path = "Presentation Layer";
 			sourceTree = "<group>";
@@ -288,7 +294,7 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		B751CEF529C0D64D0048B5A0 /* 1.0.1 Packages */ = {
+		B751CEF529C0D64D0048B5A0 /* 0.1 Packages */ = {
 			isa = PBXGroup;
 			children = (
 				B72B6EBD29C366FD0012A86A /* View */,
@@ -296,7 +302,7 @@
 				B751CEF629C0D67B0048B5A0 /* PackagesViewController.swift */,
 				B7E0ECA829C0FF9B00CDF6FD /* PackagesViewModel.swift */,
 			);
-			path = "1.0.1 Packages";
+			path = "0.1 Packages";
 			sourceTree = "<group>";
 		};
 		B752C49C29BF3E3E00CD3DAD /* View */ = {
@@ -415,8 +421,6 @@
 			isa = PBXGroup;
 			children = (
 				B79234FF29C49FA800CA4CA5 /* RegionalEsimsAssembly.swift */,
-				B792350029C4A06000CA4CA5 /* AreasViewController.swift */,
-				B792350129C4A08B00CA4CA5 /* AreasViewModel.swift */,
 			);
 			path = "1.2 Regional esims";
 			sourceTree = "<group>";
@@ -426,7 +430,6 @@
 			children = (
 				B7E0FDDE29C61A7E00F4956C /* View */,
 				B792350829C4B53000CA4CA5 /* GlobalEsimsAssembly.swift */,
-				B792350A29C4B57200CA4CA5 /* GlobalEsimsViewController.swift */,
 			);
 			path = "1.3 Global esims";
 			sourceTree = "<group>";
@@ -498,7 +501,6 @@
 			isa = PBXGroup;
 			children = (
 				B7E0FDE429C6254200F4956C /* RegionPackagesAssembly.swift */,
-				B7E0FDE229C624FB00F4956C /* RegionPackagesViewController.swift */,
 			);
 			path = "1.2.1 Region Packages";
 			sourceTree = "<group>";
@@ -654,7 +656,6 @@
 				B752C49929BF23A800CD3DAD /* FactoryBridge.swift in Sources */,
 				B72FB52729BE145E0035C8FA /* TabBarController.swift in Sources */,
 				B751CEF729C0D67C0048B5A0 /* PackagesViewController.swift in Sources */,
-				B792350B29C4B57200CA4CA5 /* GlobalEsimsViewController.swift in Sources */,
 				B75B51EC29BFB7E200B6D42A /* Area.swift in Sources */,
 				B751CEED29C06F060048B5A0 /* ESBaseViewController.swift in Sources */,
 				B72B6EBF29C367490012A86A /* PackagesTableViewCell.swift in Sources */,
@@ -663,7 +664,6 @@
 				B75B51E229BFB4DC00B6D42A /* FetchingAreasService.swift in Sources */,
 				B72FB52129BE12040035C8FA /* StoreViewController.swift in Sources */,
 				B7E0ECA929C0FF9B00CDF6FD /* PackagesViewModel.swift in Sources */,
-				B7E0FDE329C6251400F4956C /* RegionPackagesViewController.swift in Sources */,
 				B760B91C29BE02930067231C /* AppDelegate.swift in Sources */,
 				B72FB53329BE24450035C8FA /* StoreCoordinator.swift in Sources */,
 				B770CE8D29C3972C00772E83 /* ActivityIndicatorManager.swift in Sources */,
