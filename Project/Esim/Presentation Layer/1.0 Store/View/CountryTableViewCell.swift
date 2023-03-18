@@ -63,9 +63,9 @@ final class CountryTableViewCell: UITableViewCell {
 	
 	// MARK: - Public methods
 	
-	func configure(country: CountryWithImage) {
+	func configure(country: Country) {
 		label.text = country.title
-		image.image = country.image
+		image.image = UIImage(data: country.imageData ?? Data())
 	}
 
 	// MARK: - Private methods

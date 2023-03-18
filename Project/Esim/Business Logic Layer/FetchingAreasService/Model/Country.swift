@@ -5,19 +5,7 @@
 //  Created by Viacheslav on 13.03.2023.
 //
 
-struct CountryWithImage: Equatable {
-	init(country: Country, image: ESImage) {
-		self.id = country.id
-		self.slug = country.slug
-		self.title = country.title
-		self.image = image
-	}
-	
-	var id: Int
-	var slug: String
-	var title: String
-	var image: ESImage
-}
+import Foundation.NSData
 
 struct Country: Decodable, Equatable, Hashable {
 	init() {
@@ -35,6 +23,7 @@ struct Country: Decodable, Equatable, Hashable {
 	var slug: String
 	var title: String
 	var image: Flag
+	var imageData: Data?
 	var packages: [Package]?
 	var package_count: Int?
 }

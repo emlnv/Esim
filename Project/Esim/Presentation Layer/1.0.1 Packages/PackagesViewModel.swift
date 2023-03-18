@@ -27,7 +27,7 @@ final class PackagesViewModel: ESReactor {
 	struct State {
 		var error: Swift.Error?
 		var packages: [Package]?
-		var selectedCountry: CountryWithImage
+		var selectedCountry: Country
 		var isLoading: Bool = false
 	}
 	
@@ -35,7 +35,7 @@ final class PackagesViewModel: ESReactor {
 	
 	private let fetchingPackagesService: IFetchingPackagesServicable
 	private let userDefaults: UserDefaults
-	private let selectedCountry: CountryWithImage
+	private let selectedCountry: Country
 	
 	// MARK: - Internal properties
 	
@@ -49,7 +49,7 @@ final class PackagesViewModel: ESReactor {
 	init(
 		fetchingPackagesService: IFetchingPackagesServicable,
 		userDefaults: UserDefaults,
-		selectedCountry: CountryWithImage
+		selectedCountry: Country
 	) {
 		self.fetchingPackagesService = fetchingPackagesService
 		self.userDefaults = userDefaults

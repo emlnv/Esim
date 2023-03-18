@@ -116,7 +116,7 @@ class PackagesTableViewCell: UITableViewCell {
 			card.centerXAnchor	.constraint(equalTo: contentView.centerXAnchor),
 			card.topAnchor		.constraint(equalTo: contentView.topAnchor, constant: 0),
 			card.bottomAnchor	.constraint(lessThanOrEqualTo: contentView.bottomAnchor),
-			card.widthAnchor	.constraint(equalToConstant: 375)
+			card.heightAnchor	.constraint(equalToConstant: 328)
 		])
 
 		labelData.translatesAutoresizingMaskIntoConstraints = false
@@ -133,7 +133,7 @@ class PackagesTableViewCell: UITableViewCell {
 		
 		labelTitle.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
-			labelTitle.topAnchor			.constraint(equalTo: card.topAnchor, constant: C.marginLeading*3),
+			labelTitle.topAnchor			.constraint(equalTo: card.topAnchor, constant: C.marginLeading*2),
 			labelTitle.leadingAnchor		.constraint(equalTo: card.leadingAnchor, constant: C.marginLeading*2)
 		])
 		
@@ -146,15 +146,15 @@ class PackagesTableViewCell: UITableViewCell {
 		button.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
 			button.centerXAnchor		.constraint(equalTo: card.centerXAnchor),
-			button.bottomAnchor			.constraint(equalTo: card.bottomAnchor, constant: -C.marginLeading*3 - 8)
+			button.bottomAnchor			.constraint(equalTo: card.bottomAnchor, constant: -C.marginLeading*2 - 8)
 		])
 		
 		image.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
-			image.topAnchor	.constraint(equalTo: card.topAnchor, constant: C.marginVertical*2),
-			image.trailingAnchor	.constraint(equalTo: card.trailingAnchor, constant: -C.marginLeading*2),
-			image.heightAnchor	.constraint(equalToConstant: 90),
-			image.widthAnchor	.constraint(equalToConstant: 142)
+			image.topAnchor		.constraint(equalTo: card.topAnchor),
+			image.trailingAnchor.constraint(equalTo: card.trailingAnchor, constant: -C.marginLeading*2),
+			image.heightAnchor	.constraint(equalToConstant: 88),
+			image.widthAnchor	.constraint(equalToConstant: 140)
 		])
 	}
 }

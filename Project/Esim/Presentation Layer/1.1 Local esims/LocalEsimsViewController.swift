@@ -34,7 +34,7 @@ final class LocalEsimsViewController: ESTableViewController<LocalEsimsViewModel>
 			}
 			.disposed(by: disposeBag)
 		
-		tableView.rx.modelSelected(CountryWithImage.self)
+		tableView.rx.modelSelected(Country.self)
 			.map(Reactor.Action.setSelectCountry)
 			.bind(to: reactor.action)
 			.disposed(by: disposeBag)

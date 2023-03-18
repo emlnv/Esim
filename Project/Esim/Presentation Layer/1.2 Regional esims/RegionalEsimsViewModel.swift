@@ -16,22 +16,22 @@ final class RegionalEsimsViewModel: ESReactor {
 	
 	enum Action {
 		case getRegions
-		case setSelectCountry(CountryWithImage)
+		case setSelectCountry(Country)
 	}
 	
 	enum Mutation {
 		case toggleError(Swift.Error?)
 		case mutateCountries([Country])
-		case mutateCountryWithImages([CountryWithImage])
-		case mutateSelectedCountry(CountryWithImage)
+		case mutateCountryWithImages([Country])
+		case mutateSelectedCountry(Country)
 		case mutateIsLoading(Bool)
 	}
 	
 	struct State {
 		var error: Swift.Error?
 		var countriesPopular: [Country]?
-		var countriesWithImage: [CountryWithImage]?
-		var selectedCountry: CountryWithImage?
+		var countriesWithImage: [Country]?
+		var selectedCountry: Country?
 		var isLoading: Bool = false
 	}
 	

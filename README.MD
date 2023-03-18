@@ -7,10 +7,10 @@ Current state of UI
 	notes for todo
 	▫️ gradient colors for card and remove subclassed cells
 	▫️ hard code to Constants
-	✅ child vcs correction
+	✅ storeVC: child vcs corrected
 	▫️ check memory leaks
 	▫️ check layout on different screens
-	▫️ replace CountryWithImage struct
+	✅ replaced CountryWithImage struct
 	▫️ remove vcs, vms code duplication
 	▫️ storeVC: shadow header relayout
 

@@ -46,14 +46,14 @@ final class StoreCoordinator {
 
 	}
 	
-	private func push(selectedCountry: CountryWithImage) {
+	private func push(selectedCountry: Country) {
 		let viewController = ESContainer.shared.packagesViewController(for: selectedCountry)
 		navigationController.pushViewController(viewController, animated: true)
 		viewController.loadViewIfNeeded()
 		setupBindings(for: viewController)
 	}
 	
-	private func push(selectedRegion: CountryWithImage) {
+	private func push(selectedRegion: Country) {
 		let viewController = ESContainer.shared.regionPackagesViewController(for: selectedRegion)
 		navigationController.pushViewController(viewController, animated: true)
 		viewController.loadViewIfNeeded()
