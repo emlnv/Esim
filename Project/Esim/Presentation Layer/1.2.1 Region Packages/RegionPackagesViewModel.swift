@@ -1,5 +1,5 @@
 //
-//  PackagesViewModel.swift
+//  RegionPackagesViewModel.swift
 //  Esim
 //
 //  Created by Viacheslav on 14.03.2023.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class PackagesViewModel: ESReactor {
+final class RegionPackagesViewModel: ESReactor {
 	
 	enum Error: LocalizedError {
 		case failedGetServerRespond
@@ -49,11 +49,11 @@ final class PackagesViewModel: ESReactor {
 	init(
 		fetchingPackagesService: IFetchingPackagesServicable,
 		userDefaults: UserDefaults,
-		selectedCountry: CountryWithImage
+		selectedRegion: CountryWithImage
 	) {
 		self.fetchingPackagesService = fetchingPackagesService
 		self.userDefaults = userDefaults
-		self.selectedCountry = selectedCountry
+		self.selectedCountry = selectedRegion
 		self.initialState =  State(selectedCountry: selectedCountry)
 	}
 	
@@ -82,11 +82,11 @@ final class PackagesViewModel: ESReactor {
 		.concat(
 			.just(.mutateIsLoading(true)),
 			
-			fetchingPackagesService.getPackagesByCountry(id: id)
+			fetchingPackagesService.getPackagesByRegion(id: id)
 				.flatMap { self.getImagesFor(packages: $0.packages ?? []) }
 				.catch { .just(.toggleError($0)) },
 			
-			.just(.mutateIsLoading(false))
+				.just(.mutateIsLoading(false))
 		)
 	}
 	
@@ -96,11 +96,11 @@ final class PackagesViewModel: ESReactor {
 			
 			fetchingPackagesService.getImages(for: packages)
 				.flatMap { model -> ESObservable<Mutation> in
-						.just(.mutatePackages(model)) }
+					.just(.mutatePackages(model)) }
 				.catch { error in
-						.just(.toggleError(error)) },
+					.just(.toggleError(error)) },
 			
-			.just(.mutateIsLoading(true))
+				.just(.mutateIsLoading(true))
 		)
 	}
 }

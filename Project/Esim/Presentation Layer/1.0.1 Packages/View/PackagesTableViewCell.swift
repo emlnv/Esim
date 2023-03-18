@@ -159,11 +159,22 @@ class PackagesTableViewCell: UITableViewCell {
 	}
 }
 
-final class PackagesBlueTableViewCell: PackagesTableViewCell {
+class PackagesBlueTableViewCell: PackagesTableViewCell {
 	
 	override func configure(package: Package) {
 		super.configure(package: package)
 		card.image = Icon.esimBlue
+		[labelTitle, labelSubtitle, labelData, labelValidity].forEach { $0.textColor = .white }
+		button.setTitleColor(.white, for: .normal)
+		labelSubtitle.text = String(package.operator?.countries.count ?? 0) + " Countries"
+	}
+}
+
+final class PackagesOrangeTableViewCell: PackagesTableViewCell {
+	
+	override func configure(package: Package) {
+		super.configure(package: package)
+		card.image = Icon.esimOrange
 		[labelTitle, labelSubtitle, labelData, labelValidity].forEach { $0.textColor = .white }
 		button.setTitleColor(.white, for: .normal)
 		labelSubtitle.text = String(package.operator?.countries.count ?? 0) + " Countries"

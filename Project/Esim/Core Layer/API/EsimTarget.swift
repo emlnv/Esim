@@ -10,13 +10,14 @@ import Foundation
 enum EsimTarget: ESTargetType {
 	case getPopularCoutries
 	case getPackagesForCountry(Int)
+	case getPackagesForRegion(Int)
 	case getGlobalPackages
 	case getImage(URL)
 	case getRegions
 	
 	var baseURL: URL {
 		switch self {
-			case .getPopularCoutries, .getPackagesForCountry, .getRegions, .getGlobalPackages:
+			case .getPopularCoutries, .getPackagesForCountry, .getRegions, .getGlobalPackages, .getPackagesForRegion:
 				return URL(string: "https://www.airalo.com")! // swiftlint:disable:this force_unwrapping
 			case .getImage(let url): return url
 		}
@@ -30,6 +31,8 @@ enum EsimTarget: ESTargetType {
 				return String()
 			case .getPackagesForCountry(let id):
 				return "/api/v2/countries/" + String(id)
+			case .getPackagesForRegion(let id):
+				return "/api/v2/regions/" + String(id)
 			case .getRegions:
 				return "/api/v2/regions"
 			case .getGlobalPackages:
@@ -39,7 +42,7 @@ enum EsimTarget: ESTargetType {
 	
 	var method: ESMethod {
 		switch self {
-			case .getPopularCoutries, .getImage, .getPackagesForCountry, .getRegions, .getGlobalPackages:
+			case .getPopularCoutries, .getImage, .getPackagesForCountry, .getRegions, .getGlobalPackages, .getPackagesForRegion:
 				return .get
 		}
 	}
@@ -62,6 +65,11 @@ enum EsimTarget: ESTargetType {
 					"id": id
 				]
 				return .requestParameters(parameters: parameters, encoding: ESURLEncoding.default)
+			case .getPackagesForRegion(let id):
+				let parameters: [String: Any] = [
+					"id": id
+				]
+				return .requestParameters(parameters: parameters, encoding: ESURLEncoding.default)
 			case .getGlobalPackages:
 				let parameters: [String: Any] = [
 					"id": "world"
@@ -72,7 +80,7 @@ enum EsimTarget: ESTargetType {
 	
 	var headers: [String : String]? {
 		switch self {
-			case .getPopularCoutries, .getPackagesForCountry, .getRegions, .getGlobalPackages:
+			case .getPopularCoutries, .getPackagesForCountry, .getRegions, .getGlobalPackages, .getPackagesForRegion:
 				return [
 					"Content-Type": "application/json",
 					"Accept-Language": "us-US;q=1.0"

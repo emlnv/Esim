@@ -76,6 +76,9 @@
 		B7E0ECB429C10BDA00CDF6FD /* LocalEsimsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E0ECB329C10BDA00CDF6FD /* LocalEsimsViewModel.swift */; };
 		B7E0ECB629C10CAF00CDF6FD /* LocalEsimsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E0ECB529C10CAF00CDF6FD /* LocalEsimsAssembly.swift */; };
 		B7E0FDE029C61AAD00F4956C /* PackagesBlueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E0FDDF29C61AAC00F4956C /* PackagesBlueTableViewCell.swift */; };
+		B7E0FDE329C6251400F4956C /* RegionPackagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E0FDE229C624FB00F4956C /* RegionPackagesViewController.swift */; };
+		B7E0FDE529C6254200F4956C /* RegionPackagesAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E0FDE429C6254200F4956C /* RegionPackagesAssembly.swift */; };
+		B7E0FDE729C6258C00F4956C /* RegionPackagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E0FDE629C6258C00F4956C /* RegionPackagesViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -168,6 +171,9 @@
 		B7E0ECB329C10BDA00CDF6FD /* LocalEsimsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalEsimsViewModel.swift; sourceTree = "<group>"; };
 		B7E0ECB529C10CAF00CDF6FD /* LocalEsimsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalEsimsAssembly.swift; sourceTree = "<group>"; };
 		B7E0FDDF29C61AAC00F4956C /* PackagesBlueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackagesBlueTableViewCell.swift; sourceTree = "<group>"; };
+		B7E0FDE229C624FB00F4956C /* RegionPackagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionPackagesViewController.swift; sourceTree = "<group>"; };
+		B7E0FDE429C6254200F4956C /* RegionPackagesAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionPackagesAssembly.swift; sourceTree = "<group>"; };
+		B7E0FDE629C6258C00F4956C /* RegionPackagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionPackagesViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +218,7 @@
 				B79234FE29C49F3E00CA4CA5 /* 1.2 Regional esims */,
 				B792350729C4B52200CA4CA5 /* 1.3 Global esims */,
 				B751CEF529C0D64D0048B5A0 /* 1.0.1 Packages */,
+				B7E0FDE129C623FF00F4956C /* 1.2.1 Region Packages */,
 			);
 			path = "Presentation Layer";
 			sourceTree = "<group>";
@@ -498,6 +505,16 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		B7E0FDE129C623FF00F4956C /* 1.2.1 Region Packages */ = {
+			isa = PBXGroup;
+			children = (
+				B7E0FDE429C6254200F4956C /* RegionPackagesAssembly.swift */,
+				B7E0FDE229C624FB00F4956C /* RegionPackagesViewController.swift */,
+				B7E0FDE629C6258C00F4956C /* RegionPackagesViewModel.swift */,
+			);
+			path = "1.2.1 Region Packages";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -631,6 +648,7 @@
 				B72FB52529BE13250035C8FA /* AppCoordinator.swift in Sources */,
 				B792350D29C4B59100CA4CA5 /* GlobalEsimsViewModel.swift in Sources */,
 				B72B6EC129C36BEB0012A86A /* ES+UIViewController.swift in Sources */,
+				B7E0FDE729C6258C00F4956C /* RegionPackagesViewModel.swift in Sources */,
 				B72FB53529BE29670035C8FA /* RootAssembly.swift in Sources */,
 				B72FB53129BE20C60035C8FA /* ES+UINavigationController.swift in Sources */,
 				B75B51EF29BFB99900B6D42A /* EsimTarget.swift in Sources */,
@@ -659,6 +677,7 @@
 				B75B51E229BFB4DC00B6D42A /* FetchingAreasService.swift in Sources */,
 				B72FB52129BE12040035C8FA /* StoreViewController.swift in Sources */,
 				B7E0ECA929C0FF9B00CDF6FD /* PackagesViewModel.swift in Sources */,
+				B7E0FDE329C6251400F4956C /* RegionPackagesViewController.swift in Sources */,
 				B760B91C29BE02930067231C /* AppDelegate.swift in Sources */,
 				B72FB53329BE24450035C8FA /* StoreCoordinator.swift in Sources */,
 				B770CE8D29C3972C00772E83 /* ActivityIndicatorManager.swift in Sources */,
@@ -670,6 +689,7 @@
 				B75B51D929BFB07E00B6D42A /* StoreViewModel.swift in Sources */,
 				B7E0FDE029C61AAD00F4956C /* PackagesBlueTableViewCell.swift in Sources */,
 				B7E0ECB429C10BDA00CDF6FD /* LocalEsimsViewModel.swift in Sources */,
+				B7E0FDE529C6254200F4956C /* RegionPackagesAssembly.swift in Sources */,
 				B752C49B29BF31E200CD3DAD /* Icon.swift in Sources */,
 				B792350429C4A21700CA4CA5 /* RegionalEsimsAssembly.swift in Sources */,
 				B74A351529C33645004DCD9B /* ShadowView.swift in Sources */,

@@ -25,12 +25,22 @@ final class StoreCoordinator {
 	
 	private func setupBindings(for viewController: StoreViewController) {
 		guard let reactor = viewController.localEsimsViewController.reactor else { return }
-		let state = reactor.state.asDriver(onErrorJustReturn: reactor.initialState)
+		let stateL = reactor.state.asDriver(onErrorJustReturn: reactor.initialState)
 				
-		state
+		stateL
 			.compactMap(\.selectedCountry)
 			.drive(onNext: { [weak self] in
 				self?.push(selectedCountry: $0)
+			})
+			.disposed(by: viewController.disposeBag)
+
+		guard let reactor = viewController.regionalEsimsViewController.reactor else { return }
+		let stateR = reactor.state.asDriver(onErrorJustReturn: reactor.initialState)
+				
+		stateR
+			.compactMap(\.selectedCountry)
+			.drive(onNext: { [weak self] in
+				self?.push(selectedRegion: $0)
 			})
 			.disposed(by: viewController.disposeBag)
 
@@ -41,6 +51,12 @@ final class StoreCoordinator {
 		navigationController.pushViewController(viewController, animated: true)
 		viewController.loadViewIfNeeded()
 		setupBindings(for: viewController)
+	}
+	
+	private func push(selectedRegion: CountryWithImage) {
+		let viewController = ESContainer.shared.regionPackagesViewController(for: selectedRegion)
+		navigationController.pushViewController(viewController, animated: true)
+		viewController.loadViewIfNeeded()
 	}
 	
 	private func setupBindings(for viewController: PackagesViewController) {

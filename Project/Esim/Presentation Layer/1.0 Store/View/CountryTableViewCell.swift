@@ -32,6 +32,11 @@ final class CountryTableViewCell: UITableViewCell {
 		return image
 	}()
 	
+	private var disclosure: UIImageView = {
+		let image = UIImageView(image: Icon.iconArrow)
+		return image
+	}()
+	
 	private var bgView: ShadowView = {
 		let view = ShadowView()
 		view.clipsToBounds = false
@@ -66,7 +71,7 @@ final class CountryTableViewCell: UITableViewCell {
 	// MARK: - Private methods
 	
 	private func configureLayout() {
-		[bgView, label, image].forEach(contentView.addSubview)
+		[bgView, label, image, disclosure].forEach(contentView.addSubview)
 		
 		bgView.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
@@ -79,8 +84,8 @@ final class CountryTableViewCell: UITableViewCell {
 		
 		label.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
-			label.centerYAnchor	.constraint(equalTo: bgView.centerYAnchor),
-			label.leadingAnchor	.constraint(equalTo: image.trailingAnchor, constant: C.marginLeading/2)
+			label.centerYAnchor.constraint(equalTo: bgView.centerYAnchor),
+			label.leadingAnchor.constraint(equalTo: image.trailingAnchor, constant: C.marginLeading/2)
 		])
 		
 		image.translatesAutoresizingMaskIntoConstraints = false
@@ -89,6 +94,12 @@ final class CountryTableViewCell: UITableViewCell {
 			image.leadingAnchor	.constraint(equalTo: bgView.leadingAnchor, constant: C.marginLeading),
 			image.heightAnchor	.constraint(equalToConstant: C.height),
 			image.widthAnchor	.constraint(equalToConstant: C.width)
+		])
+		
+		disclosure.translatesAutoresizingMaskIntoConstraints = false
+		NSLayoutConstraint.activate([
+			disclosure.centerYAnchor	.constraint(equalTo: bgView.centerYAnchor),
+			disclosure.trailingAnchor	.constraint(equalTo: bgView.trailingAnchor, constant: -C.marginLeading),
 		])
 	}
 }

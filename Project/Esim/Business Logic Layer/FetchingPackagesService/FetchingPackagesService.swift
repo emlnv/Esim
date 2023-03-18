@@ -11,6 +11,7 @@ protocol IFetchingPackagesServicable {
 	func getPackagesByCountry(id: Int) -> ESObservable<Country>
 	func getImages(for packages: [Package]) -> ESObservable<[Package]>
 	func getGlobalPackages() -> ESObservable<Country>
+	func getPackagesByRegion(id: Int) -> ESObservable<Country>
 }
 
 struct FetchingPackagesService: IFetchingPackagesServicable {
@@ -41,6 +42,12 @@ struct FetchingPackagesService: IFetchingPackagesServicable {
 	
 	func getPackagesByCountry(id: Int) -> ESObservable<Country> {
 		provider.rx.request(.getPackagesForCountry(id))
+			.map(Country.self, using: decoder)
+			.asObservable()
+	}
+	
+	func getPackagesByRegion(id: Int) -> ESObservable<Country> {
+		provider.rx.request(.getPackagesForRegion(id))
 			.map(Country.self, using: decoder)
 			.asObservable()
 	}
