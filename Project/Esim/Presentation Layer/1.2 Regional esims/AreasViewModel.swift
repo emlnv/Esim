@@ -7,15 +7,17 @@
 
 import Foundation
 
-final class RegionalEsimsViewModel: ESReactor {
-	
+final class AreasViewModel: ESReactor {
+	enum AreaType {
+		case countries, regions
+	}
 	enum Error: LocalizedError, Equatable {
 		case failedGetServerRespond
 		case failedCreatingURL
 	}
 	
 	enum Action {
-		case getRegions
+		case getAreas
 		case setSelectArea(Area)
 	}
 	
@@ -46,20 +48,23 @@ final class RegionalEsimsViewModel: ESReactor {
 	// MARK: - Private properties
 	
 	private let userDefaults: UserDefaults
+	private let areaType: AreaType
 	
 	// MARK: - Lifecycle
 	
 	init(
 		fetchingAreasService: IFetchingAreasServicable,
-		userDefaults: UserDefaults
+		userDefaults: UserDefaults,
+		areaType: AreaType
 	) {
 		self.fetchingAreasService = fetchingAreasService
 		self.userDefaults = userDefaults
+		self.areaType = areaType
 	}
 	
 	func mutate(action: Action) -> ESObservable<Mutation> {
 		switch action {
-			case .getRegions:
+			case .getAreas:
 				return getRegions
 			case .setSelectArea(let area):
 				return .just(.mutateSelectedArea(area))
@@ -87,7 +92,7 @@ final class RegionalEsimsViewModel: ESReactor {
 	private var getRegions: ESObservable<Mutation> {
 		.concat(
 			.just(.mutateIsLoading(true)),
-			fetchingAreasService.getRegions()
+			(areaType == .regions ? fetchingAreasService.getRegions() : fetchingAreasService.getAreasPopular())
 				.flatMap { model -> ESObservable<Mutation> in
 						.concat(
 							.just(.mutateAreas(model.sorted { $0.title < $1.title } )),

@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class LocalEsimsViewController: ESTableViewController<LocalEsimsViewModel> {
+final class LocalEsimsViewController: ESTableViewController<AreasViewModel> {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -15,11 +15,11 @@ final class LocalEsimsViewController: ESTableViewController<LocalEsimsViewModel>
 		tableView.rx.setDelegate(self).disposed(by: disposeBag)
 	}
 	
-	override func bind(reactor: LocalEsimsViewModel) {
+	override func bind(reactor: AreasViewModel) {
 		let state = reactor.state.asDriver(onErrorJustReturn: reactor.currentState)
 
 		rx.methodInvoked(#selector(viewDidLoad))
-			.map { _ in Reactor.Action.getAreasPopular }
+			.map { _ in Reactor.Action.getAreas }
 			.bind(to: reactor.action)
 			.disposed(by: disposeBag)
 		

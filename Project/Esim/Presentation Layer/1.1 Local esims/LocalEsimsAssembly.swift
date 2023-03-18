@@ -20,11 +20,12 @@ extension ESContainer {
 			UserDefaults.standard
 	}}
 	
-	private var localVM: ESFactory<LocalEsimsViewModel> {
+	private var localVM: ESFactory<AreasViewModel> {
 		ESFactory(self) {
-			LocalEsimsViewModel(
+			AreasViewModel(
 				fetchingAreasService:	self.fetchingAreasService.callAsFunction(),
-				userDefaults:			self.userDefaults.callAsFunction()
+				userDefaults:			self.userDefaults.callAsFunction(),
+				areaType: 				.countries
 			)
 	}}
 		

@@ -10,9 +10,9 @@ import XCTest
 import RxTest
 import RxSwift
 
-final class LocalEsimsViewModelTestCase: XCTestCase {
+final class AreasViewModelTestCase: XCTestCase {
 	
-	var sut: LocalEsimsViewModel!
+	var sut: AreasViewModel!
 	var disposeBag: DisposeBag!
 	
 	override func setUpWithError() throws {
@@ -33,7 +33,8 @@ final class LocalEsimsViewModelTestCase: XCTestCase {
 	func testSuccessfulGetDataByViewModel() throws {
 		sut = .init(
 			fetchingAreasService: FetchingAreasServiceMock(),
-			userDefaults: UserDefaults.standard
+			userDefaults: UserDefaults.standard,
+			areaType: .countries
 		)
 		
 		let successStub = [
@@ -91,13 +92,13 @@ final class LocalEsimsViewModelTestCase: XCTestCase {
 		}
 		
 		XCTAssertNil(sut.currentState.areasPopular)
-		XCTAssertEqual(sut.currentState.error, LocalEsimsViewModel.Error.failedGetServerRespond)
+		XCTAssertEqual(sut.currentState.error, AreasViewModel.Error.failedGetServerRespond)
 		let states = response.events.compactMap(\.value.element)
 		XCTAssertEqual(
 			states.map(\.error),
 			[
 				nil,												// initial state
-				LocalEsimsViewModel.Error.failedGetServerRespond	// recieved data event
+				AreasViewModel.Error.failedGetServerRespond	// recieved data event
 			]
 		)
 		

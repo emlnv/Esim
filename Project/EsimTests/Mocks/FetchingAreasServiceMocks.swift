@@ -22,13 +22,13 @@ final class FetchingAreasServiceMock: IFetchingAreasServicable {
 final class FetchingAreasServiceErrorMock: IFetchingAreasServicable {
 	func getAreasPopular() -> ESObservable<[Area]> {
 		.error(
-			LocalEsimsViewModel.Error.failedGetServerRespond
+			AreasViewModel.Error.failedGetServerRespond
 		)
 	}
 
 	func getImagesForAreas(_: [String]) -> ESObservable<[ESImage]> {
 		.error(
-			LocalEsimsViewModel.Error.failedGetServerRespond
+			AreasViewModel.Error.failedGetServerRespond
 		)
 	}
 }

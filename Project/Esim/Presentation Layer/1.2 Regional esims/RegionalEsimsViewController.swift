@@ -7,7 +7,7 @@
 
 import UIKit.UITableView
 
-final class RegionalEsimsViewController: ESTableViewController<RegionalEsimsViewModel> {
+final class RegionalEsimsViewController: ESTableViewController<AreasViewModel> {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -15,11 +15,11 @@ final class RegionalEsimsViewController: ESTableViewController<RegionalEsimsView
 		tableView.rx.setDelegate(self).disposed(by: disposeBag)
 	}
 	
-	override func bind(reactor: RegionalEsimsViewModel) {
+	override func bind(reactor: AreasViewModel) {
 		let state = reactor.state.asDriver(onErrorJustReturn: reactor.currentState)
 
 		rx.methodInvoked(#selector(viewDidLoad))
-			.map { _ in Reactor.Action.getRegions }
+			.map { _ in Reactor.Action.getAreas }
 			.bind(to: reactor.action)
 			.disposed(by: disposeBag)
 		
