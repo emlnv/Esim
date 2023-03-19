@@ -29,7 +29,7 @@ struct Operator: Decodable, Equatable, Hashable {
 	
 	let id: Int?
 	let title: String?
-	let style: String?
+	let style: Style?
 	let gradient_start: String?
 	let gradient_end: String?
 	let type: String?
@@ -47,4 +47,8 @@ struct Operator: Decodable, Equatable, Hashable {
 	let image: Flag
 	var imageData: Data?
 	let countries: [Area]
+	
+	enum Style: String, Decodable {
+		case light, dark
+	}
 }

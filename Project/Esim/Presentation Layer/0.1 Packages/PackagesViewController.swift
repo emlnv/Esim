@@ -9,7 +9,7 @@ import UIKit
 
 final class PackagesViewController: ESTableViewController<PackagesViewModel> {
 	
-	var cellType: PackagesTableViewCell.Type!
+	var cellType: PackagesTableViewCell.Type = PackagesTableViewCell.self
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -20,12 +20,6 @@ final class PackagesViewController: ESTableViewController<PackagesViewModel> {
 	}
 	
 	override func bind(reactor: PackagesViewModel) {
-		switch reactor.currentState.areaType {
-			case .countries: 		cellType = PackagesTableViewCell.self
-			case .regions:			cellType = PackagesOrangeTableViewCell.self
-			case .globalRegions:	cellType = PackagesBlueTableViewCell.self
-		}
-		
 		let state = reactor.state.asDriver(onErrorJustReturn: reactor.currentState)
 
 		rx.methodInvoked(#selector(viewDidLoad))
