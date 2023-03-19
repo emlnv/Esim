@@ -16,6 +16,7 @@ final class PackagesViewController: ESTableViewController<PackagesViewModel> {
 		tableView.register(cellType, forCellReuseIdentifier: cellType.reuseIdentifier)
 		tableView.rx.setDelegate(self).disposed(by: disposeBag)
 		parent?.navigationItem.backBarButtonItem = .init(title: String(), style: .plain, target: nil, action: nil)
+		view.backgroundColor = .systemBackground
 	}
 	
 	override func bind(reactor: PackagesViewModel) {

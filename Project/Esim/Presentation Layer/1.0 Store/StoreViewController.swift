@@ -95,8 +95,6 @@ final class StoreViewController: ESBaseViewController<StoreViewModel> {
 		navigationItem.searchController?.searchBar.setFont(.systemFont(ofSize: 13))
 		navigationItem.searchController?.searchBar.setImage(Icon.iconSearch, for: .search, state: .normal)
 		navigationItem.searchController?.hidesNavigationBarDuringPresentation = true
-		navigationItem.hidesSearchBarWhenScrolling = true
-		definesPresentationContext = true
 	}
 
 	private func configureSegmentedControl(into view: UIView) {
@@ -167,6 +165,7 @@ extension StoreViewController {
 			viewController.view.removeFromSuperview()
 			viewController.endAppearanceTransition()
 			viewController.removeFromParent()
+			viewController.didMove(toParent: nil)
 		}
 	}
 
@@ -177,13 +176,13 @@ extension StoreViewController {
 	private func addAndConstrain(viewControllerView: UIView) {
 		view.addSubview(viewControllerView)
 		view.sendSubviewToBack(viewControllerView)
+		
 		viewControllerView.translatesAutoresizingMaskIntoConstraints = false
 		let trailingConstraint = viewControllerView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
 		let bottomConstraint = viewControllerView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-		trailingConstraint.priority = .required - 1	 // To avoid conflicts during initial layout calculations
-		bottomConstraint.priority = .required - 1
+		
 		NSLayoutConstraint.activate([
-			viewControllerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: C.offsetTop),
+			viewControllerView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: C.offset),
 			viewControllerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 			viewControllerView.heightAnchor.constraint(greaterThanOrEqualToConstant: 1),
 			trailingConstraint,

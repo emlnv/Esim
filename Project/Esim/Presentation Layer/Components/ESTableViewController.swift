@@ -29,7 +29,26 @@ class ESTableViewController<Reactor: ESReactor>: ESBaseViewController<Reactor> {
 
 	// MARK: - Lifecycle
 	
-	override func loadView() {
-		view = tableView
+	
+	override func viewDidLayoutSubviews() {
+		super.viewDidLayoutSubviews()
+		configureUI()
+	}
+	
+	// MARK: - Configure
+	
+	private func configureUI() {
+		[tableView].forEach(view.addSubview)
+		configureTableView()
+	}
+	
+	private func configureTableView() {
+		tableView.translatesAutoresizingMaskIntoConstraints = false
+		NSLayoutConstraint.activate([
+			tableView.leadingAnchor	.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+			tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+			tableView.topAnchor		.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+			tableView.bottomAnchor	.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+		])
 	}
 }
