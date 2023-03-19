@@ -17,6 +17,7 @@ final class StoreViewController: ESBaseViewController<StoreViewModel> {
 		static let titleTab3 = "Global eSIMs"
 		static let searchPlaceholder = "Search data packs for +190 countries and regions"
 		static let offset: CGFloat = 8
+		static let minimalHeight: CGFloat = 44
 		static var offsetTop: CGFloat = 50
 	}
 	
@@ -25,6 +26,7 @@ final class StoreViewController: ESBaseViewController<StoreViewModel> {
 	
 	private let rightNavButton = UIBarButtonItem(image: Icon.loggedOut, style: .plain, target: StoreViewController.self, action: nil)
 	private var observerLargeTitle: NSKeyValueObservation?
+	private var topConstraint: NSLayoutConstraint!
 
 	var localEsimsViewController: 		AreasViewController
 	var regionalEsimsViewController: 	AreasViewController
@@ -66,10 +68,12 @@ final class StoreViewController: ESBaseViewController<StoreViewModel> {
 	}
 
 	private func configureNavbar() {
-		observerLargeTitle = navigationController?.navigationBar.observe(\.bounds, options: [.new]) {
+		let standardHeight = (self.navigationController?.navigationBar.frame.size.height ?? 0) * 3 + 15
+		observerLargeTitle = navigationController?.navigationBar.observe(\.bounds, options: [.new]) { [unowned self] in
+			guard let height = $1.newValue?.height else { return }
+			self.topConstraint.constant = height > standardHeight ? (height - standardHeight) : 0
 			let isSetted = self.navigationItem.rightBarButtonItem != nil
-			guard let height = $1.newValue?.height,
-			(height > 44 && !isSetted) || (height <= 44 && isSetted) else { return }
+			guard (height > 44 && !isSetted) || (height <= 44 && isSetted) else { return }
 			self.navigationItem.setRightBarButton(height > 44 ? self.rightNavButton : nil, animated: true)
 		}
 		
@@ -107,12 +111,13 @@ final class StoreViewController: ESBaseViewController<StoreViewModel> {
 		}}
 		hideBackground()
 		let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13)]
+		topConstraint = segmentedControl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
 		segmentedControl.setTitleTextAttributes(attributes, for: .normal)
 		segmentedControl.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
+			topConstraint,
 			segmentedControl.leadingAnchor	.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor,  constant:  C.offset * 2),
 			segmentedControl.trailingAnchor	.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -C.offset * 2),
-			segmentedControl.topAnchor		.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: C.offset),
 			segmentedControl.heightAnchor	.constraint(equalToConstant: 28),
 		])
 		segmentedControl.sendActions(for: .valueChanged)
@@ -182,7 +187,7 @@ extension StoreViewController {
 		let bottomConstraint = viewControllerView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
 		
 		NSLayoutConstraint.activate([
-			viewControllerView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: C.offset),
+			viewControllerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: C.minimalHeight),
 			viewControllerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 			viewControllerView.heightAnchor.constraint(greaterThanOrEqualToConstant: 1),
 			trailingConstraint,
