@@ -9,7 +9,7 @@ Current state of UI
 	✅ hard code to Constants
 	✅ storeVC: child vcs corrected
 	✅ check memory leaks
-	▫️ check layout on different screens
+	✅ check layout on different screens
 	✅ replaced CountryWithImage struct
 	✅ remove vcs, vms code duplication
 	✅ storeVC: correct layout by scrolls drag
@@ -17,4 +17,4 @@ Current state of UI
 
 ***
 Work in progress
-[ ======== 97% - ]
+[ ======== 98% - ]
