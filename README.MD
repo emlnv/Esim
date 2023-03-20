@@ -17,4 +17,4 @@ Current state of UI
 
 ***
 Work in progress
-[ ======== 94% - ]
+[ ======== 96% - ]
