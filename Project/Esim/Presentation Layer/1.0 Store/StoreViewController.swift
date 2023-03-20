@@ -137,9 +137,7 @@ final class StoreViewController: ESBaseViewController<StoreViewModel> {
 	}
 }
 
-extension StoreViewController {
-	
-	// MARK: Setting childs
+extension StoreViewController { // MARK: Setting childs
 	
 	var viewController: UIViewController? {
 		get { children.first }
@@ -165,6 +163,7 @@ extension StoreViewController {
 	
 	private func removeChildViewControllers() {
 		children.forEach { viewController in
+			UIView.animate(withDuration: 0.25) { viewController.view.alpha = 0 }
 			viewController.beginAppearanceTransition(false, animated: true)
 			viewController.willMove(toParent: nil)
 			viewController.view.removeFromSuperview()
@@ -179,6 +178,7 @@ extension StoreViewController {
 	}
 
 	private func addAndConstrain(viewControllerView: UIView) {
+		viewControllerView.alpha = 0
 		view.addSubview(viewControllerView)
 		view.sendSubviewToBack(viewControllerView)
 		
@@ -194,35 +194,10 @@ extension StoreViewController {
 			bottomConstraint
 		])
 		viewControllerView.setNeedsLayout()
-	}
-
-	private func dissolveTransition(to viewController: UIViewController) {
-		guard let previousViewController = children.first, previousViewController != viewController else {
-			return setChildViewController(viewController)
-		}
-		addChild(viewController)
-		previousViewController.willMove(toParent: nil)
-		viewController.beginAppearanceTransition(true, animated: true)
-		addAndConstrain(viewControllerView: viewController.view)
-		previousViewController.beginAppearanceTransition(false, animated: true)
-
-		UIView.transition(
-			from: previousViewController.view,
-			to: viewController.view,
-			duration: 0.25,
-			options: [
-				.transitionCrossDissolve,
-				.beginFromCurrentState,
-				.allowAnimatedContent
-			]
-		) { completed in
-			previousViewController.endAppearanceTransition()
-			previousViewController.removeFromParent()
-			viewController.endAppearanceTransition()
-			viewController.didMove(toParent: self)
+		UIView.animate(withDuration: 0.25) {
+			viewControllerView.alpha = 1
 		}
 	}
-
 }
 
 extension StoreViewController: UISearchControllerDelegate {}
