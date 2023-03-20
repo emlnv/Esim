@@ -8,7 +8,7 @@ Current state of UI
 	✅ gradient colors for card and remove subclassed cells
 	✅ hard code to Constants
 	✅ storeVC: child vcs corrected
-	▫️ check memory leaks
+	✅ check memory leaks
 	▫️ check layout on different screens
 	✅ replaced CountryWithImage struct
 	✅ remove vcs, vms code duplication
@@ -17,4 +17,4 @@ Current state of UI
 
 ***
 Work in progress
-[ ======== 96% - ]
+[ ======== 97% - ]
