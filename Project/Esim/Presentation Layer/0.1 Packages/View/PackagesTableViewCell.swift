@@ -12,10 +12,15 @@ class PackagesTableViewCell: UITableViewCell {
 	private typealias C = Constants
 	private enum Constants {
 		static let title = "Hello"
-		static let marginLeading: CGFloat = 20
+		static let titleButtonStart = "US$"
+		static let titleButton = " - BUY NOW"
+		static let margin: CGFloat = 20
 		static let marginVertical: CGFloat = 30
 		static let height: CGFloat = 28
 		static let width: CGFloat = 37
+		static let imageHeight: CGFloat = 88
+		static let imageWidth: CGFloat = 140
+		static let aspectRatio: CGFloat = 1.16
 	}
 
 	// MARK: - Properties
@@ -62,6 +67,7 @@ class PackagesTableViewCell: UITableViewCell {
 	private var image: UIImageView = {
 		let image = UIImageView()
 		image.contentMode = .scaleAspectFill
+		image.backgroundColor = .clear
 		image.layer.cornerRadius = 12
 		return image
 	}()
@@ -122,7 +128,7 @@ class PackagesTableViewCell: UITableViewCell {
 		labelValidity.text = package.validity
 		labelTitle.text = package.operator?.title
 		labelSubtitle.text = package.operator?.countries.first?.title
-		button.setTitle("US$" + String(package.price ?? 0) + " - BUY NOW", for: .normal)
+		button.setTitle(Constants.titleButtonStart + String(package.price ?? 0) + Constants.titleButton, for: .normal)
 		image.image = UIImage(data: package.operator?.imageData ?? Data())
 		colorsGradient = [UIColor(hex: package.operator?.gradient_start ?? String()) ?? .clear,
 						  UIColor(hex: package.operator?.gradient_end ?? String()) ?? .clear]
@@ -139,37 +145,37 @@ class PackagesTableViewCell: UITableViewCell {
 		
 		card.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
-			card.topAnchor		.constraint(equalTo: contentView.topAnchor, constant: C.marginLeading),
-			card.leadingAnchor	.constraint(equalTo: contentView.leadingAnchor, constant: C.marginLeading),
-			card.trailingAnchor	.constraint(equalTo: contentView.trailingAnchor, constant: -C.marginLeading),
-			card.widthAnchor	.constraint(equalTo: card.heightAnchor, multiplier: 1.16)
+			card.topAnchor		.constraint(equalTo: contentView.topAnchor, constant: C.margin),
+			card.leadingAnchor	.constraint(equalTo: contentView.leadingAnchor, constant: C.margin),
+			card.trailingAnchor	.constraint(equalTo: contentView.trailingAnchor, constant: -C.margin),
+			card.widthAnchor	.constraint(equalTo: card.heightAnchor, multiplier: C.aspectRatio)
 		])
 
 		bgView.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
-			bgView.topAnchor		.constraint(equalTo: contentView.topAnchor, constant: C.marginLeading),
-			bgView.leadingAnchor	.constraint(equalTo: contentView.leadingAnchor, constant: C.marginLeading),
-			bgView.trailingAnchor	.constraint(equalTo: contentView.trailingAnchor, constant: -C.marginLeading),
-			bgView.bottomAnchor		.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -C.marginLeading),
-			bgView.widthAnchor		.constraint(equalTo: bgView.heightAnchor, multiplier: 1.16)
+			bgView.topAnchor		.constraint(equalTo: contentView.topAnchor, constant: C.margin),
+			bgView.leadingAnchor	.constraint(equalTo: contentView.leadingAnchor, constant: C.margin),
+			bgView.trailingAnchor	.constraint(equalTo: contentView.trailingAnchor, constant: -C.margin),
+			bgView.bottomAnchor		.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -C.margin),
+			bgView.widthAnchor		.constraint(equalTo: bgView.heightAnchor, multiplier: C.aspectRatio)
 		])
 
 		labelData.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
-			labelData.centerYAnchor		.constraint(equalTo: card.centerYAnchor, constant: -C.marginLeading - 5),
-			labelData.trailingAnchor	.constraint(equalTo: card.trailingAnchor, constant: -C.marginLeading)
+			labelData.centerYAnchor		.constraint(equalTo: card.centerYAnchor, constant: -C.marginVertical),
+			labelData.trailingAnchor	.constraint(equalTo: card.trailingAnchor, constant: -C.margin)
 		])
 		
 		labelValidity.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
-			labelValidity.topAnchor			.constraint(equalTo: labelData.bottomAnchor, constant: C.marginVertical + 5),
+			labelValidity.topAnchor			.constraint(equalTo: labelData.bottomAnchor, constant: C.margin * 2),
 			labelValidity.trailingAnchor	.constraint(equalTo: labelData.trailingAnchor)
 		])
 		
 		labelTitle.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
-			labelTitle.topAnchor			.constraint(equalTo: card.topAnchor, constant: C.marginLeading),
-			labelTitle.leadingAnchor		.constraint(equalTo: card.leadingAnchor, constant: C.marginLeading)
+			labelTitle.topAnchor			.constraint(equalTo: card.topAnchor, constant: C.margin),
+			labelTitle.leadingAnchor		.constraint(equalTo: card.leadingAnchor, constant: C.margin)
 		])
 		
 		labelSubtitle.translatesAutoresizingMaskIntoConstraints = false
@@ -187,9 +193,9 @@ class PackagesTableViewCell: UITableViewCell {
 		image.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
 			image.topAnchor		.constraint(equalTo: contentView.topAnchor),
-			image.trailingAnchor.constraint(equalTo: card.trailingAnchor, constant: -C.marginLeading),
-			image.heightAnchor	.constraint(equalToConstant: 88),
-			image.widthAnchor	.constraint(equalToConstant: 140)
+			image.trailingAnchor.constraint(equalTo: card.trailingAnchor, constant: -C.margin),
+			image.heightAnchor	.constraint(equalToConstant: C.imageHeight),
+			image.widthAnchor	.constraint(equalToConstant: C.imageWidth)
 		])
 	}
 }
