@@ -28,7 +28,7 @@ class PackagesTableViewCell: UITableViewCell {
 	fileprivate let labelData: UILabel = {
 		let label = UILabel()
 		label.textAlignment = .right
-		label.textColor = .init(named: "esGrey")
+		label.textColor = Color.esGrey
 		label.font = .italicSystemFont(ofSize: 17)
 		return label
 	}()
@@ -36,7 +36,7 @@ class PackagesTableViewCell: UITableViewCell {
 	fileprivate let labelValidity: UILabel = {
 		let label = UILabel()
 		label.textAlignment = .right
-		label.textColor = .init(named: "esGrey")
+		label.textColor = Color.esGrey
 		label.font = .italicSystemFont(ofSize: 17)
 		return label
 	}()
@@ -44,7 +44,7 @@ class PackagesTableViewCell: UITableViewCell {
 	fileprivate let labelTitle: UILabel = {
 		let label = UILabel()
 		label.textAlignment = .left
-		label.textColor = .init(named: "esGrey")
+		label.textColor = Color.esGrey
 		label.font = .boldSystemFont(ofSize: 19)
 		return label
 	}()
@@ -52,14 +52,14 @@ class PackagesTableViewCell: UITableViewCell {
 	fileprivate let labelSubtitle: UILabel = {
 		let label = UILabel()
 		label.textAlignment = .left
-		label.textColor = .init(named: "esGrey")
+		label.textColor = Color.esGrey
 		label.font = .italicSystemFont(ofSize: 13)
 		return label
 	}()
 	
 	fileprivate let button: UIButton = {
 		let button = UIButton()
-		button.setTitleColor(.init(named: "esGrey"), for: .normal)
+		button.setTitleColor(Color.esGrey, for: .normal)
 		button.titleLabel?.font = .boldSystemFont(ofSize: 11)
 		return button
 	}()

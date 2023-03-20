@@ -18,7 +18,7 @@ final class AreasViewController: ESTableViewController<AreasViewModel> {
 	override func bind(reactor: AreasViewModel) {
 		let state = reactor.state.asDriver(onErrorJustReturn: reactor.currentState)
 
-		rx.methodInvoked(#selector(viewDidLoad))
+		rx.methodInvoked(#selector(viewWillAppear))
 			.map { _ in Reactor.Action.getAreas }
 			.bind(to: reactor.action)
 			.disposed(by: disposeBag)

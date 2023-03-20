@@ -46,7 +46,6 @@ final class ColoredSegmentedControl: UISegmentedControl {
 	
 	private func setupUI() {
 		layer.borderWidth = 1
-		selectedSegmentIndex = 0
 		layer.borderColor = UIColor.clear.cgColor
 		selectedSegmentTintColor = .systemGray5
 	}

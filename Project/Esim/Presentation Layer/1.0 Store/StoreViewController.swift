@@ -120,6 +120,7 @@ final class StoreViewController: ESBaseViewController<StoreViewModel> {
 			segmentedControl.trailingAnchor	.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -C.offset * 2),
 			segmentedControl.heightAnchor	.constraint(equalToConstant: 28),
 		])
+		segmentedControl.selectedSegmentIndex = 0
 		segmentedControl.sendActions(for: .valueChanged)
 	}
 	

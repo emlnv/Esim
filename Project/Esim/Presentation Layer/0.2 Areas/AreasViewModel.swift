@@ -18,14 +18,14 @@ final class AreasViewModel: ESReactor {
 	
 	enum Action {
 		case getAreas
-		case setSelectArea(Area)
+		case setSelectArea(Area?)
 	}
 	
 	enum Mutation {
 		case toggleError(Swift.Error?)
 		case mutateAreas([Area])
 		case mutateAreaWithImages([Area])
-		case mutateSelectedArea(Area)
+		case mutateSelectedArea(Area?)
 		case mutateIsLoading(Bool)
 	}
 	
@@ -65,7 +65,7 @@ final class AreasViewModel: ESReactor {
 	func mutate(action: Action) -> ESObservable<Mutation> {
 		switch action {
 			case .getAreas:
-				return getRegions
+				return .just(.mutateSelectedArea(nil)).concat(getRegions)
 			case .setSelectArea(let area):
 				return .just(.mutateSelectedArea(area))
 		}

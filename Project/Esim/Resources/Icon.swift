@@ -18,3 +18,7 @@ enum Icon {
 	static let esimBlue = 		UIImage(named: "eSIMBlue")
 	static let esimOrange = 	UIImage(named: "eSIMOrange")
 }
+
+enum Color {
+	static let esGrey =			UIColor(named: "esGrey")
+}
