@@ -146,7 +146,7 @@ extension StoreViewController {
 		set { guard let newViewController = newValue else {
 				return removeChildViewControllers()
 			}
-			dissolveTransition(to: newViewController)
+			setChildViewController(newViewController)
 		}
 	}
 
