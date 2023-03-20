@@ -20,5 +20,5 @@ enum Icon {
 }
 
 enum Color {
-	static let esGrey =			UIColor(named: "esGrey")
+	static let esGrey =			UIColor(named: "esGrey")!
 }

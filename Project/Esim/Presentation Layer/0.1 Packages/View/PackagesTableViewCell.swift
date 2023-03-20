@@ -123,7 +123,7 @@ class PackagesTableViewCell: UITableViewCell {
 	// MARK: - Public methods
 	
 	func configure(package: Package) {
-		let color: UIColor = package.operator?.style == .light ? .systemBackground : .init(named: "esGrey")!
+		let color: UIColor = package.operator?.style == .light ? .systemBackground : Color.esGrey
 		labelData.text = package.data
 		labelValidity.text = package.validity
 		labelTitle.text = package.operator?.title
