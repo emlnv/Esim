@@ -53,6 +53,15 @@
 		B792350429C4A21700CA4CA5 /* RegionalEsimsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79234FF29C49FA800CA4CA5 /* RegionalEsimsAssembly.swift */; };
 		B792350629C4ADAD00CA4CA5 /* ES+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B792350529C4ADAD00CA4CA5 /* ES+UIColor.swift */; };
 		B792350929C4B54200CA4CA5 /* GlobalEsimsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B792350829C4B53000CA4CA5 /* GlobalEsimsAssembly.swift */; };
+		B7AA4CCC29C8DC920031D117 /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = B7AA4CCB29C8DC920031D117 /* Factory */; };
+		B7AA4CCE29C8DC920031D117 /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = B7AA4CCD29C8DC920031D117 /* ReactorKit */; };
+		B7AA4CD429C8DC920031D117 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = B7AA4CD329C8DC920031D117 /* RxBlocking */; };
+		B7AA4CD629C8DC920031D117 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = B7AA4CD529C8DC920031D117 /* RxCocoa */; };
+		B7AA4CD829C8DC920031D117 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = B7AA4CD729C8DC920031D117 /* RxRelay */; };
+		B7AA4CDA29C8DC920031D117 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B7AA4CD929C8DC920031D117 /* RxSwift */; };
+		B7AA4CDC29C8DC920031D117 /* RxTest in Frameworks */ = {isa = PBXBuildFile; productRef = B7AA4CDB29C8DC920031D117 /* RxTest */; };
+		B7AA4CE229C8EED20031D117 /* PackagesViewModelTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AA4CE129C8EED20031D117 /* PackagesViewModelTestCase.swift */; };
+		B7AA4CE429C8EF060031D117 /* FetchingPackagesServiceMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AA4CE329C8EF060031D117 /* FetchingPackagesServiceMocks.swift */; };
 		B7D1343929C1BE3A00D0F019 /* ESTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D1343829C1BE3A00D0F019 /* ESTableViewController.swift */; };
 		B7D1344B29C1DDC900D0F019 /* IBMPlexSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B7D1343C29C1DDC900D0F019 /* IBMPlexSans-SemiBoldItalic.ttf */; };
 		B7D1344C29C1DDC900D0F019 /* IBMPlexSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B7D1343D29C1DDC900D0F019 /* IBMPlexSans-Medium.ttf */; };
@@ -139,10 +148,12 @@
 		B767B90629C214EB00A01B1A /* FetchingAreasServiceMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchingAreasServiceMocks.swift; sourceTree = "<group>"; };
 		B770CE8C29C3972C00772E83 /* ActivityIndicatorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorManager.swift; sourceTree = "<group>"; };
 		B79234FF29C49FA800CA4CA5 /* RegionalEsimsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionalEsimsAssembly.swift; sourceTree = "<group>"; };
-		B792350529C4ADAD00CA4CA5 /* ES+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ES+UIColor.swift"; sourceTree = "<group>"; };
 		B792350029C4A06000CA4CA5 /* AreasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreasViewController.swift; sourceTree = "<group>"; };
 		B792350129C4A08B00CA4CA5 /* AreasViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreasViewModel.swift; sourceTree = "<group>"; };
+		B792350529C4ADAD00CA4CA5 /* ES+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ES+UIColor.swift"; sourceTree = "<group>"; };
 		B792350829C4B53000CA4CA5 /* GlobalEsimsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalEsimsAssembly.swift; sourceTree = "<group>"; };
+		B7AA4CE129C8EED20031D117 /* PackagesViewModelTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackagesViewModelTestCase.swift; sourceTree = "<group>"; };
+		B7AA4CE329C8EF060031D117 /* FetchingPackagesServiceMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchingPackagesServiceMocks.swift; sourceTree = "<group>"; };
 		B7D1343829C1BE3A00D0F019 /* ESTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESTableViewController.swift; sourceTree = "<group>"; };
 		B7D1343C29C1DDC900D0F019 /* IBMPlexSans-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		B7D1343D29C1DDC900D0F019 /* IBMPlexSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Medium.ttf"; sourceTree = "<group>"; };
@@ -184,6 +195,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7AA4CD629C8DC920031D117 /* RxCocoa in Frameworks */,
+				B7AA4CDC29C8DC920031D117 /* RxTest in Frameworks */,
+				B7AA4CCE29C8DC920031D117 /* ReactorKit in Frameworks */,
+				B7AA4CD829C8DC920031D117 /* RxRelay in Frameworks */,
+				B7AA4CCC29C8DC920031D117 /* Factory in Frameworks */,
+				B7AA4CDA29C8DC920031D117 /* RxSwift in Frameworks */,
+				B7AA4CD429C8DC920031D117 /* RxBlocking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,6 +419,7 @@
 			children = (
 				B767B90529C214CF00A01B1A /* Mocks */,
 				B767B8EB29C2132700A01B1A /* EsimTests.swift */,
+				B7AA4CE129C8EED20031D117 /* PackagesViewModelTestCase.swift */,
 			);
 			path = EsimTests;
 			sourceTree = "<group>";
@@ -415,6 +434,7 @@
 		B767B90529C214CF00A01B1A /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
+				B7AA4CE329C8EF060031D117 /* FetchingPackagesServiceMocks.swift */,
 				B767B90629C214EB00A01B1A /* FetchingAreasServiceMocks.swift */,
 			);
 			path = Mocks;
@@ -552,6 +572,13 @@
 			);
 			name = EsimTests;
 			packageProductDependencies = (
+				B7AA4CCB29C8DC920031D117 /* Factory */,
+				B7AA4CCD29C8DC920031D117 /* ReactorKit */,
+				B7AA4CD329C8DC920031D117 /* RxBlocking */,
+				B7AA4CD529C8DC920031D117 /* RxCocoa */,
+				B7AA4CD729C8DC920031D117 /* RxRelay */,
+				B7AA4CD929C8DC920031D117 /* RxSwift */,
+				B7AA4CDB29C8DC920031D117 /* RxTest */,
 			);
 			productName = EsimTests;
 			productReference = B767B8E929C2132700A01B1A /* EsimTests.xctest */;
@@ -688,7 +715,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7AA4CE429C8EF060031D117 /* FetchingPackagesServiceMocks.swift in Sources */,
 				B767B90729C214EB00A01B1A /* FetchingAreasServiceMocks.swift in Sources */,
+				B7AA4CE229C8EED20031D117 /* PackagesViewModelTestCase.swift in Sources */,
 				B767B8EC29C2132700A01B1A /* EsimTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1023,6 +1052,41 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B75B51E429BFB74200B6D42A /* XCRemoteSwiftPackageReference "Moya" */;
 			productName = RxMoya;
+		};
+		B7AA4CCB29C8DC920031D117 /* Factory */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B752C49529BF1FD500CD3DAD /* XCRemoteSwiftPackageReference "Factory" */;
+			productName = Factory;
+		};
+		B7AA4CCD29C8DC920031D117 /* ReactorKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B75B51DA29BFB35600B6D42A /* XCRemoteSwiftPackageReference "ReactorKit" */;
+			productName = ReactorKit;
+		};
+		B7AA4CD329C8DC920031D117 /* RxBlocking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B751CEEE29C079020048B5A0 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxBlocking;
+		};
+		B7AA4CD529C8DC920031D117 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B751CEEE29C079020048B5A0 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		B7AA4CD729C8DC920031D117 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B751CEEE29C079020048B5A0 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		B7AA4CD929C8DC920031D117 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B751CEEE29C079020048B5A0 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		B7AA4CDB29C8DC920031D117 /* RxTest */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B751CEEE29C079020048B5A0 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxTest;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

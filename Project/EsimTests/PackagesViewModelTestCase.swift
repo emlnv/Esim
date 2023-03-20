@@ -2,7 +2,7 @@
 //  EsimTests.swift
 //  EsimTests
 //
-//  Created by Viacheslav on 15.03.2023.
+//  Created by Viacheslav on 20.03.2023.
 //
 
 @testable import Esim
@@ -10,16 +10,17 @@ import XCTest
 import RxTest
 import RxSwift
 
-final class AreasViewModelTestCase: XCTestCase {
+final class PackagesViewModelTestCase: XCTestCase {
 	
-	var sut: AreasViewModel!
+	var sut: PackagesViewModel!
 	var disposeBag: DisposeBag!
 	
 	override func setUpWithError() throws {
 		try super.setUpWithError()
 		sut = .init(
-			fetchingAreasService: FetchingAreasServiceErrorMock(),
+			fetchingPackagesService: FetchingPackagesServiceMocks(),
 			userDefaults: UserDefaults.standard,
+			selectedArea: nil,
 			areaType: .countries
 		)
 		disposeBag = .init()
@@ -33,18 +34,19 @@ final class AreasViewModelTestCase: XCTestCase {
 	
 	func testSuccessfulGetDataByViewModel() throws {
 		sut = .init(
-			fetchingAreasService: FetchingAreasServiceMock(),
+			fetchingPackagesService: FetchingPackagesServiceMocks(),
 			userDefaults: UserDefaults.standard,
+			selectedArea: nil,
 			areaType: .countries
 		)
 		
 		let successStub = [
-			Area(),
-			Area()
+			Package(),
+			Package()
 		]
 		
 		let scheduler = TestScheduler(initialClock: 0)
-		scheduler.createHotObservable([.next(0, .getAreas)])
+		scheduler.createHotObservable([.next(0, .getPackagesBy(id: 0))])
 			.bind(to: sut.action)
 			.disposed(by: disposeBag)
 		
@@ -57,7 +59,7 @@ final class AreasViewModelTestCase: XCTestCase {
 		}
 		
 		XCTAssertEqual(
-			sut.currentState.areasPopular,
+			sut.currentState.packages,
 			successStub
 		)
 		
@@ -65,7 +67,7 @@ final class AreasViewModelTestCase: XCTestCase {
 		
 		let states = response.events.compactMap(\.value.element)
 		XCTAssertEqual(
-			states.map(\.areasPopular),
+			states.map(\.packages),
 			[
 				successStub,
 			]
@@ -75,13 +77,14 @@ final class AreasViewModelTestCase: XCTestCase {
 	
 	func testFailureGetErrorByViewModel() throws {
 		sut = .init(
-			fetchingAreasService: FetchingAreasServiceErrorMock(),
+			fetchingPackagesService: FetchingPackagesServiceErrorMocks(),
 			userDefaults: UserDefaults.standard,
+			selectedArea: nil,
 			areaType: .countries
 		)
-		
+
 		let scheduler = TestScheduler(initialClock: 0)
-		scheduler.createHotObservable([.next(1, .getAreas)])
+		scheduler.createHotObservable([.next(1, .getPackagesBy(id: 0)) ])
 			.bind(to: sut.action)
 			.disposed(by: disposeBag)
 		
@@ -93,13 +96,13 @@ final class AreasViewModelTestCase: XCTestCase {
 			self.sut.state
 		}
 		
-		XCTAssertNil(sut.currentState.areasPopular)
+		XCTAssertNil(sut.currentState.packages)
 		
 		let states = response.events.compactMap(\.value.element)
 		XCTAssertEqual(
 			states.compactMap{ $0.error?.localizedDescription },
 			[
-				AreasViewModel.Error.failedGetServerRespond.localizedDescription,
+				PackagesViewModel.Error.failedGetServerRespond.localizedDescription,
 			]
 		)
 		

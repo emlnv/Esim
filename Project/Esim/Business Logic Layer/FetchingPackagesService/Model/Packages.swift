@@ -9,6 +9,24 @@ import Foundation
 
 struct Package: Decodable, Equatable, Hashable {
 	
+	init(id: Int? = nil, slug: String? = nil, type: String? = nil, price: Double? = nil, title: String? = nil, data: String? = nil, validity: String? = nil, day: Int? = nil, amount: Int? = nil, is_unlimited: Bool? = nil, note: String? = nil, short_info: String? = nil, is_stock: Bool? = nil, `operator`: Operator? = nil) {
+		self.id = id
+		self.slug = slug
+		self.type = type
+		self.price = price
+		self.title = title
+		self.data = data
+		self.validity = validity
+		self.day = day
+		self.amount = amount
+		self.is_unlimited = is_unlimited
+		self.note = note
+		self.short_info = short_info
+		self.is_stock = is_stock
+		self.`operator` = `operator`
+	}
+	
+	
 	let id: Int?
 	let slug: String?
 	let type: String?

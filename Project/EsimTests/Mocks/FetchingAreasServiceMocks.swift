@@ -14,8 +14,12 @@ final class FetchingAreasServiceMock: IFetchingAreasServicable {
 		)
 	}
 	
-	func getImagesForAreas(_: [String]) -> ESObservable<[ESImage]> {
-		.just([ESImage(), ESImage()])
+	func getImages(for: [Area]) -> ESObservable<[Area]> {
+		.just([Area(), Area()])
+	}
+	
+	func getRegions() -> ESObservable<[Area]> {
+		.just([Area(), Area()])
 	}
 }
 
@@ -26,7 +30,13 @@ final class FetchingAreasServiceErrorMock: IFetchingAreasServicable {
 		)
 	}
 
-	func getImagesForAreas(_: [String]) -> ESObservable<[ESImage]> {
+	func getImages(for: [Area]) -> ESObservable<[Area]> {
+		.error(
+			AreasViewModel.Error.failedGetServerRespond
+		)
+	}
+
+	func getRegions() -> ESObservable<[Area]> {
 		.error(
 			AreasViewModel.Error.failedGetServerRespond
 		)
